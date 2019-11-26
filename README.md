@@ -8,6 +8,7 @@ eCommerce de Spa realizado para la clase de Fullstack Node JS de Digital House
 **Público:** Personas de cualquier sexo (aunque suele haber mayoría de público femenino en este tipo de establecimientos), mayores de 15 años, que buscan mantener o mejorar su imagen en un espacio de distención.
 
 **Referencias:**
+  
 https://www.nirvanaspacolombia.com/ : Nos gustan los colores de la web, son relajantes y limpios. La manera que se desliza la web es tabién algo que queremos incorporar.  
   
 http://www.kobe-spa.com/ : Nos gustó la página de ingreso y lo fácil que es usar la página.  
