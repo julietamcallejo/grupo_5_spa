@@ -13,7 +13,7 @@ eCommerce de Spa realizado para la clase de Fullstack Node JS de Digital House
   
 **Referencias:**
   
-https://www.nirvanaspacolombia.com/ : Nos gustan los colores de la web, son relajantes y limpios. La manera que se desliza la web es tabién algo que queremos incorporar.  
+https://www.nirvanaspacolombia.com/ : Nos gustan los colores de la web, son relajantes y limpios. La manera que se desliza la web es también algo que queremos incorporar.  
   
 http://www.kobe-spa.com/ : Nos gustó la página de ingreso y lo fácil que es usar la página.  
   
