@@ -13,10 +13,14 @@ const controller = {
 		let html = readHTML('index');
 		res.send(html);
 	},
-	productDetail: (req, res) => {
-		let html = readHTML('productDetail');
+	contact: (req, res) => {
+		let html = readHTML('contact');
 		res.send(html);
 	},
+	//productDetail: (req, res) => {
+	//	let html = readHTML('productDetail');
+	//	res.send(html);
+	//},
 	productCart: (req, res) => {
 		let html = readHTML('productCart');
 		res.send(html);
