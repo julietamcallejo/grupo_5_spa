@@ -6,3 +6,24 @@ body {
   margin: 0;
   font-family: sans-serif;
 }
+
+header {
+  background-color: #ffffff;
+  border: 5px solid red;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header .logo {
+  max-height: 99px;
+}
+
+header .nav {
+}
+
+header nav a {
+  text-decoration: none;
+  color: #9069A7;
+  font-size: 100%;
+}
