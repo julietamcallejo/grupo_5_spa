@@ -4,11 +4,47 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Formulario de registro</title>
+	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/spa.css">
 </head>
-<body>
-	<h1>Formulario Registro</h1>
-	<img src="/images/Refes/register.jpg" width="60%">
-    <img src="/images/Refes/register-1.jpg" width="80%">
+<body id="register">
+<div class="container">
+<div class="col-auto">
+		<h1>Aquí va el header</h1>
+	</div>
+
+	<form id="register-form">
+		<h2>REGISTRATE</h2>
+		<div class="container-fluid">
+			<div class = col-auto>
+			<input type="text" class="form-control is-invalid" id="inputText" placeholder="Nombre">
+			<div class="invalid-feedback">
+				Por favor ingrese un nombre válido
+			</div>
+		</div>
+			<div class = col-auto>
+			<input type="email" class="form-control is-invalid" id="inputEmail" placeholder="email">
+			<div class="invalid-feedback">
+				Por favor ingrese un email válido
+			</div>
+		</div>
+			<div class = col-auto>
+			<input type="password" class="form-control is-invalid" id="inputPassword" placeholder="Contraseña">
+			<div class="invalid-feedback">
+				Contraseña incorrecta
+			</div>
+		</div>
+			<h2>o</h2>
+			<img src="/images/login-btn.png" width="60%">
+			<div class = col-auto mx-5>
+				<button type="submit" class="btn btn-primary">Enviar</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
