@@ -33,6 +33,10 @@ const controller = {
 		let html = readHTML('productAdd');
 		res.send(html);
 	},
+	test: (req, res) => {
+		let html = readHTML('testNav');
+		res.send(html);
+	},
 };
 
 module.exports = controller
