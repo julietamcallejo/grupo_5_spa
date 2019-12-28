@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+}
+
+.Navbar {
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+.Navbar_Logo {
+    width: 20%;
+    
+}
+.Navbar_Logo img {
+    width: 170px;
+
+}
+
+.Navbar_Items {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    color: #9069A7;
+    font-weight: 600;
+    padding: 15px;
+}
+.Navbar_Link {
+    padding: 0px 15px;
+    margin: 5px 8px;
+}
+.Navbar_Toggle {
+    color: #9069A7;
+    display: none;
+    
+}
+
+
+
+.Navbar_Items a {
+    text-decoration: none;
+}
+
+
+
+@media (max-width: 768px) {
+    .Navbar_Items {
+        flex-direction: column;
+        display: none;
+    }
+
+    .Navbar_Toggle {
+        display: initial;
+        justify-self: flex-end;
+        align-self: center;
+        cursor: pointer;
+        
+
+    }
+
+    .Navbar_ToggleShow {
+        display: flex;
+    }
+
+
+
+
+
+}

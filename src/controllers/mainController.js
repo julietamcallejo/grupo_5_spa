@@ -26,17 +26,16 @@ const controller = {
 		res.send(html);
 	},
 	register: (req, res) => {
-		let html = readHTML('register');
-		res.send(html);
+		res.render('register');
 	},
 	productAdd: (req, res) => {
 		let html = readHTML('productAdd');
 		res.send(html);
 	},
 	test: (req, res) => {
-		let html = readHTML('testNav');
-		res.send(html);
+		res.render('navBar');
 	},
+	
 };
 
 module.exports = controller

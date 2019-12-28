@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De pies a cabeza</title>
-    <link rel="stylesheet" href="/css/bootstrap-grid.css">
+    <title>Header</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/nav.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/fontawesome-all.css">
+    
 </head>
 <body style= 'background-color: lightcoral'>
-    <nav class='navbar container'>
-        <ul class='row align-items-start'>
-            <li class='col-md-4'>Home</li>
-            <li class='col-md-3'>Servicios</li>
-            <li class='col-md-3'>Contacto</li>
-            <li class='col-md-1'>User</li>
-            <li class='col-md-1'>Carrito</li>
+    <header class='navibar container-fluid'>
+        <ul class='row align-items-center'>
+            <li class='col-md-3'><a href="/index"><img src="/images/IsoLogo Color.png"/></a></li>
+            <li class='col-md-2'><a href='/productDetail'>Servicios</a></li>
+            <li class='col-md-2'><a href='productAdd'>Administrar</a></li>
+            <li class='col-md-2'><a href='/register'>Ingresar</a></li>
+            <li class='col-md-2'><a href='/productCart'><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a></li>
         </ul>
 
-    </nav>
+    </header>
 
 </body>
 </html>
