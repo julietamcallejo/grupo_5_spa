@@ -25,7 +25,7 @@
                     <img src="/images/calendar-empty-ultrathin-page.svg" width="30px">
                 </div>
                 <div id="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p>Lunes 02/12/2019</p>
+                    <p><%= detalleProducto.dia %></p>
                 </div>
             </div>
             <div class="row">
@@ -33,15 +33,15 @@
                     <img src="/images/clock.svg" width="30px">
                 </div>
                 <div id="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p>16:00 - 18:00 hs.</p>
+                    <p><%= detalleProducto.hora %></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <img src="/images/user-2.svg" width="30px">
+                    <img src=<%= detalleProducto.fotoProfesional %> width="30px">
                 </div>
                 <div id="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p>Luciana García</p>
+                    <p><%= detalleProducto.nombreProfesional %></p>
                 </div>
             </div>
             <div class = col-auto mx-5>
