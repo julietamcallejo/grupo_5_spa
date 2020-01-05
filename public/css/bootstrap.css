@@ -106,9 +106,8 @@ h2, h3, h4, h5 {
 
 h6 {
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   text-align: center;
-  width: auto;
   color: #9069a7;
   font-family: 'Lato', sans-serif;
 }
@@ -320,13 +319,22 @@ input[type="radio"],
 input[type="checkbox"] {
   box-sizing: border-box;
   padding: 0;
+  color: #9069a7;
+  font-family: 'Lato', sans-serif;
+}
+
+#defaultCheck1{
+  color: #9069a7;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  padding-top: 5px;
 }
 
 input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
-input[type="month"] {
-  -webkit-appearance: listbox;
+input[type="month"] h6{
+-webkit-appearance: listbox;
 }
 
 textarea {
@@ -708,6 +716,20 @@ pre code {
   padding-left: 15px;
   padding-top: 15px;
   font-family: 'Lato', sans-serif;
+}
+
+#textsize{
+  min-height: 200px;
+}
+
+#left{
+  padding-left: 15px;
+}
+
+#marco{
+  border: solid;
+  border-color: #9069a7;
+  min-height: 200px;
 }
 
 #carrito{
@@ -2329,21 +2351,31 @@ textarea.form-control {
   position: relative;
   display: block;
   padding-left: 1.25rem;
+  color: #9069a7;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  padding-top: 5px;
 }
 
 .form-check-input {
   position: absolute;
   margin-top: 0.3rem;
   margin-left: -1.25rem;
+  color: #9069a7;
+  font-family: 'Lato', sans-serif;
+  padding-top: 5px;
 }
 
 .form-check-input[disabled] ~ .form-check-label,
 .form-check-input:disabled ~ .form-check-label {
   color: #6c757d;
+  padding-top: 5px;
 }
 
 .form-check-label {
   margin-bottom: 0;
+  color: #9069a7;
+  font-family: 'Lato', sans-serif;
 }
 
 .form-check-inline {
@@ -2360,6 +2392,8 @@ textarea.form-control {
   margin-top: 0;
   margin-right: 0.3125rem;
   margin-left: 0;
+  color: #9069a7;
+  font-family: 'Lato', sans-serif;
 }
 
 .valid-feedback {
@@ -3982,8 +4016,8 @@ input[type="button"].btn-block {
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
-  border-color: #007bff;
-  background-color: #007bff;
+  border-color: #9069a7;
+  background-color: #9069a7;
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
@@ -3991,11 +4025,11 @@ input[type="button"].btn-block {
 }
 
 .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
-  background-color: rgba(0, 123, 255, 0.5);
+  background-color: #9069a7,
 }
 
 .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before {
-  background-color: rgba(0, 123, 255, 0.5);
+  background-color: #9069a7;
 }
 
 .custom-radio .custom-control-label::before {
@@ -4007,7 +4041,7 @@ input[type="button"].btn-block {
 }
 
 .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
-  background-color: rgba(0, 123, 255, 0.5);
+  background-color: #9069a7;
 }
 
 .custom-switch {
@@ -4046,7 +4080,7 @@ input[type="button"].btn-block {
 }
 
 .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
-  background-color: rgba(0, 123, 255, 0.5);
+  background-color: #9069a7;
 }
 
 .custom-select {
@@ -4070,7 +4104,7 @@ input[type="button"].btn-block {
 .custom-select:focus {
   border-color: #80bdff;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2rem #9069a7;
 }
 
 .custom-select:focus::-ms-value {
