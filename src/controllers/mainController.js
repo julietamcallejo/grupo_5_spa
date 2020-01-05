@@ -14,8 +14,7 @@ const controller = {
 		res.send(html);
 	},
 	contact: (req, res) => {
-		let html = readHTML('contact');
-		res.send(html);
+		res.render('contact')
 	},
 	//productDetail: (req, res) => {
 	//	let html = readHTML('productDetail');

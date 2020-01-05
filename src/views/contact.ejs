@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= detalleProducto.nombre %></title>
+    <title>Contacto</title>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/spa.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
@@ -16,18 +16,16 @@
     </div>
     <div class="row">
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" id="picDetail">
-            <img src=<%= detalleProducto.foto %> width="100%">
+            <img src="/images/front-desk.jpg" width="100%">
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-            <h2 id="textoProd"><%= detalleProducto.nombre %></h2>
-            <p id="textoProd"><%= detalleProducto.descripción %></p>
-            <h4 id="textoProd"><%= detalleProducto.precio %></h4>
+            <h2 id="textoProd">Conócenos</h2>
             <div class="row">
                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <img src="/images/calendar-empty-ultrathin-page.svg" width="30px">
+                    <img src="/images/building.svg" width="30px">
                 </div>
                 <div id="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p><%= detalleProducto.dia %></p>
+                    <p>Lima 1111, CABA, Argentina</p>
                 </div>
             </div>
             <div class="row">
@@ -35,19 +33,38 @@
                     <img src="/images/clock.svg" width="30px">
                 </div>
                 <div id="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p><%= detalleProducto.hora %></p>
+                    <p>Lunes a sábados: 11:00hs. - 19:00hs.</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <img src=<%= detalleProducto.fotoProfesional %> width="30px">
+                    <img src="/images/phone.svg" width="30px">
                 </div>
                 <div id="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p><%= detalleProducto.nombreProfesional %></p>
+                    <p>+54 9 11 4444-5555</p>
                 </div>
             </div>
-            <div class = col-auto mx-5>
-                <button type="submit" class="btn btn-primary">Agregar</button>
+            <div class="row">
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <img src="/images/mail.svg" width="30px">
+                </div>
+                <div id="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                    <p>info@nirvanaspa.com</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <img src="/images/facebook.svg" width="30px">
+                </div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <img src="/images/instagram.svg" width="30px">
+                </div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <img src="/images/twitter.svg" width="30px">
+                </div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <img src="/images/pinterest.svg" width="30px">
+                </div>
             </div>
         </div>
     </div>

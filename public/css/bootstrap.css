@@ -54,8 +54,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1rem;
+  font-family: 'Lato', sans-serif;  font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
@@ -67,11 +66,13 @@ body {
 #register{
   max-width: 100%;
   margin: auto;
+  font-family: 'Lato', sans-serif;
 }
 
 #register-form{
   max-width: 500px;
   margin: auto;
+  font-family: 'Lato', sans-serif;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -84,22 +85,35 @@ hr {
   overflow: visible;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   text-align: center;
   width: auto;
   color: #9069a7;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+}
+
+h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  width: auto;
+  color: #9069a7;
+  font-family: 'Lato', sans-serif;
 }
 
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  font-family: 'Lato', sans-serif;
 }
 
 #textoProd{
   text-align: left;
   color: #9069a7;
+  font-family: 'Lato', sans-serif;
 }
 
 abbr[title],
@@ -175,11 +189,13 @@ a {
   color: #007bff;
   text-decoration: none;
   background-color: transparent;
+  font-family: 'Lato', sans-serif;
 }
 
 a:not([href]) {
   color: inherit;
   text-decoration: none;
+  font-family: 'Lato', sans-serif;
 }
 
 pre,
@@ -364,64 +380,77 @@ template {
   display: none !important;
 }
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+h2, h3, h4, h5, h6,
+.h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
+  font-family: 'Lato', sans-serif;
 }
 
 h1, .h1 {
   font-size: 2.5rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
 }
 
 h2, .h2 {
   font-size: 2rem;
+  font-family: 'Lato', sans-serif;
 }
 
 h3, .h3 {
   font-size: 1.75rem;
+  font-family: 'Lato', sans-serif;
 }
 
 h4, .h4 {
   font-size: 1.5rem;
+  font-family: 'Lato', sans-serif;
 }
 
 h5, .h5 {
   font-size: 1.25rem;
+  font-family: 'Lato', sans-serif;
 }
 
 h6, .h6 {
   font-size: 1rem;
+  font-family: 'Lato', sans-serif;
 }
 
 .lead {
   font-size: 1.25rem;
   font-weight: 300;
+  font-family: 'Lato', sans-serif;
 }
 
 .display-1 {
   font-size: 6rem;
   font-weight: 300;
   line-height: 1.2;
+  font-family: 'Lato', sans-serif;
 }
 
 .display-2 {
   font-size: 5.5rem;
   font-weight: 300;
   line-height: 1.2;
+  font-family: 'Lato', sans-serif;
 }
 
 .display-3 {
   font-size: 4.5rem;
   font-weight: 300;
   line-height: 1.2;
+  font-family: 'Lato', sans-serif;
 }
 
 .display-4 {
   font-size: 3.5rem;
   font-weight: 300;
   line-height: 1.2;
+  font-family: 'Lato', sans-serif;
 }
 
 hr {
@@ -435,6 +464,7 @@ small,
 .small {
   font-size: 80%;
   font-weight: 400;
+  font-family: 'Lato', sans-serif;
 }
 
 mark,
@@ -513,6 +543,7 @@ code {
   font-size: 87.5%;
   color: #e83e8c;
   word-wrap: break-word;
+  font-family: 'Lato', sans-serif;
 }
 
 a > code {
@@ -556,29 +587,34 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  font-family: 'Lato', sans-serif;
 }
 
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
+    font-family: 'Lato', sans-serif;
   }
 }
 
 @media (min-width: 768px) {
   .container {
     max-width: 720px;
+    font-family: 'Lato', sans-serif;
   }
 }
 
 @media (min-width: 992px) {
   .container {
     max-width: 960px;
+    font-family: 'Lato', sans-serif;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
+    font-family: 'Lato', sans-serif;
   }
 }
 
@@ -588,29 +624,34 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  font-family: 'Lato', sans-serif;
 }
 
 @media (min-width: 576px) {
   .container, .container-sm {
     max-width: 540px;
+    font-family: 'Lato', sans-serif;
   }
 }
 
 @media (min-width: 768px) {
   .container, .container-sm, .container-md {
     max-width: 720px;
+    font-family: 'Lato', sans-serif;
   }
 }
 
 @media (min-width: 992px) {
   .container, .container-sm, .container-md, .container-lg {
     max-width: 960px;
+    font-family: 'Lato', sans-serif;
   }
 }
 
 @media (min-width: 1200px) {
   .container, .container-sm, .container-md, .container-lg, .container-xl {
     max-width: 1140px;
+    font-family: 'Lato', sans-serif;
   }
 }
 
@@ -621,6 +662,7 @@ pre code {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  font-family: 'Lato', sans-serif;
 }
 
 .no-gutters {
@@ -645,6 +687,7 @@ pre code {
   padding-right: 15px;
   padding-left: 15px;
   padding-top: 15px;
+  font-family: 'Lato', sans-serif;
 }
 
 #fondo{
@@ -655,11 +698,13 @@ pre code {
 #picDetail{
   padding-left: 5px;
   padding-right: 5px;
+  font-family: 'Lato', sans-serif;
 }
 #picDetail1{
   padding-left: 5px;
   padding-right: 5px;
   align: center;
+  font-family: 'Lato', sans-serif;
 }
 
 .col {
@@ -668,42 +713,49 @@ pre code {
   -ms-flex-positive: 1;
   flex-grow: 1;
   max-width: 100%;
+  font-family: 'Lato', sans-serif;
 }
 
 .row-cols-1 > * {
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
   max-width: 100%;
+  font-family: 'Lato', sans-serif;
 }
 
 .row-cols-2 > * {
   -ms-flex: 0 0 50%;
   flex: 0 0 50%;
   max-width: 50%;
+  font-family: 'Lato', sans-serif;
 }
 
 .row-cols-3 > * {
   -ms-flex: 0 0 33.333333%;
   flex: 0 0 33.333333%;
   max-width: 33.333333%;
+  font-family: 'Lato', sans-serif;
 }
 
 .row-cols-4 > * {
   -ms-flex: 0 0 25%;
   flex: 0 0 25%;
   max-width: 25%;
+  font-family: 'Lato', sans-serif;
 }
 
 .row-cols-5 > * {
   -ms-flex: 0 0 20%;
   flex: 0 0 20%;
   max-width: 20%;
+  font-family: 'Lato', sans-serif;
 }
 
 .row-cols-6 > * {
   -ms-flex: 0 0 16.666667%;
   flex: 0 0 16.666667%;
   max-width: 16.666667%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-auto {
@@ -711,78 +763,91 @@ pre code {
   flex: 0 0 auto;
   width: auto;
   max-width: 100%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-1 {
   -ms-flex: 0 0 8.333333%;
   flex: 0 0 8.333333%;
   max-width: 8.333333%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-2 {
   -ms-flex: 0 0 16.666667%;
   flex: 0 0 16.666667%;
   max-width: 16.666667%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-3 {
   -ms-flex: 0 0 25%;
   flex: 0 0 25%;
   max-width: 25%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-4 {
   -ms-flex: 0 0 33.333333%;
   flex: 0 0 33.333333%;
   max-width: 33.333333%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-5 {
   -ms-flex: 0 0 41.666667%;
   flex: 0 0 41.666667%;
   max-width: 41.666667%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-6 {
   -ms-flex: 0 0 50%;
   flex: 0 0 50%;
   max-width: 50%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-7 {
   -ms-flex: 0 0 58.333333%;
   flex: 0 0 58.333333%;
   max-width: 58.333333%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-8 {
   -ms-flex: 0 0 66.666667%;
   flex: 0 0 66.666667%;
   max-width: 66.666667%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-9 {
   -ms-flex: 0 0 75%;
   flex: 0 0 75%;
   max-width: 75%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-10 {
   -ms-flex: 0 0 83.333333%;
   flex: 0 0 83.333333%;
   max-width: 83.333333%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-11 {
   -ms-flex: 0 0 91.666667%;
   flex: 0 0 91.666667%;
   max-width: 91.666667%;
+  font-family: 'Lato', sans-serif;
 }
 
 .col-12 {
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
   max-width: 100%;
+  font-family: 'Lato', sans-serif;
 }
 
 .order-first {
@@ -2062,6 +2127,7 @@ pre code {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
+  font-family: 'Lato', sans-serif;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
@@ -2539,6 +2605,7 @@ textarea.form-control {
 .btn {
   display: inline-block;
   font-weight: 400;
+  font-family: 'Lato', sans-serif;
   color: #212529;
   text-align: center;
   vertical-align: middle;
@@ -2587,7 +2654,7 @@ fieldset:disabled a.btn {
   border-color: #8ecac0;
   border-radius: 30px;
   width: 150px;
-  font-family: Helvetica, sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 100%;
 }
 
@@ -3141,11 +3208,13 @@ fieldset:disabled a.btn {
   font-weight: 400;
   color: #007bff;
   text-decoration: none;
+  font-family: 'Lato', sans-serif;
 }
 
 .btn-link:hover {
   color: #0056b3;
   text-decoration: underline;
+  font-family: 'Lato', sans-serif;
 }
 
 .btn-link:focus, .btn-link.focus {
@@ -3170,6 +3239,7 @@ fieldset:disabled a.btn {
   font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 0.2rem;
+  font-family: 'Lato', sans-serif;
 }
 
 .btn-block {
@@ -4371,6 +4441,7 @@ input[type="button"].btn-block {
   align-items: center;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  font-family: 'Lato', sans-serif;
 }
 
 .navbar-brand {
@@ -4450,6 +4521,7 @@ input[type="button"].btn-block {
   .navbar-expand-sm > .container-fluid, .navbar-expand-sm > .container-sm, .navbar-expand-sm > .container-md, .navbar-expand-sm > .container-lg, .navbar-expand-sm > .container-xl {
     padding-right: 0;
     padding-left: 0;
+    font-family: 'Lato', sans-serif;
   }
 }
 
@@ -4475,6 +4547,7 @@ input[type="button"].btn-block {
   .navbar-expand-sm > .container-fluid, .navbar-expand-sm > .container-sm, .navbar-expand-sm > .container-md, .navbar-expand-sm > .container-lg, .navbar-expand-sm > .container-xl {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    font-family: 'Lato', sans-serif;
   }
   .navbar-expand-sm .navbar-collapse {
     display: -ms-flexbox !important;
@@ -4492,6 +4565,7 @@ input[type="button"].btn-block {
   .navbar-expand-md > .container-fluid, .navbar-expand-md > .container-sm, .navbar-expand-md > .container-md, .navbar-expand-md > .container-lg, .navbar-expand-md > .container-xl {
     padding-right: 0;
     padding-left: 0;
+    font-family: 'Lato', sans-serif;
   }
 }
 
@@ -4517,6 +4591,7 @@ input[type="button"].btn-block {
   .navbar-expand-md > .container-fluid, .navbar-expand-md > .container-sm, .navbar-expand-md > .container-md, .navbar-expand-md > .container-lg, .navbar-expand-md > .container-xl {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    font-family: 'Lato', sans-serif;
   }
   .navbar-expand-md .navbar-collapse {
     display: -ms-flexbox !important;
@@ -4534,6 +4609,7 @@ input[type="button"].btn-block {
   .navbar-expand-lg > .container-fluid, .navbar-expand-lg > .container-sm, .navbar-expand-lg > .container-md, .navbar-expand-lg > .container-lg, .navbar-expand-lg > .container-xl {
     padding-right: 0;
     padding-left: 0;
+    font-family: 'Lato', sans-serif;
   }
 }
 
@@ -4559,6 +4635,7 @@ input[type="button"].btn-block {
   .navbar-expand-lg > .container-fluid, .navbar-expand-lg > .container-sm, .navbar-expand-lg > .container-md, .navbar-expand-lg > .container-lg, .navbar-expand-lg > .container-xl {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    font-family: 'Lato', sans-serif;
   }
   .navbar-expand-lg .navbar-collapse {
     display: -ms-flexbox !important;
@@ -4576,6 +4653,7 @@ input[type="button"].btn-block {
   .navbar-expand-xl > .container-fluid, .navbar-expand-xl > .container-sm, .navbar-expand-xl > .container-md, .navbar-expand-xl > .container-lg, .navbar-expand-xl > .container-xl {
     padding-right: 0;
     padding-left: 0;
+    font-family: 'Lato', sans-serif;
   }
 }
 
@@ -4601,6 +4679,7 @@ input[type="button"].btn-block {
   .navbar-expand-xl > .container-fluid, .navbar-expand-xl > .container-sm, .navbar-expand-xl > .container-md, .navbar-expand-xl > .container-lg, .navbar-expand-xl > .container-xl {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    font-family: 'Lato', sans-serif;
   }
   .navbar-expand-xl .navbar-collapse {
     display: -ms-flexbox !important;
@@ -5120,6 +5199,7 @@ input[type="button"].btn-block {
   padding: 0.25em 0.4em;
   font-size: 75%;
   font-weight: 700;
+  font-family: 'Lato', sans-serif;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
@@ -9946,7 +10026,7 @@ button.bg-dark:focus {
 }
 
 .text-monospace {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-family: 'Lato', sans-serif;
 }
 
 .text-justify {
@@ -10222,6 +10302,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
   .container {
     min-width: 992px !important;
+    font-family: 'Lato', sans-serif;
   }
   .navbar {
     display: none;
