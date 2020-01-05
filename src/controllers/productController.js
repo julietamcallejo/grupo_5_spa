@@ -24,7 +24,7 @@ let detalleProductos = [
         nombre: "Relajante",
         category: "Paquetes de Spa",
         descripción: "Combo de nuestros servicios: Masaje Cuello, hombros y cabeza, Masaje de Aromaterapia y Tratamiento corporal de Maderoterapia.",
-        price: "Precio : $2.800,-",
+        precio: "Precio : $2.800,-",
         duration: 120,
         foto: "/images/tatamientos/02-relajante.jpeg",
         dia: "Lunes 02/12/2019",

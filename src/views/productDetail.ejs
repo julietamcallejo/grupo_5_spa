@@ -21,13 +21,20 @@
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <h2 id="textoProd"><%= detalleProducto.nombre %></h2>
             <p id="textoProd"><%= detalleProducto.descripción %></p>
-            <h4 id="textoProd"><%= detalleProducto.precio %></h4>
+            <div class="row">
+                <div class="col-8 col-sm-8 col-md-8 col-lg-6 col-xl-6">
+                    <h4 id="textoProd"><%= detalleProducto.precio %></h4>
+                </div>
+                <div id="textoProd" class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <p><button type="submit" class="btn btn-primary">Agregar</button></p>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                     <img src="/images/calendar-empty-ultrathin-page.svg" width="30px">
                 </div>
                 <div id="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p><%= detalleProducto.dia %></p>
+                    <p><%= detalleProducto.dia %>  ▾</p>
                 </div>
             </div>
             <div class="row">
@@ -35,7 +42,7 @@
                     <img src="/images/clock.svg" width="30px">
                 </div>
                 <div id="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p><%= detalleProducto.hora %></p>
+                    <p><%= detalleProducto.hora %>  ▾</p>
                 </div>
             </div>
             <div class="row">
@@ -43,12 +50,38 @@
                     <img src=<%= detalleProducto.fotoProfesional %> width="30px">
                 </div>
                 <div id="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p><%= detalleProducto.nombreProfesional %></p>
+                    <p><%= detalleProducto.nombreProfesional %>  ▾</p>
                 </div>
             </div>
-            <div class = col-auto mx-5>
-                <button type="submit" class="btn btn-primary">Agregar</button>
+        </div>
+    </div>
+    <div class="col-auto">
+        <h2>Te puede interesar</h2>
+    </div>
+    <div class="card-deck">
+        <div class="card">
+            <a href="/productDetail/10">
+            <img class="card-img-top" src="/images/tatamientos/11-anti-age.jpeg">
+            <div class="card-body">
+                <h5 class="text">Anti-age</h5>
             </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/productDetail/13">
+            <img class="card-img-top" src="/images/tatamientos/14-maderoterapia.jpg">
+            <div class="card-body">
+                <h5 class="text">Maderoterapia</h5>
+            </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/productDetail/4">
+            <img class="card-img-top" src="/images/tatamientos/05-piedras-calientes.jpeg">
+            <div class="card-body">
+                <h5 class="text">Piedras Calientes</h5>
+            </div>
+            </a>
         </div>
     </div>
 </div>

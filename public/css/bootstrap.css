@@ -95,7 +95,16 @@ h1 {
   font-weight: bold;
 }
 
-h2, h3, h4, h5, h6 {
+h2, h3, h4, h5 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  width: auto;
+  color: #9069a7;
+  font-family: 'Lato', sans-serif;
+}
+
+h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   text-align: center;
@@ -219,6 +228,10 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
+}
+
+#icono{
+  padding-top: 10px;
 }
 
 svg {
@@ -417,6 +430,8 @@ h5, .h5 {
 h6, .h6 {
   font-size: 1rem;
   font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  font-color: ''
 }
 
 .lead {
@@ -590,6 +605,11 @@ pre code {
   font-family: 'Lato', sans-serif;
 }
 
+#cart{
+  max-width: 600px;
+  background-image: url("public/images/381817-PBREP8-572.jpg");
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -688,6 +708,21 @@ pre code {
   padding-left: 15px;
   padding-top: 15px;
   font-family: 'Lato', sans-serif;
+}
+
+#carrito{
+  text-align: left;
+}
+
+#carrito2{
+  text-align: right;
+}
+
+#carrito3{
+  text-align: right;
+  border-top-color: #9069a7;
+  border-top: #9069a7;
+  border-top-style: solid;
 }
 
 #fondo{
@@ -2630,7 +2665,7 @@ textarea.form-control {
 }
 
 .btn:hover {
-  color: #212529;
+  color: #59bbae;
   text-decoration: none;
 }
 
@@ -2660,8 +2695,8 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: #59bbae;
+  border-color: #59bbae;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -4868,6 +4903,7 @@ input[type="button"].btn-block {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.25rem;
+  background-color: #E9D4E4;
 }
 
 .card-title {
@@ -4942,6 +4978,8 @@ input[type="button"].btn-block {
 .card-img-bottom {
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  width: 100%;
+  max-height: 300px;
 }
 #picInfo{
   max-width: 30px;
@@ -6812,7 +6850,7 @@ a.close.disabled {
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #0062cc !important;
+  background-color: #59bbae !important;
 }
 
 .bg-secondary {

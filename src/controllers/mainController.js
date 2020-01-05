@@ -21,15 +21,13 @@ const controller = {
 	//	res.send(html);
 	//},
 	productCart: (req, res) => {
-		let html = readHTML('productCart');
-		res.send(html);
+		res.render('productCart');
 	},
 	register: (req, res) => {
 		res.render('register');
 	},
 	productAdd: (req, res) => {
-		let html = readHTML('productAdd');
-		res.send(html);
+		res.render('productAdd');
 	},
 	test: (req, res) => {
 		res.render('navBar');
