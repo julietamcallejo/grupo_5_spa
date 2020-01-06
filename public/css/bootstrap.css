@@ -59,7 +59,6 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: center;
-  background-color: #fff;
   width: auto;
 }
 
@@ -115,12 +114,6 @@ h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
-  font-family: 'Lato', sans-serif;
-}
-
-#textoProd{
-  text-align: left;
-  color: #9069a7;
   font-family: 'Lato', sans-serif;
 }
 
@@ -229,9 +222,7 @@ img {
   border-style: none;
 }
 
-#icono{
-  padding-top: 10px;
-}
+
 
 svg {
   overflow: hidden;
@@ -321,13 +312,6 @@ input[type="checkbox"] {
   padding: 0;
   color: #9069a7;
   font-family: 'Lato', sans-serif;
-}
-
-#defaultCheck1{
-  color: #9069a7;
-  font-family: 'Lato', sans-serif;
-  font-size: 18px;
-  padding-top: 5px;
 }
 
 input[type="date"],
@@ -613,11 +597,6 @@ pre code {
   font-family: 'Lato', sans-serif;
 }
 
-#cart{
-  max-width: 600px;
-  background-image: url("public/images/381817-PBREP8-572.jpg");
-}
-
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -724,44 +703,6 @@ pre code {
 
 #left{
   padding-left: 15px;
-}
-
-#marco{
-  border: solid;
-  border-color: #9069a7;
-  min-height: 200px;
-}
-
-#carrito{
-  text-align: left;
-}
-
-#carrito2{
-  text-align: right;
-}
-
-#carrito3{
-  text-align: right;
-  border-top-color: #9069a7;
-  border-top: #9069a7;
-  border-top-style: solid;
-}
-
-#fondo{
-  background: #E9D4E4;
-  margin: 0px;
-}
-
-#picDetail{
-  padding-left: 5px;
-  padding-right: 5px;
-  font-family: 'Lato', sans-serif;
-}
-#picDetail1{
-  padding-left: 5px;
-  padding-right: 5px;
-  align: center;
-  font-family: 'Lato', sans-serif;
 }
 
 .col {
@@ -2186,11 +2127,12 @@ pre code {
   font-weight: 400;
   font-family: 'Lato', sans-serif;
   line-height: 1.5;
-  color: #495057;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  border-bottom: 1px solid #ced4da;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -2516,7 +2458,6 @@ textarea.form-control {
   line-height: 1.5;
   color: #fff;
   background-color: rgba(220, 53, 69, 0.9);
-  border-radius: 0.25rem;
 }
 
 .was-validated :invalid ~ .invalid-feedback,
@@ -2527,7 +2468,7 @@ textarea.form-control {
 }
 
 .was-validated .form-control:invalid, .form-control.is-invalid {
-  border-color: #dc3545;
+  border-bottom-color: #dc3545;
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -4025,7 +3966,7 @@ input[type="button"].btn-block {
 }
 
 .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
-  background-color: #9069a7,
+  background-color: #9069a7
 }
 
 .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before {

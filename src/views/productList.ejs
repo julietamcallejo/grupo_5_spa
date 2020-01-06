@@ -5,7 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Servicios</title>
 	<link rel="stylesheet" href="/css/bootstrap.css">
+<<<<<<< HEAD
 	
+=======
+	<link rel="stylesheet" href="/css/productListcss.css">
+>>>>>>> 2f26846b470c8a2b9b0afc46e731812e337a4b8c
 	<link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/css/fontawesome-all.css">
 	<link rel="stylesheet" href="/css/spa.css">
@@ -19,17 +23,17 @@
 	</div>
 	<% for (let i=0; i < detalleProducto.length; i++){
 		actualProduct = detalleProducto[i] %>
-		<div class="row">
-			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3" id="picDetail1">
-				<a  href="/productDetail/<%= i %>">
-					<img src=<%= actualProduct.foto %> height="200px">
+		<div class="row padd">
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 picDetail1">
+				<a class="picDetail2" href="/productDetail/<%= i %>">
+					<img class="picDetail2" src=<%= actualProduct.foto %>>
 				</a>
 			</div>
-			<div class="col-12 col-sm-6 col-md-6 col-lg-9 col-xl-9" id="fondo">
+			<div class="col-12 col-sm-6 col-md-6 col-lg-9 col-xl-9 fondo">
 				<a  href="/productDetail/<%= i %>">
-					<h3 id="textoProd"> <%= actualProduct.nombre %> </h3>
-					<p id="textoProd"> <%= actualProduct.descripción %> </p>
-					<h5 id="textoProd"> <%= actualProduct.precio %> </h5>
+					<h3 class="textoProd"> <%= actualProduct.nombre %> </h3>
+					<p class="textoProd"> <%= actualProduct.descripción %> </p>
+					<h5 class="textoProd"> <%= actualProduct.precio %> </h5>
 				</a>
 			</div>
 		</div>

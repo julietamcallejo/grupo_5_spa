@@ -1,0 +1,22 @@
+.cart{
+    max-width: 600px;
+}
+
+.carrito{
+    text-align: left;
+}
+
+.carrito2{
+    text-align: right;
+}
+
+.carrito3{
+    text-align: right;
+    border-top-color: #9069a7;
+    border-top: #9069a7;
+    border-top-style: solid;
+}
+
+.icono{
+    padding-top: 10px;
+}
