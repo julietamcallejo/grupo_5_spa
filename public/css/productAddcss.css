@@ -1,3 +1,12 @@
+h1{
+    font-weight: 300;
+    font-size: 3rem;
+}
+
+h6{
+    font-weight: normal;
+}
+
 .marco{
     border: solid;
     border-color: #9069a7;
