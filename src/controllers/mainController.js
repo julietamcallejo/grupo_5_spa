@@ -10,17 +10,14 @@ function readHTML (fileName) {
 
 const controller = {
 	root: (req, res) => {
-		let html = readHTML('index');
-		res.send(html);
+		
+		res.render('index');
 	},
 	contact: (req, res) => {
 		let html = readHTML('contact');
 		res.send(html);
 	},
-	//productDetail: (req, res) => {
-	//	let html = readHTML('productDetail');
-	//	res.send(html);
-	//},
+	
 	productCart: (req, res) => {
 		let html = readHTML('productCart');
 		res.send(html);
@@ -34,6 +31,9 @@ const controller = {
 	},
 	test: (req, res) => {
 		res.render('navBar');
+	},
+	test2: (req, res) => {
+		res.render('testNav2');
 	},
 	
 };

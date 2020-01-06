@@ -1,7 +1,9 @@
-body {
-    margin: 0;
-}
+@import url('normalize.css');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
 
+
+
+/* barra de navegación */
 .Navbar {
     display: flex;
     background-color: white;
@@ -23,7 +25,7 @@ body {
     text-align: center;
     font-family: 'Lato', sans-serif;
     color: #9069A7;
-    font-weight: 600;
+    font-weight: 300;
     padding: 15px;
 }
 .Navbar_Link {
@@ -36,20 +38,83 @@ body {
     
 }
 
-
-
 .Navbar_Items a {
     text-decoration: none;
 }
 
+/* main container */
+.mainContainer {
+    background-image: url('../images/fondo.jpg');
+    background-repeat: no-repeat;
+    height: 300px;
+    background-size: cover;
+    background-position: bottom;
+    display: flex;
+}
+.brandContainer {
+    margin: auto;
+    text-align: center;
+    padding: 30px;
+}
+
+.logoClaim p {
+    font-family: 'Lato', sans-serif;
+    color: #9069A7;
+    font-weight: 400;
+    font-size: 24px;
+    margin: 10px;
+}
+
+.logoClaim img {
+    height: 70px;
+
+}
+
+#searchBarHome {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: auto;
+    
+    
+}
+
+#searchBarHome form {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+#searchBarHome input {
+    border: hidden;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    color: #9069A7;
+    font-weight: 300;
+    
+}
+
+#searchBarHome button {
+    background-color: transparent;
+    border: hidden;
+    color: #9069A7;
+    
+}
 
 
 @media (max-width: 768px) {
+
+        
+    
     .Navbar_Items {
-        flex-direction: column;
+    
         display: none;
     }
 
+    .Navbar_ToggleShow {
+        display: flex;
+    }
+    
     .Navbar_Toggle {
         display: initial;
         justify-self: flex-end;
@@ -59,9 +124,7 @@ body {
 
     }
 
-    .Navbar_ToggleShow {
-        display: flex;
-    }
+    
 
 
 

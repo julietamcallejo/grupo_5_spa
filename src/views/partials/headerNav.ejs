@@ -12,7 +12,7 @@
     </div>
         <nav class='Navbar_Items'>
             <div class='Navbar_Link'>
-            <a href='/productDetail'>Servicios</a>
+            <a href='/productList'>Servicios</a>
 
             </div>
             <div class='Navbar_Link'>
@@ -20,7 +20,7 @@
 
             </div>
             <div class='Navbar_Link'>
-            <a href='/register'>Ingresar</a>
+            <a href='/register'>Registrarse</a>
 
             </div>
             <div class='Navbar_Link'>
@@ -31,3 +31,14 @@
 
 
 </header>
+
+<script>
+function classToggle() {
+const navs = document.querySelectorAll('.Navbar_Items')
+
+navs.forEach(nav => nav.classList.toggle('Navbar_ToggleShow'));
+}
+
+document.querySelector('.Navbar_Toggle')
+.addEventListener('click', classToggle);
+</script>
