@@ -10,6 +10,13 @@
     justify-content: space-between;
     align-items: center;
 }
+.Navbar a {
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    color: #9069A7;
+}
 .Navbar_Logo {
     width: 20%;
     
@@ -101,6 +108,55 @@
     
 }
 
+#mensajeDestacado {
+    
+    background-color: white;
+    padding: 20px;
+}
+#mensajeDestacado h2 {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #9069A7;
+    font-size: 18px;
+    font-weight: lighter;
+    text-align: center;
+    
+}
+
+/* Productos Destacados Home */
+
+
+.productoHome a {
+    text-decoration: none;
+}
+
+.imgProductHome img {
+    max-width: 100%;
+}
+.productDescriptionHome {
+    font-family: 'Lato', sans-serif;
+    background-color: #E9D4E4;
+    margin-bottom: 5px;
+    height: 100px;
+    
+}
+.productDescriptionHome h3, p {
+    margin: 0;
+    padding: 5px;
+    
+}
+.productDescriptionHome h3{
+    font-weight: lighter;
+    color: #9069A7;
+    text-transform: uppercase;
+    
+}
+.productDescriptionHome p{
+    color: white;
+    text-shadow: black;
+    
+}
+
 
 @media (max-width: 768px) {
 
@@ -113,6 +169,7 @@
 
     .Navbar_ToggleShow {
         display: flex;
+        flex-direction: column;
     }
     
     .Navbar_Toggle {

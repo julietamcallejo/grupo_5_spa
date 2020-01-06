@@ -8,6 +8,7 @@ const productController = require('../controllers/productController');
 
 /* GET - home page. */
 router.get('/', mainController.root);
+router.get('/index', mainController.root);
 router.get('/contact', mainController.contact);
 router.get('/productList', productController.list);
 router.get('/productDetail/:idProduct', productController.detailId);

@@ -8,10 +8,12 @@ function readHTML (fileName) {
 	return htmlFile;
 }
 
+const detalleProductos = require('../data/product');
+
 const controller = {
 	root: (req, res) => {
 		
-		res.render('index');
+		res.render('index', { detalleProductos: detalleProductos,});
 	},
 	contact: (req, res) => {
 		res.render('contact')
