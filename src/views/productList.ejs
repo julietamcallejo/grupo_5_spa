@@ -6,6 +6,8 @@
 	<title>Servicios</title>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/spa.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/fontawesome-all.css">
 </head>
 <body>
 <div class="container">
@@ -15,71 +17,24 @@
 	<div class="col-auto">
 		<h1>Servicios</h1>
 	</div>
-	<div class="row">
-		<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3" id="picDetail1">
-			<a  href="/productDetail/0">
-			<img src="/images/tatamientos/01-de-pies-a-cabeza.jpg" height="200px">
-			</a>
+	<% for (let i=0; i < detalleProducto.length; i++){
+		actualProduct = detalleProducto[i] %>
+		<div class="row">
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3" id="picDetail1">
+				<a  href="/productDetail/<%= i %>">
+					<img src=<%= actualProduct.foto %> height="200px">
+				</a>
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-9 col-xl-9" id="fondo">
+				<a  href="/productDetail/<%= i %>">
+					<h3 id="textoProd"> <%= actualProduct.nombre %> </h3>
+					<p id="textoProd"> <%= actualProduct.descripción %> </p>
+					<h5 id="textoProd"> <%= actualProduct.precio %> </h5>
+				</a>
+			</div>
 		</div>
-		<div class="col-12 col-sm-6 col-md-6 col-lg-9 col-xl-9" id="fondo">
-			<a  href="/productDetail/0">
-			<h3 id="textoProd">De pies a cabeza</h3>
-			<p id="textoProd">Combo de nuestros servicios: Masaje Cuello, hombros y espalda, Tratamiento facial Piel Sensible y Tratamiento corporal de Drenaje Linfático.</p>
-			<h5 id="textoProd">Precio: $2.800,-</h5>
-			</a>
-		</div>
-	</div>
-	<div>
-		<img src="/images/divider1.png" height="40px">
-	</div>
-	<div class="row">
-		<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3" id="picDetail1">
-			<a  href="/productDetail/1">
-			<img src="/images/tatamientos/02-relajante.jpeg" height="200px">
-			</a>
-		</div>
-		<div class="col-12 col-sm-6 col-md-6 col-lg-9 col-xl-9" id="fondo">
-			<a  href="/productDetail/1">
-			<h3 id="textoProd">Relajante</h3>
-			<p id="textoProd">Combo de nuestros servicios: Masaje Cuello, hombros y cabeza, Masaje de Aromaterapia y Tratamiento corporal de Maderoterapia.</p>
-			<h5 id="textoProd">Precio: $2.800,-</h5>
-			</a>
-		</div>
-	</div>
-	<div>
-		<img src="/images/divider1.png" height="40px">
-	</div>
-	<div class="row">
-		<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3" id="picDetail1">
-			<a  href="/productDetail/2">
-			<img src="/images/tatamientos/03-anti-age.jpeg" height="200px">
-			</a>
-		</div>
-		<div class="col-12 col-sm-6 col-md-6 col-lg-9 col-xl-9" id="fondo">
-			<a  href="/productDetail/2">
-			<h3 id="textoProd">Anti-age</h3>
-			<p id="textoProd">Combo de nuestros servicios: Masaje de Piedras Calientes, Tratamiento facial Anti Age, Tratamiento corporal de Drenaje Linfático.</p>
-			<h5 id="textoProd">Precio: $3.000,-</h5>
-			</a>
-		</div>
-	</div>
-	<div>
-		<img src="/images/divider1.png" height="40px">
-	</div>
-	<div class="row">
-		<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3" id="picDetail1">
-			<a  href="/productDetail/3">
-			<img src="/images/tatamientos/04-aromaterapia.jpeg" height="200px">
-			</a>
-		</div>
-		<div class="col-12 col-sm-6 col-md-6 col-lg-9 col-xl-9" id="fondo">
-			<a  href="/productDetail/3">
-			<h3 id="textoProd">Aromaterapia</h3>
-			<p id="textoProd">En nuestro spa, un masajista licenciado personalizará su masaje de aromaterapia con aceites vegetales altamente concentrados, llamados aceites esenciales, agregados al aceite o loción de masaje. Este masaje es particularmente adecuado para quienes sufran de estrés o quieran mejorar las condiciones anímicas. Cada aceite esencial tiene diferentes propiedades curativas.</p>
-			<h5 id="textoProd">Precio: $2.000,-</h5>
-			</a>
-		</div>
-	</div>
+	<% } %>
+
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
