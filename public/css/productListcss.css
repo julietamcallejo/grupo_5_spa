@@ -1,0 +1,28 @@
+.padd{
+    padding-top: 10px;
+}
+
+.picDetail1{
+    align: center;
+    font-family: 'Lato', sans-serif;
+    max-height: 250px;
+    max-width: 300px;
+}
+
+.picDetail2{
+    align: center;
+    object-fit: fill;
+    max-height: 200px;
+    max-width: 250px;
+}
+
+.fondo{
+    background: #E9D4E4;
+    margin: 0px;
+}
+
+.textoProd{
+    text-align: left;
+    color: #9069a7;
+    font-family: 'Lato', sans-serif;
+}
