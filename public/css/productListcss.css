@@ -1,3 +1,8 @@
+h1{
+    font-weight: 300;
+    font-size: 3rem;
+}
+
 .padd{
     padding-top: 10px;
 }
@@ -25,4 +30,5 @@
     text-align: left;
     color: #9069a7;
     font-family: 'Lato', sans-serif;
+    font-weight: 300;
 }
