@@ -9,6 +9,7 @@
     background-color: white;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 .Navbar a {
     display: flex;
@@ -158,15 +159,27 @@
 @media (max-width: 768px) {
 
         
-    
+    .Navbar a {
+        display: inline;
+    }
     .Navbar_Items {
     
         display: none;
+        text-align: center;
     }
 
     .Navbar_ToggleShow {
-        display: flex;
-        flex-direction: column;
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        transform: translateY(100%);
+        background:white;
+        
+    }
+    
+    .Navbar_Link a {
+        text-align: right;
     }
     
     .Navbar_Toggle {
