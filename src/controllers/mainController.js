@@ -12,13 +12,11 @@ const detalleProductos = require('../data/product');
 
 const controller = {
 	root: (req, res) => {
-		
 		res.render('index', { detalleProductos: detalleProductos,});
 	},
 	contact: (req, res) => {
 		res.render('contact')
 	},
-	
 	productCart: (req, res) => {
 		res.render('productCart');
 	},
@@ -28,13 +26,9 @@ const controller = {
 	productAdd: (req, res) => {
 		res.render('productAdd');
 	},
-	test: (req, res) => {
-		res.render('navBar');
+	appointment: (req, res) => {
+		res.render('appointment');
 	},
-	test2: (req, res) => {
-		res.render('testNav2');
-	},
-	
 };
 
 module.exports = controller
