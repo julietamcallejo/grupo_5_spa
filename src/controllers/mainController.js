@@ -1,14 +1,23 @@
 const fs = require('fs');
 const path = require('path');
 
-// ************ Function to Read an HTML File ************
-function readHTML (fileName) {
-	let filePath = path.join(__dirname, `/../views/${fileName}.html`);
-	let htmlFile = fs.readFileSync(filePath, 'utf-8');
-	return htmlFile;
-}
+const pathProductos = path.join(__dirname, '../data/productos.json'); 
+//**** Helpers ****//
 
-const detalleProductos = require('../data/product');
+
+function traerProductos () {
+    let productFileContent = fs.readFileSync(pathProductos, 'utf-8');
+    let productArray;
+
+    if (productFileContent == '') {
+        productArray = [];
+    }else{
+        productArray = JSON.parse(productFileContent);
+    };
+    return productArray;
+};
+
+const detalleProductos = traerProductos();
 
 const controller = {
 	root: (req, res) => {

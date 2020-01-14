@@ -12,9 +12,9 @@ router.get('/index', mainController.root);
 router.get('/contact', mainController.contact);
 router.get('/productList', productController.list);
 router.get('/productDetail/:idProduct', productController.detailId);
-router.get('/productCart', mainController.productCart);
+router.get('/productCart', productController.productCart);
 router.get('/register', mainController.register);
-router.get('/productAdd', mainController.productAdd);
+router.get('/productAdd', productController.productAdd);
 router.get('/appointment', mainController.appointment);
 
 module.exports = router;
