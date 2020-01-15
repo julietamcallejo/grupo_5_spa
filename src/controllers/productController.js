@@ -32,18 +32,13 @@ function guardarProducto (datoProducto) {
     fs.writeFileSync(pathProductos, JSON.stringify(productos, null, ''));
 };
 
-
-
 const detalleProductos = traerProductos();
-
 
 const productController = {
     list: (req, res) => {
         res.render('productList', {detalleProducto: detalleProductos});
     },
-
     detailId: (req, res) => {
-        
         let id = req.params.idProduct;
         res.render('productDetail', {detalleProducto: detalleProductos[id]});
     },
@@ -52,7 +47,19 @@ const productController = {
     },
     productAdd: (req, res) => {
 		res.render('productAdd');
-	},
+    },
+    editList: (req, res) => {
+        res.render('productEditList',{detalleProducto: detalleProductos});
+    },
+    editProduct: (req, res) => {
+        let id = req.params.idProduct;
+        res.render('productEdit', {detalleProducto: detalleProductos[id]});
+    },
+    deleteProduct: (req, res) => {
+        let id = req.body.idProduct;
+        detalleProductos.indexOf(id);
+        res.send('Estoy borrando el producto: ' + id);
+    }
 };
 
 module.exports = productController

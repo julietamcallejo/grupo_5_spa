@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= detalleProducto.nombre %></title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/fontawesome-all.css">
+    <link rel="stylesheet" href="/css/spa.css">
+    <link rel="stylesheet" href="/css/productDetailcss.css">
+</head>
+<body>
+    <%- include('./partials/headerNav')%>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 picDetail">
+            <img src=<%= detalleProducto.foto %> width="100%">
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <h2 class="textoProd"><%= detalleProducto.nombre %></h2>
+            <p class="textoProd"><%= detalleProducto.descripción %></p>
+            <div class="row">
+                <div class="col-8 col-sm-8 col-md-8 col-lg-6 col-xl-6">
+                    <h4 class="textoProd"><%= detalleProducto.precio %></h4>
+                </div>
+                <div class="textoProd1" class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <img src="/images/calendar-empty-ultrathin-page.svg" width="30px">
+                </div>
+                <div class="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                    <p><%= detalleProducto.dia %>  ▾</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <img src="/images/clock.svg" width="30px">
+                </div>
+                <div class="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                    <p><%= detalleProducto.hora %>  ▾</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <img src=<%= detalleProducto.fotoProfesional %> width="30px">
+                </div>
+                <div class="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                    <p><%= detalleProducto.nombreProfesional %>  ▾</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-auto">
+        <h2>Te puede interesar</h2>
+    </div>
+    <div class="card-deck">
+        <div class="card">
+            <a href="/products/productDetail/10">
+            <img class="card-img-top" src="/images/tatamientos/11-anti-age.jpeg">
+            <div class="card-body">
+                <h5 class="text">Anti-age</h5>
+            </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/products/productDetail/13">
+            <img class="card-img-top" src="/images/tatamientos/14-maderoterapia.jpg">
+            <div class="card-body">
+                <h5 class="text">Maderoterapia</h5>
+            </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/products/productDetail/4">
+            <img class="card-img-top" src="/images/tatamientos/05-piedras-calientes.jpeg">
+            <div class="card-body">
+                <h5 class="text">Piedras Calientes</h5>
+            </div>
+            </a>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
