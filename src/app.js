@@ -4,7 +4,8 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
-const mainRouter = require('./routes/main');
+const mainRouter = require('./routes/mainRouter');
+const productRouter = require('./routes/productsRouter');
 
 // ************ express() - (don't touch) ************
 const app = express();
@@ -23,6 +24,7 @@ app.set('views', './src/views'); // Seteo de la ubicación de la carpeta "views"
 // ************ WRITE YOUR CODE FROM HERE ************
 // ************ Route System require and use() ************
 app.use('/', mainRouter);
+app.use('/products', productRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************
