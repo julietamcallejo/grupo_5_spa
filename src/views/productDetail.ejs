@@ -13,7 +13,6 @@
 <body>
     <%- include('./partials/headerNav')%>
 <div class="container">
-    
     <div class="row">
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 picDetail">
             <img src=<%= detalleProducto.foto %> width="100%">
@@ -22,35 +21,21 @@
             <h2 class="textoProd"><%= detalleProducto.nombre %></h2>
             <p class="textoProd"><%= detalleProducto.descripción %></p>
             <div class="row">
-                <div class="col-8 col-sm-8 col-md-8 col-lg-6 col-xl-6">
-                    <h4 class="textoProd"><%= detalleProducto.precio %></h4>
-                </div>
-                <div class="textoProd1" class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <button type="submit" class="btn btn-primary">Agregar</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <img src="/images/calendar-empty-ultrathin-page.svg" width="30px">
-                </div>
-                <div class="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p><%= detalleProducto.dia %>  ▾</p>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                     <img src="/images/clock.svg" width="30px">
                 </div>
                 <div class="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p><%= detalleProducto.hora %>  ▾</p>
+                    <p>Duración: <%= detalleProducto.duration %> min.</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <img src=<%= detalleProducto.fotoProfesional %> width="30px">
+                <div class="col-8 col-sm-8 col-md-8 col-lg-6 col-xl-6">
+                    <h4 class="textoProd"><%= detalleProducto.precio %></h4>
                 </div>
-                <div class="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p><%= detalleProducto.nombreProfesional %>  ▾</p>
+                <div class="textoProd1" class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <a href="https://nirvana-spa.buk.app">
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                    </a>
                 </div>
             </div>
         </div>
