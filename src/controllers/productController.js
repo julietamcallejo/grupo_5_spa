@@ -4,16 +4,15 @@ const path = require('path');
 const pathProductos = path.join(__dirname, '../data/productos.json'); 
 //**** Helpers ****//
 
+
 function traerProductos () {
     let productFileContent = fs.readFileSync(pathProductos, 'utf-8');
     let productArray;
-
     if (productFileContent == '') {
         productArray = [];
     }else{
         productArray = JSON.parse(productFileContent);
     };
-
     return productArray;
 };
 
@@ -26,9 +25,14 @@ function generarId () {
     return lastProduct.id + 1;
 };
 
-function guardarProducto (datoProducto) {
+function agregarProducto (datoProducto) {
     let productos = traerProductos();
     productos.push(datoProducto);
+    fs.writeFileSync(pathProductos, JSON.stringify(productos, null, ''));
+};
+
+function borrarProducto (productos) {
+   
     fs.writeFileSync(pathProductos, JSON.stringify(productos, null, ''));
 };
 
@@ -56,9 +60,10 @@ const productController = {
         res.render('productEdit', {detalleProducto: detalleProductos[id]});
     },
     deleteProduct: (req, res) => {
-        let id = req.body.idProduct;
-        detalleProductos.indexOf(id);
-        res.send('Estoy borrando el producto: ' + id);
+        let id = req.params.idProduct;
+        let arrayProductos = detalleProductos.filter( producto => {return producto.id != id});
+        borrarProducto(arrayProductos);
+        return res.redirect('/products/productList');
     }
 };
 

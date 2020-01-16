@@ -11,7 +11,7 @@ const productController = require('../controllers/productController');
 router.get('/productList', productController.list);
 router.get('/productEditList', productController.editList);
 router.get('/productEdit/:idProduct', productController.editProduct);
-router.delete('/productDelete/:idProducto', productController.deleteProduct);
+router.delete('/productDelete/:idProduct', productController.deleteProduct);
 router.get('/productDetail/:idProduct', productController.detailId);
 router.get('/productCart', productController.productCart);
 router.get('/productAdd', productController.productAdd);

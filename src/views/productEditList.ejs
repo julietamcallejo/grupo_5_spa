@@ -33,7 +33,7 @@
                 </a>
                 <div class='productEdit'>
 					<a href="/products/productEdit/<%= i %>">Editar</a>
-					<form action="POST" action="/products/productDelete/<%= i %>?_method=DELETE">
+					<form method="POST" action="/products/productDelete/<%= detalleProducto[i].id %>?_method=DELETE">
 						<button type="submit">Borrar</button>
 					</form>
                                  
