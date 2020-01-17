@@ -31,7 +31,7 @@ function agregarProducto (datoProducto) {
     fs.writeFileSync(pathProductos, JSON.stringify(productos, null, ''));
 };
 
-function borrarProducto (productos) {
+function guardarProductos (productos) {
    
     fs.writeFileSync(pathProductos, JSON.stringify(productos, null, ''));
 };
@@ -50,19 +50,53 @@ const productController = {
 		res.render('productCart');
     },
     productAdd: (req, res) => {
-		res.render('productAdd');
+        res.render('productAdd');
+    },
+    productSave: (req, res) => {
+        req.body = {
+            id: generarId(),
+            foto: req.file.filename;
+            ...req.body,
+        }
+        let productoNuevo = req.body;
+        agregarProducto(productoNuevo);
+        
+
+        res.redirect('/products/productList');
     },
     editList: (req, res) => {
         res.render('productEditList',{detalleProducto: detalleProductos});
     },
     editProduct: (req, res) => {
         let id = req.params.idProduct;
-        res.render('productEdit', {detalleProducto: detalleProductos[id]});
+        let producto = detalleProductos.filter( producto => { return producto.id == id});
+        /*
+        res.render('productEdit', {producto: producto});
+        */
+        res.json(producto);
+    },
+    updateProduct: (req, res) => {
+        let arrayProductos = detalleProductos;
+        req.body = {
+            foto: req.file.filename,
+            ...req.body,
+        };
+        let productoEditado = req.body;
+        let posiciónAEditar = arrayProductos.findIndex( producto => { producto.id == productoEditado.id});
+        
+        arrayProductos[posiciónAEditar] = productoEditado;
+
+        guardarProductos(arrayProductos);
+
+        /*
+        res.redirect('/products/productList');
+        */
+       res.json(productoEditado);
     },
     deleteProduct: (req, res) => {
         let id = req.params.idProduct;
         let arrayProductos = detalleProductos.filter( producto => {return producto.id != id});
-        borrarProducto(arrayProductos);
+        guardarProductos(arrayProductos);
         return res.redirect('/products/productList');
     }
 };

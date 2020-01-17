@@ -26,15 +26,11 @@ const controller = {
 	contact: (req, res) => {
 		res.render('contact')
 	},
-	productCart: (req, res) => {
-		res.render('productCart');
-	},
+	
 	register: (req, res) => {
 		res.render('register');
 	},
-	productAdd: (req, res) => {
-		res.render('productAdd');
-	},
+	
 	appointment: (req, res) => {
 		res.render('appointment');
 	},

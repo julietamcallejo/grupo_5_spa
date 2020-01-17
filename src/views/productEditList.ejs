@@ -17,8 +17,8 @@
 	<div class="col-auto">
 		<h1>Servicios</h1>
 	</div>
-	<% for (let i=0; i < detalleProducto.length; i++){
-		actualProduct = detalleProducto[i] %>
+	<% for (let i=0; i < detalleProducto.length; i++){  %>
+		<% let actualProduct = detalleProducto[i] %>
         <div class="row padd">
 			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 picDetail1">
 				<a class="picDetail2" href="/products/productDetail/<%= i %>">
@@ -32,8 +32,8 @@
 					<h5 class="textoProd"> <%= actualProduct.precio %> </h5>
                 </a>
                 <div class='productEdit'>
-					<a href="/products/productEdit/<%= i %>">Editar</a>
-					<form method="POST" action="/products/productDelete/<%= detalleProducto[i].id %>?_method=DELETE">
+					<a href="/products/productEdit/<%= actualProduct.id %>">Editar</a>
+					<form method="POST" action="/products/productDelete/<%= actualProduct.id %>?_method=DELETE">
 						<button type="submit">Borrar</button>
 					</form>
                                  
