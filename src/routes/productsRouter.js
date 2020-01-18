@@ -11,7 +11,7 @@ const productController = require('../controllers/productController');
 
 let diskStorage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb(null, path.join(__dirname, '../../public/images/trtatamientos'));
+		cb(null, path.join(__dirname, '../../public/images/tatamientos'));
 	},
 	filename: function (req, file, cb) {
 		let finalName = Date.now() + path.extname(file.originalname);

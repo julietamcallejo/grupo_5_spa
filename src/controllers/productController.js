@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const pathProductos = path.join(__dirname, '../data/productos.json'); 
+
+const pathFotoProductos = '/images/tatamientos/';
 //**** Helpers ****//
 
 
@@ -50,18 +52,20 @@ const productController = {
 		res.render('productCart');
     },
     productAdd: (req, res) => {
-        res.render('productAdd');
+        res.render('productAddTEST');
     },
     productSave: (req, res) => {
+        //req.body.precio = Number(req.body.precio);
+        
         req.body = {
             id: generarId(),
-            foto: req.file.filename,
+            foto: (pathFotoProductos + req.file.filename),
             ...req.body,
         }
         let productoNuevo = req.body;
         agregarProducto(productoNuevo);
         
-
+        //res.json(productoNuevo)
         res.redirect('/products/productList');
     },
     editList: (req, res) => {
@@ -77,6 +81,7 @@ const productController = {
     },
     updateProduct: (req, res) => {
         let arrayProductos = detalleProductos;
+        
         req.body = {
             foto: req.file.filename,
             ...req.body,
