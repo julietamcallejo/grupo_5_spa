@@ -55,7 +55,7 @@ const productController = {
     productSave: (req, res) => {
         req.body = {
             id: generarId(),
-            foto: req.file.filename;
+            foto: req.file.filename,
             ...req.body,
         }
         let productoNuevo = req.body;
