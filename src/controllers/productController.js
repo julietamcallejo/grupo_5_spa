@@ -2,8 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 const pathProductos = path.join(__dirname, '../data/productos.json'); 
+const pathPublic = path.join(__dirname, '../../public/');
 
-const pathFotoProductos = '/images/tatamientos/';
+const FotosProductos = '/images/tatamientos/';
 //**** Helpers ****//
 
 
@@ -59,7 +60,7 @@ const productController = {
         
         req.body = {
             id: generarId(),
-            foto: (pathFotoProductos + req.file.filename),
+            foto: (FotosProductos + req.file.filename),
             ...req.body,
         }
         let productoNuevo = req.body;
@@ -73,36 +74,46 @@ const productController = {
     },
     editProduct: (req, res) => {
         let id = req.params.idProduct;
-        let producto = detalleProductos.filter( producto => { return producto.id == id});
-        /*
-        res.render('productEdit', {producto: producto});
-        */
-        res.json(producto);
+        let producto = detalleProductos.find( producto => { return producto.id == id});
+        
+        res.render('ProductEditTEST',{producto: producto});
+        
+        //res.json(producto);
     },
     updateProduct: (req, res) => {
         let arrayProductos = detalleProductos;
+        let idProduct = Number(req.params.idProduct);
         
         req.body = {
-            foto: req.file.filename,
+            id: idProduct,
+            foto: (FotosProductos + req.file.filename),
             ...req.body,
         };
+        
         let productoEditado = req.body;
-        let posiciónAEditar = arrayProductos.findIndex( producto => { producto.id == productoEditado.id});
+        let posiciónAEditar = arrayProductos.findIndex( producto => producto.id == idProduct);
         
         arrayProductos[posiciónAEditar] = productoEditado;
 
         guardarProductos(arrayProductos);
 
-        /*
+        
         res.redirect('/products/productList');
-        */
-       res.json(productoEditado);
+        
+        //res.json(arrayProductos);
     },
     deleteProduct: (req, res) => {
         let id = req.params.idProduct;
         let arrayProductos = detalleProductos.filter( producto => {return producto.id != id});
         guardarProductos(arrayProductos);
+        
+        //Borrado de la imagen
+        let fotoABorrar = detalleProductos.find( producto => { return producto.id == id}).foto;
+        let pathFotoABorrar = pathPublic + fotoABorrar;
+        fs.unlinkSync(pathFotoABorrar);
+
         return res.redirect('/products/productList');
+        //res.send(pathFotoABorrar);
     }
 };
 

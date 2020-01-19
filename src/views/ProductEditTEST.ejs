@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Editar Producto <%= producto.id %></title>
+</head>
+<body>
+    <form action='/products/productEdit/<%= producto.id %>?_method=PUT' method='POST' enctype= 'multipart/form-data'>
+    <label for='nombre'>Nombre Servicio:</label>
+    <input type='text' name='nombre' value=<%= producto.nombre %>><br>
+    <img src=<%= producto.foto %> width='20%' heigth='20%'> <br>
+
+    <label for='category'>Categoria:</label>
+    <input type='text' id='' name='category' value=<%= producto.category %>><br>
+
+    <label for='descripción'>Descripción:</label>
+    <textarea id='' name='descripción' cols='30' rows='10'><%= producto.descripción %></textarea><br>
+
+    <label for='resumen'>Resumen:</label>
+    <textarea id='' name='resumen' cols='30' rows='10'><%= producto.resumen %></textarea><br>
+
+    <label for='precio'>Duración:</label>
+    <input type='number' id='' name='duration' value=<%= producto.duration %>><br>
+
+    <label for='precio'>Precio:</label>
+    <input type='number' id='' name='precio' value=<%= producto.precio %>><br>
+
+    <label for='foto'>Reemplazar Foto:</label>
+    <input type='file' name='foto'><br>
+
+    <button type='submit'>Guardar</button>
+    
+    
+    
+    
+    
+    </form>
+</body>
