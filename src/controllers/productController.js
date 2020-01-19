@@ -52,7 +52,7 @@ const productController = {
 		res.render('productCart');
     },
     productAdd: (req, res) => {
-        res.render('productAddTEST');
+        res.render('productAdd');
     },
     productSave: (req, res) => {
         //req.body.precio = Number(req.body.precio);

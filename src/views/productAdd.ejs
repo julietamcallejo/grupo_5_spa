@@ -15,48 +15,48 @@
 	<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 		<h1>Nuevo Servicio</h1>
 	</div>
-	<form>
+	<form action='/products/productAdd' method="POST" enctype= "multipart/form-data">
 	<div class="container ancho">
 			<div class="row">
 				<div class="col">
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+					<div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
 						<form action="/upload/photo" enctype="multipart/form-data" method="POST">
 							<input type="file" name="myImage" accept="image/*" />
 							<input type="submit" value="Insertar Imagen"/>
 						</form>
 					</div>
 					<div class="row">
-						<div class="col-10">
+						<div class="col-11">
 							<input type="text" class="form-control is-invalid" placeholder="Título">
 							<div class="invalid-feedback">
 								Por favor ingrese un texto válido
 							</div>
 						</div>
-						<div class="col-2">
+						<div class="col-1">
 							<img src="/images/plus.svg" width="30px">
 						</div>
 					</div>
-					<div class="col-12" id="textsize">
+					<div class="col-11" id="textsize">
 						<textarea type="text" class="form-control is-invalid" placeholder="Descripción" rows="5">
 						</textarea>
 						<div class="invalid-feedback">
 							Por favor ingrese un texto válido
 						</div>
 					</div>
-					<div class="col-12">
+					<div class="col-11">
 						<input type="number" class="form-control is-invalid" placeholder="Duración">
 						<div class="invalid-feedback">
 							Por favor ingrese un valor válido
 						</div>
 					</div>
-					<div class="col-12">
+					<div class="col-11">
 						<input type="number" class="form-control is-invalid" placeholder="Precio">
 						<div class="invalid-feedback">
 							Por favor ingrese un valor válido
 						</div>
 					</div>
 				</div>
-				<div class="col">
+				<div class="col-11">
 					<button class="btn btn-info">Guardar</button>
 				</div>
 			</div>
