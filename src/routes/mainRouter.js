@@ -14,6 +14,8 @@ router.get('/contact', mainController.contact);
 
 router.get('/register', mainController.register);
 
+router.get('/login', mainController.login);
+
 router.get('/appointment', mainController.appointment);
 
 /* productAdd error message */
