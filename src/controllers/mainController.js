@@ -34,6 +34,9 @@ const controller = {
 	appointment: (req, res) => {
 		res.render('appointment');
 	},
+	productAdd: (req,res) => {
+		res.render('products/productAdd');
+	},
 };
 
-module.exports = controller
+module.exports = controller;

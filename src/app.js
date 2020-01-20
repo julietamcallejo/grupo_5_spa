@@ -7,6 +7,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const mainRouter = require('./routes/mainRouter');
 const productRouter = require('./routes/productsRouter');
+const expressValidator = require('express-validator');
 
 // ************ express() - (don't touch) ************
 const app = express();

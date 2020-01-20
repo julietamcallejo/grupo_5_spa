@@ -28,7 +28,7 @@
             </div>
             <!--<div class="col-1">
                 <img src="/images/plus.svg" width="30px">
-            </div>-->
+            </div>
             <div class="col-12">
                 <label for='category'>Categoría:</label>
                 <input type=“text” id=“” name='category' class="form-control is-invalid" placeholder="Categoría">
@@ -36,10 +36,10 @@
                     Por favor ingrese un texto válido
                 </div>
                 <br>
-            </div>
+            </div>-->
             <div class="col-12" id="textsize">
-                <label for='descripción'>Descripción:</label>
-                <textarea type="text" class="form-control is-invalid" placeholder="Descripción" id=“” name='descripción'
+                <label for='descripcion'>Descripción:</label>
+                <textarea type="text" class="form-control is-invalid" placeholder="Descripción" id=“” name='descripcion'
                           cols=“30 rows=“10>
 						</textarea>
                 <div class="invalid-feedback">
@@ -57,19 +57,23 @@
                 <br>
             </div>
             <div class="col-12">
-                <input type="number" min="0" class="form-control is-invalid" placeholder="Duración">
+                <label for="duracion">Duración:</label>
+                <input type="number" min="40" class="form-control is-invalid" placeholder="Duración" id="" name="duracion">
                 <div class="invalid-feedback">
                     Por favor ingrese un valor válido
                 </div>
                 <br>
             </div>
             <div class="col-12">
-                <input type="number" class="form-control is-invalid" placeholder="Precio">
+                <label for="precio">Precio:</label>
+                <input type="number" class="form-control is-invalid" placeholder="Precio" id="" name="precio">
                 <div class="invalid-feedback">
                     Por favor ingrese un valor válido
                 </div>
+                <br>
             </div>
             <div class="col-12 col-sm-11 col-md-11 col-lg-11 col-xl-11"><br>
+                <label for="foto">Foto:</label>
                 <form action="/upload/photo" enctype="multipart/form-data" method="POST">
                     <input type="file" name="myImage" accept="image/*"/>
                     <input type="submit" value="Insertar Imagen"/>
