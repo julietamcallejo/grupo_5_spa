@@ -38,8 +38,8 @@
                 <br>
             </div>-->
             <div class="col-12" id="textsize">
-                <label for='descripcion'>Descripción:</label>
-                <textarea type="text" class="form-control is-invalid" placeholder="Descripción" id=“” name='descripcion'
+                <label for='descripción'>Descripción:</label>
+                <textarea type="text" class="form-control is-invalid" placeholder="Descripción" id=“” name='descripción'
                           cols=“30 rows=“10>
 						</textarea>
                 <div class="invalid-feedback">
@@ -56,7 +56,7 @@
                 </div>
                 <br>
             </div>
-            <div class="col-12">
+            <div class="col-6">
                 <label for="duracion">Duración:</label>
                 <input type="number" min="40" class="form-control is-invalid" placeholder="Duración" id="" name="duracion">
                 <div class="invalid-feedback">
@@ -64,7 +64,7 @@
                 </div>
                 <br>
             </div>
-            <div class="col-12">
+            <div class="col-6">
                 <label for="precio">Precio:</label>
                 <input type="number" class="form-control is-invalid" placeholder="Precio" id="" name="precio">
                 <div class="invalid-feedback">
@@ -72,7 +72,7 @@
                 </div>
                 <br>
             </div>
-            <div class="col-12 col-sm-11 col-md-11 col-lg-11 col-xl-11"><br>
+            <div class="col-12"><br>
                 <label for="foto">Foto:</label>
                 <form action="/upload/photo" enctype="multipart/form-data" method="POST">
                     <input type="file" name="myImage" accept="image/*"/>
