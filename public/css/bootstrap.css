@@ -2127,7 +2127,7 @@ pre code {
   font-weight: 400;
   font-family: 'Lato', sans-serif;
   line-height: 1.5;
-  background-color: #fff;
+  background-color: transparent;
   background-clip: padding-box;
   border-bottom: 1px solid #e9d4e4;
   border-top: none;

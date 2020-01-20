@@ -13,7 +13,7 @@ h1{
 }
 
 .padd{
-    padding-top: 10px;
+    padding: 10px;
 }
 
 .picDetail1{
@@ -33,6 +33,7 @@ h1{
 .fondo{
     background: #E9D4E4;
     margin: 0px;
+    padding: 0px;
 }
 
 .textoProd{
@@ -40,4 +41,8 @@ h1{
     color: #9069a7;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
+}
+
+.back{
+    background-color: #ffffffc9;
 }

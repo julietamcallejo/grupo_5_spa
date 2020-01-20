@@ -18,7 +18,7 @@
 <form action='/products/productAdd' method="POST" enctype="multipart/form-data">
     <div class="container ancho">
         <div class="row">
-            <div class="col-11">
+            <div class="col-12">
                 <label for='nombre'>Nombre del Servicio:</label>
                 <input type="text" id="" name="nombre" class="form-control is-invalid" placeholder="Título">
                 <div class="invalid-feedback">
@@ -26,10 +26,10 @@
                 </div>
                 <br>
             </div>
-            <div class="col-1">
+            <!--<div class="col-1">
                 <img src="/images/plus.svg" width="30px">
-            </div>
-            <div class="col-11">
+            </div>-->
+            <div class="col-12">
                 <label for='category'>Categoría:</label>
                 <input type=“text” id=“” name='category' class="form-control is-invalid" placeholder="Categoría">
                 <div class="invalid-feedback">
@@ -37,7 +37,7 @@
                 </div>
                 <br>
             </div>
-            <div class="col-11" id="textsize">
+            <div class="col-12" id="textsize">
                 <label for='descripción'>Descripción:</label>
                 <textarea type="text" class="form-control is-invalid" placeholder="Descripción" id=“” name='descripción'
                           cols=“30 rows=“10>
@@ -46,7 +46,7 @@
                     Por favor ingrese un texto válido
                 </div>
             </div>
-            <div class="col-11" id="textsize">
+            <div class="col-12" id="textsize">
                 <label for='resumen'>Resumen:</label>
                 <textarea type="text" class="form-control is-invalid" placeholder="Resumen del producto" id=“”
                           name='resumen' cols=“30 rows=“10>
@@ -56,20 +56,20 @@
                 </div>
                 <br>
             </div>
-            <div class="col-11">
+            <div class="col-12">
                 <input type="number" min="0" class="form-control is-invalid" placeholder="Duración">
                 <div class="invalid-feedback">
                     Por favor ingrese un valor válido
                 </div>
                 <br>
             </div>
-            <div class="col-11">
+            <div class="col-12">
                 <input type="number" class="form-control is-invalid" placeholder="Precio">
                 <div class="invalid-feedback">
                     Por favor ingrese un valor válido
                 </div>
             </div>
-            <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11"><br>
+            <div class="col-12 col-sm-11 col-md-11 col-lg-11 col-xl-11"><br>
                 <form action="/upload/photo" enctype="multipart/form-data" method="POST">
                     <input type="file" name="myImage" accept="image/*"/>
                     <input type="submit" value="Insertar Imagen"/>
@@ -77,10 +77,10 @@
                 <br><br><br>
             </div>
             <div class="col-6">
-                <button class="btn btn-info" type="submit">Guardar</button>
+                <button class="btn btn-info boton" type="submit">Guardar</button>
             </div>
             <div class="col-6">
-                <button class="btn btn-danger" type=“reset”>Reset</button>
+                <button class="btn btn-danger boton" type=“reset”>Reset</button>
             </div>
         </div>
         <!-- CARGA DE INFORMACIÓN DE CALENDARIO

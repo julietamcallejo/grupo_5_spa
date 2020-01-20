@@ -31,4 +31,11 @@ h6{
 
 .ancho{
     max-width: 600px;
+    background-color: #ffffffab;
+}
+
+.boton{
+    background-color: #9069A7;
+    border-color: #9069A7;
+    margin-bottom: 30px;
 }

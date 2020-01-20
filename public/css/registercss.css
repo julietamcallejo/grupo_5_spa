@@ -6,3 +6,12 @@ body{
     background-position: center center;
     background-attachment: fixed;
 }
+
+.fondo{
+    max-width: 600px;
+    background-color: #ffffffab;
+}
+
+button{
+    margin-bottom: 20px;
+}

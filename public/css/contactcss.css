@@ -12,3 +12,13 @@ body{
     color: #9069a7;
     font-family: 'Lato', sans-serif;
 }
+
+.fondo{
+    background-color: #ffffffab;
+    margin-top: 20px;
+    max-width: 500px;
+}
+
+.space{
+    margin: 20px;
+}
