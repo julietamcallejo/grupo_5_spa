@@ -1,216 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Agregar Producto</title>
-	<link rel="stylesheet" href="/css/bootstrap.css">
-	<link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="/css/fontawesome-all.css">
-	<link rel="stylesheet" href="/css/spa.css">
-	<link rel="stylesheet" href="/css/productAddcss.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Producto</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/fontawesome-all.css">
+    <link rel="stylesheet" href="/css/spa.css">
+    <link rel="stylesheet" href="/css/productAddcss.css">
 </head>
 <body>
-	<%- include('./partials/headerNav')%>
-	<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-		<h1>Nuevo Servicio</h1>
-	</div>
-	<form action='/products/productAdd' method="POST" enctype= "multipart/form-data">
-	<div class="container ancho">
-			<div class="row">
-				<div class="col">
-					<div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
-						<form action="/upload/photo" enctype="multipart/form-data" method="POST">
-							<input type="file" name="myImage" accept="image/*" />
-							<input type="submit" value="Insertar Imagen"/>
-						</form>
-					</div>
-					<div class="row">
-						<div class="col-11">
-							<input type="text" class="form-control is-invalid" placeholder="Título">
-							<div class="invalid-feedback">
-								Por favor ingrese un texto válido
-							</div>
-						</div>
-						<div class="col-1">
-							<img src="/images/plus.svg" width="30px">
-						</div>
-					</div>
-					<div class="col-11" id="textsize">
-						<textarea type="text" class="form-control is-invalid" placeholder="Descripción" rows="5">
+<%- include('./partials/headerNav') %>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <h1>Nuevo Servicio</h1>
+</div>
+<form action='/products/productAdd' method="POST" enctype="multipart/form-data">
+    <div class="container ancho">
+        <div class="row">
+            <div class="col-11">
+                <label for='nombre'>Nombre del Servicio:</label>
+                <input type="text" id="" name="nombre" class="form-control is-invalid" placeholder="Título">
+                <div class="invalid-feedback">
+                    Por favor ingrese un texto válido
+                </div>
+                <br>
+            </div>
+            <div class="col-1">
+                <img src="/images/plus.svg" width="30px">
+            </div>
+            <div class="col-11">
+                <label for='category'>Categoría:</label>
+                <input type=“text” id=“” name='category' class="form-control is-invalid" placeholder="Categoría">
+                <div class="invalid-feedback">
+                    Por favor ingrese un texto válido
+                </div>
+                <br>
+            </div>
+            <div class="col-11" id="textsize">
+                <label for='descripción'>Descripción:</label>
+                <textarea type="text" class="form-control is-invalid" placeholder="Descripción" id=“” name='descripción'
+                          cols=“30 rows=“10>
 						</textarea>
-						<div class="invalid-feedback">
-							Por favor ingrese un texto válido
-						</div>
-					</div>
-					<div class="col-11">
-						<input type="number" class="form-control is-invalid" placeholder="Duración">
-						<div class="invalid-feedback">
-							Por favor ingrese un valor válido
-						</div>
-					</div>
-					<div class="col-11">
-						<input type="number" class="form-control is-invalid" placeholder="Precio">
-						<div class="invalid-feedback">
-							Por favor ingrese un valor válido
-						</div>
-					</div>
-				</div>
-				<div class="col-11">
-					<button class="btn btn-info">Guardar</button>
-				</div>
-			</div>
-			<!-- CARGA DE INFORMACIÓN DE CALENDARIO
-			<div class="row">
-				<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-					<div class="row">
-						<div class="col-2">
-							<img src="images/user-2.svg" width="30px">
-						</div>
-						<div class="col-10">
-							<input type="text" class="form-control is-invalid" placeholder="Nombre">
-							<div class="invalid-feedback">
-								Por favor ingrese un nombre válido
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-2">
-							<img src="images/user-2.svg" width="30px">
-						</div>
-						<div class="col-10">
-							<input type="text" class="form-control is-invalid" placeholder="Nombre">
-							<div class="invalid-feedback">
-								Por favor ingrese un nombre válido
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-2">
-							<img src="images/user-2.svg" width="30px">
-						</div>
-						<div class="col-10">
-							<input type="text" class="form-control is-invalid" placeholder="Nombre">
-							<div class="invalid-feedback">
-								Por favor ingrese un nombre válido
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 defaultCheck1">
-					<div class="row">
-						<div class="col-4 defaultCheck1">
-							<h6>Días</h6>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6>Cant. turnos</h6>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6>Primer turno</h6>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-4 defaultCheck1">
-							<div class="form-check">
-								<input class="form-check-input defaultCheck1" type="checkbox">
-								<label class="form-check-label" for="defaultCheck1">
-									Lun
-								</label>
-							</div>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6 id="defaultCheck1">4  ▾</h6>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6 id="defaultCheck1">11:00  ▾</h6>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-4 defaultCheck1">
-							<div class="form-check">
-								<input class="form-check-input defaultCheck1" type="checkbox">
-								<label class="form-check-label" for="defaultCheck1">
-									Mar
-								</label>
-							</div>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6 id="defaultCheck1">0  ▾</h6>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6 id="defaultCheck1">00:00  ▾</h6>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-4 defaultCheck1">
-							<div class="form-check">
-								<input class="form-check-input defaultCheck1" type="checkbox">
-								<label class="form-check-label" for="defaultCheck1">
-									Mie
-								</label>
-							</div>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6 id="defaultCheck1">5  ▾</h6>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6 id="defaultCheck1">10:00  ▾</h6>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-4 defaultCheck1">
-							<div class="form-check">
-								<input class="form-check-input defaultCheck1" type="checkbox">
-								<label class="form-check-label" for="defaultCheck1">
-									Jue
-								</label>
-							</div>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6 id="defaultCheck1">7  ▾</h6>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6 id="defaultCheck1">12:00  ▾</h6>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-4 defaultCheck1">
-							<div class="form-check">
-								<input class="form-check-input defaultCheck1" type="checkbox">
-								<label class="form-check-label" for="defaultCheck1">
-									Vie
-								</label>
-							</div>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6 id="defaultCheck1">0  ▾</h6>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6 id="defaultCheck1">00:00  ▾</h6>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-4 defaultCheck1">
-							<div class="form-check">
-								<input class="form-check-input defaultCheck1" type="checkbox">
-								<label class="form-check-label" for="defaultCheck1">
-									Sáb
-								</label>
-							</div>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6 id="defaultCheck1">10  ▾</h6>
-						</div>
-						<div class="col-4 defaultCheck1">
-							<h6 id="defaultCheck1">10:00  ▾</h6>
-						</div>
-					</div>
-				</div>
-			</div>
-			-->
-	</div>
+                <div class="invalid-feedback">
+                    Por favor ingrese un texto válido
+                </div>
+            </div>
+            <div class="col-11" id="textsize">
+                <label for='resumen'>Resumen:</label>
+                <textarea type="text" class="form-control is-invalid" placeholder="Resumen del producto" id=“”
+                          name='resumen' cols=“30 rows=“10>
+                </textarea>
+                <div class="invalid-feedback">
+                    Por favor ingrese un texto válido
+                </div>
+                <br>
+            </div>
+            <div class="col-11">
+                <input type="number" min="0" class="form-control is-invalid" placeholder="Duración">
+                <div class="invalid-feedback">
+                    Por favor ingrese un valor válido
+                </div>
+                <br>
+            </div>
+            <div class="col-11">
+                <input type="number" class="form-control is-invalid" placeholder="Precio">
+                <div class="invalid-feedback">
+                    Por favor ingrese un valor válido
+                </div>
+            </div>
+            <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11"><br>
+                <form action="/upload/photo" enctype="multipart/form-data" method="POST">
+                    <input type="file" name="myImage" accept="image/*"/>
+                    <input type="submit" value="Insertar Imagen"/>
+                </form>
+                <br><br><br>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-info" type="submit">Guardar</button>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-danger" type=“reset”>Reset</button>
+            </div>
+        </div>
+        <!-- CARGA DE INFORMACIÓN DE CALENDARIO
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="images/user-2.svg" width="30px">
+                    </div>
+                    <div class="col-10">
+                        <input type="text" class="form-control is-invalid" placeholder="Nombre">
+                        <div class="invalid-feedback">
+                            Por favor ingrese un nombre válido
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <img src="images/user-2.svg" width="30px">
+                    </div>
+                    <div class="col-10">
+                        <input type="text" class="form-control is-invalid" placeholder="Nombre">
+                        <div class="invalid-feedback">
+                            Por favor ingrese un nombre válido
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <img src="images/user-2.svg" width="30px">
+                    </div>
+                    <div class="col-10">
+                        <input type="text" class="form-control is-invalid" placeholder="Nombre">
+                        <div class="invalid-feedback">
+                            Por favor ingrese un nombre válido
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 defaultCheck1">
+                <div class="row">
+                    <div class="col-4 defaultCheck1">
+                        <h6>Días</h6>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6>Cant. turnos</h6>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6>Primer turno</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 defaultCheck1">
+                        <div class="form-check">
+                            <input class="form-check-input defaultCheck1" type="checkbox">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Lun
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6 id="defaultCheck1">4  ▾</h6>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6 id="defaultCheck1">11:00  ▾</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 defaultCheck1">
+                        <div class="form-check">
+                            <input class="form-check-input defaultCheck1" type="checkbox">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Mar
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6 id="defaultCheck1">0  ▾</h6>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6 id="defaultCheck1">00:00  ▾</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 defaultCheck1">
+                        <div class="form-check">
+                            <input class="form-check-input defaultCheck1" type="checkbox">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Mie
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6 id="defaultCheck1">5  ▾</h6>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6 id="defaultCheck1">10:00  ▾</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 defaultCheck1">
+                        <div class="form-check">
+                            <input class="form-check-input defaultCheck1" type="checkbox">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Jue
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6 id="defaultCheck1">7  ▾</h6>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6 id="defaultCheck1">12:00  ▾</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 defaultCheck1">
+                        <div class="form-check">
+                            <input class="form-check-input defaultCheck1" type="checkbox">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Vie
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6 id="defaultCheck1">0  ▾</h6>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6 id="defaultCheck1">00:00  ▾</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 defaultCheck1">
+                        <div class="form-check">
+                            <input class="form-check-input defaultCheck1" type="checkbox">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Sáb
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6 id="defaultCheck1">10  ▾</h6>
+                    </div>
+                    <div class="col-4 defaultCheck1">
+                        <h6 id="defaultCheck1">10:00  ▾</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+    </div>
 
 
-	</form>
+</form>
 </body>
 </html>
