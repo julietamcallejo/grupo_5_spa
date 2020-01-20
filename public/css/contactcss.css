@@ -1,3 +1,12 @@
+body{
+    background-image: url("../images/fondo2.jpg");
+    background-size: cover;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
 .textoProd{
     text-align: left;
     color: #9069a7;

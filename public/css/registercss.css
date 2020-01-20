@@ -1,0 +1,8 @@
+body{
+    background-image: url("../images/fondo.jpg");
+    background-size: cover;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}

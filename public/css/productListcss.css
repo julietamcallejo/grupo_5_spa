@@ -1,3 +1,12 @@
+body{
+    background-image: url("../images/genericas/2883119.jpg");
+    background-size: cover;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
 h1{
     font-weight: 300;
     font-size: 3rem;
