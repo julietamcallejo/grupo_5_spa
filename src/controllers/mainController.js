@@ -17,7 +17,7 @@ function traerProductos () {
     return productArray;
 };
 
-const detalleProductos = traerProductos();
+var detalleProductos = traerProductos();
 
 const controller = {
 	root: (req, res) => {

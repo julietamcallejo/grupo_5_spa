@@ -1,92 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= detalleProducto.nombre %></title>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Editar Producto <%= producto.id %></title>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/fontawesome-all.css">
     <link rel="stylesheet" href="/css/spa.css">
-    <link rel="stylesheet" href="/css/productDetailcss.css">
+    <link rel="stylesheet" href="/css/productAddcss.css">
 </head>
 <body>
-    <%- include('./partials/headerNav')%>
-<div class="container">
-    
-    <div class="row">
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 picDetail">
-            <img src=<%= detalleProducto.foto %> width="100%">
-        </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-            <h2 class="textoProd"><%= detalleProducto.nombre %></h2>
-            <p class="textoProd"><%= detalleProducto.descripción %></p>
-            <div class="row">
-                <div class="col-8 col-sm-8 col-md-8 col-lg-6 col-xl-6">
-                    <h4 class="textoProd"><%= detalleProducto.precio %></h4>
-                </div>
-                <div class="textoProd1" class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <button type="submit" class="btn btn-primary">Agregar</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <img src="/images/calendar-empty-ultrathin-page.svg" width="30px">
-                </div>
-                <div class="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p><%= detalleProducto.dia %>  ▾</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <img src="/images/clock.svg" width="30px">
-                </div>
-                <div class="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p><%= detalleProducto.hora %>  ▾</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <img src=<%= detalleProducto.fotoProfesional %> width="30px">
-                </div>
-                <div class="textoProd" class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <p><%= detalleProducto.nombreProfesional %>  ▾</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-auto">
-        <h2>Te puede interesar</h2>
-    </div>
-    <div class="card-deck">
-        <div class="card">
-            <a href="/products/productDetail/10">
-            <img class="card-img-top" src="/images/tatamientos/11-anti-age.jpeg">
-            <div class="card-body">
-                <h5 class="text">Anti-age</h5>
-            </div>
-            </a>
-        </div>
-        <div class="card">
-            <a href="/products/productDetail/13">
-            <img class="card-img-top" src="/images/tatamientos/14-maderoterapia.jpg">
-            <div class="card-body">
-                <h5 class="text">Maderoterapia</h5>
-            </div>
-            </a>
-        </div>
-        <div class="card">
-            <a href="/products/productDetail/4">
-            <img class="card-img-top" src="/images/tatamientos/05-piedras-calientes.jpeg">
-            <div class="card-body">
-                <h5 class="text">Piedras Calientes</h5>
-            </div>
-            </a>
-        </div>
-    </div>
+<%- include('./partials/headerNav') %>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <h1>Editar Servicio</h1>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <form action='/products/productEdit/<%= producto.id %>?_method=PUT' method='POST' enctype= 'multipart/form-data'>
+        <div class="container ancho">
+            <div class="row">
+                <div class="col-12">
+                    <label for='nombre'>Nombre Servicio:</label>
+                    <input type='text' name='nombre' value=<%= producto.nombre %> class="form-control is-invalid" placeholder="Título"><br>
+                    <div class="invalid-feedback">
+                        Por favor ingrese un texto válido
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <!--<div class="col-12">
+                    <img src=<%= producto.foto %> width='20%' heigth='20%'>
+                </div>-->
+                <div class="col-12">
+                    <label for='category'>Categoría:</label>
+                    <input type=“text” name='category' value=<%=producto.category%> class="form-control is-invalid" placeholder="Categoría">
+                    <div class="invalid-feedback">
+                        Por favor ingrese un texto válido
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div class="col-12" id="textsize">
+                    <label for='descripción'>Descripción:</label>
+                    <textarea type="text" class="form-control is-invalid" placeholder="Descripción" id=“” name='descripción'
+                              cols=“30 rows=“10><%=producto.descripción %></textarea>
+                    <div class="invalid-feedback">
+                        Por favor ingrese un texto válido
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div class="col-12" id="textsize">
+                    <label for='resumen'>Resumen:</label>
+                    <textarea type="text" class="form-control is-invalid" placeholder="Resumen del producto" id=“”
+                              name='resumen' cols=“30 rows=“10><%= producto.resumen %></textarea>
+                    <div class="invalid-feedback">
+                        Por favor ingrese un texto válido
+                    </div>
+                    <br>
+                </div>
+                <div class="col-6">
+                    <label for='duration'>Duración:</label>
+                    <input type="number" min="0" name='duration' class="form-control is-invalid" placeholder="Duración" value=<%= producto.duration %>>
+                    <div class="invalid-feedback">
+                        Por favor ingrese un valor válido
+                    </div>
+                    <br>
+                </div>
+                <div class="col-6">
+                    <label for='precio'>Precio:</label>
+                    <input type="number" class="form-control is-invalid" placeholder="Precio" name='precio' value=<%= producto.precio %>>
+                    <div class="invalid-feedback">
+                        Por favor ingrese un valor válido
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div class="col-12">
+                    <img src=<%= producto.foto %> width='30%' heigth='30%'>
+                </div>
+                <div class="col-12">
+                    <label for='foto'>Reemplazar Foto:</label>
+                    <br>
+                    
+                        <input type="file" name='foto'>
+                        
+                    <br><br><br>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-info boton" type="submit">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </body>
-</html>

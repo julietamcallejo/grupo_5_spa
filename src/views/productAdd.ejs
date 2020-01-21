@@ -40,7 +40,7 @@
             <div class="col-12" id="textsize">
                 <label for='descripción'>Descripción:</label>
                 <textarea type="text" class="form-control is-invalid" id=“” name='descripción'
-                          cols=“30 rows=“10>
+                          cols="30" rows="10">
 						</textarea>
                 <div class="invalid-feedback">
                     Por favor ingrese un texto válido
@@ -49,7 +49,7 @@
             <div class="col-12" id="textsize">
                 <label for='resumen'>Resumen:</label>
                 <textarea type="text" class="form-control is-invalid" id=“”
-                          name='resumen' cols=“30 rows=“10>
+                          name='resumen' cols="30" rows="10">
                 </textarea>
                 <div class="invalid-feedback">
                     Por favor ingrese un texto válido
@@ -74,10 +74,10 @@
             </div>
             <div class="col-12"><br>
                 <label for="foto">Foto:</label>
-                <form action="/upload/photo" enctype="multipart/form-data" method="POST">
-                    <input type="file" name="myImage" accept="image/*"/>
-                    <input type="submit" value="Insertar Imagen"/>
-                </form>
+                
+                    <input type="file" name='foto'>
+                    
+                
                 <br><br><br>
             </div>
             <div class="col-6">

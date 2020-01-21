@@ -39,7 +39,7 @@ function guardarProductos (productos) {
     fs.writeFileSync(pathProductos, JSON.stringify(productos, null, ''));
 };
 
-const detalleProductos = traerProductos();
+var detalleProductos = traerProductos();
 
 const productController = {
     list: (req, res) => {
@@ -76,29 +76,48 @@ const productController = {
         let id = req.params.idProduct;
         let producto = detalleProductos.find( producto => { return producto.id == id});
         
-        res.render('ProductEditTEST',{producto: producto});
+        res.render('productEdit',{producto: producto});
         
         //res.json(producto);
     },
     updateProduct: (req, res) => {
         let arrayProductos = detalleProductos;
         let idProduct = Number(req.params.idProduct);
-        
+        let posiciónAEditar = arrayProductos.findIndex( producto => producto.id == idProduct);
+
+        if (req.file) {
+            req.body = {
+                id: idProduct,
+                foto: (FotosProductos + req.file.filename),
+                ...req.body,
+            };
+            
+            
+
+        } else {
+            req.body = {
+                id: idProduct,
+                foto: (arrayProductos[posiciónAEditar].foto),
+                ...req.body,
+        };
+    };
+    /*
         req.body = {
             id: idProduct,
             foto: (FotosProductos + req.file.filename),
-            ...req.body,
-        };
-        
+            ...req.body, 
+        }  
+    */
         let productoEditado = req.body;
-        let posiciónAEditar = arrayProductos.findIndex( producto => producto.id == idProduct);
+
         
+
         arrayProductos[posiciónAEditar] = productoEditado;
 
         guardarProductos(arrayProductos);
 
         
-        res.redirect('/products/productList');
+        return res.redirect('/products/productList');
         
         //res.json(arrayProductos);
     },
