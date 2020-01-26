@@ -11,52 +11,46 @@
     <link rel="stylesheet" href="/css/registercss.css">
 </head>
 <body id="register">
-<%- include('./partials/headerNav') %>
+<%- include('../partials/headerNav') %>
 <div class="container">
-    <form id="register-form">
+    <form id="register-form" action='/users/register' method="POST" enctype="multipart/form-data">
         <div class="pad">
             <h3>Regístrate</h3>
         </div>
         <div class="container-fluid fondo">
             <div class="col-auto">
-                <input type="text" class="form-control is-invalid" id="inputText" placeholder="Nombre">
+                <input type="text" name='first_name' class="form-control is-invalid" id="inputText" placeholder="Nombre">
                 <div class="invalid-feedback">
                     Por favor ingrese un texto válido
                 </div>
             </div>
             <div class="col-auto">
-                <input type="text" class="form-control is-invalid" id="inputText" placeholder="Apellido">
+                <input type="text" name='last_name' class="form-control is-invalid" id="inputText" placeholder="Apellido">
                 <div class="invalid-feedback">
                     Por favor ingrese un texto válido
                 </div>
             </div>
             <div class=col-auto>
-                <input type="email" class="form-control is-invalid" id="inputEmail" placeholder="email">
+                <input type="email" name='email' class="form-control is-invalid" id="inputEmail" placeholder="email">
                 <div class="invalid-feedback">
                     Por favor ingrese un email válido
                 </div>
             </div>
             <div class=col-auto>
-                <input type="password" class="form-control is-invalid" id="inputPassword" placeholder="Contraseña">
+                <input type="password" name='password' class="form-control is-invalid" id="inputPassword" placeholder="Contraseña">
                 <div class="invalid-feedback">
                     Contraseña incorrecta
                 </div>
             </div>
-            <div class=col-auto>
-                <input type="password" class="form-control is-invalid" id="inputPassword" placeholder="Repetir contraseña">
-                <div class="invalid-feedback">
-                    Contraseña incorrecta
-                </div>
-            </div>
+            
             <div class="col-auto fuente">
                 <label for="foto">Imagen de perfil</label><br>
-                <form action="/upload/photo" enctype="multipart/form-data" method="POST">
-                    <input type="file" name="myImage" accept="image/*"/>
-                    <input type="submit" value="Insertar Imagen"/>
-                </form>
+                
+                    <input type="file" name="avatar">
+                    
+                
             </div>
-            <h2>o</h2>
-            <img class="opac" src="/images/login-btn.png" width="60%">
+            
             <div class=col-auto mx-5>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>

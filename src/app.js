@@ -7,6 +7,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const mainRouter = require('./routes/mainRouter');
 const productRouter = require('./routes/productsRouter');
+const usersRouter = require('./routes/usersRouter');
 const expressValidator = require('express-validator');
 
 // ************ express() - (don't touch) ************
@@ -28,6 +29,7 @@ app.set('views', './src/views'); // Seteo de la ubicación de la carpeta "views"
 // ************ Route System require and use() ************
 app.use('/', mainRouter);
 app.use('/products', productRouter);
+app.use('/users', usersRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************

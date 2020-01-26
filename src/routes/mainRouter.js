@@ -5,7 +5,7 @@ const { check, validationResult, body } = require('express-validator');
 
 // ************ Controller Require ************
 const mainController = require('../controllers/mainController');
-const productController = require('../controllers/productController');
+
 
 /* GET - home page. */
 router.get('/', mainController.root);
