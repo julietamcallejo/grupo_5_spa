@@ -46,3 +46,10 @@ h1{
 .back{
     background-color: #ffffffc9;
 }
+
+.boton{
+    background-color: #9069A7;
+    border-color: #9069A7;
+    margin-bottom: 30px;
+    margin-left: 3px;
+}

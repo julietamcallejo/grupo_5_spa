@@ -32,9 +32,10 @@
 					<h5 class="textoProd">Precio: $<%= actualProduct.precio %> </h5>
                 </a>
                 <div class='productEdit'>
-					<a href="/products/productEdit/<%= actualProduct.id %>">Editar</a>
+					<a href="/products/productEdit/<%= actualProduct.id %>">
+						<button class="btn btn-info boton">Editar</button></a>
 					<form method="POST" action="/products/productDelete/<%= actualProduct.id %>?_method=DELETE">
-						<button type="submit">Borrar</button>
+						<button class="btn btn-info boton" type="submit">Borrar</button>
 					</form>
                                  
                     
