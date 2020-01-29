@@ -12,10 +12,6 @@ router.get('/', mainController.root);
 router.get('/index', mainController.root);
 router.get('/contact', mainController.contact);
 
-router.get('/register', mainController.register);
-
-router.get('/login', mainController.login);
-
 router.get('/appointment', mainController.appointment);
 
 

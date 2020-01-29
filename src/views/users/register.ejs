@@ -13,34 +13,42 @@
 <body id="register">
 <%- include('../partials/headerNav') %>
 <div class="container">
+    
     <form id="register-form" action='/users/register' method="POST" enctype="multipart/form-data">
+        
         <div class="pad">
             <h3>Regístrate</h3>
         </div>
         <div class="container-fluid fondo">
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li class='list-group-item list-group-item-danger'><%= error.msg %></li>
+        
+                <% }) %>
+            </ul>
             <div class="col-auto">
-                <input type="text" name='first_name' class="form-control is-invalid" id="inputText" placeholder="Nombre">
-                <div class="invalid-feedback">
+                <input type="text" name='first_name' class="form-control" id="inputText" placeholder="Nombre">
+                <!--<div class="invalid-feedback">
                     Por favor ingrese un texto válido
-                </div>
+                </div> -->
             </div>
             <div class="col-auto">
-                <input type="text" name='last_name' class="form-control is-invalid" id="inputText" placeholder="Apellido">
-                <div class="invalid-feedback">
+                <input type="text" name='last_name' class="form-control" id="inputText" placeholder="Apellido">
+                <!--<div class="invalid-feedback">
                     Por favor ingrese un texto válido
-                </div>
+                </div> -->
             </div>
             <div class=col-auto>
-                <input type="email" name='email' class="form-control is-invalid" id="inputEmail" placeholder="email">
-                <div class="invalid-feedback">
+                <input type="email" name='email' class="form-control" id="inputEmail" placeholder="email">
+                <!--<div class="invalid-feedback">
                     Por favor ingrese un email válido
-                </div>
+                </div> -->
             </div>
             <div class=col-auto>
-                <input type="password" name='password' class="form-control is-invalid" id="inputPassword" placeholder="Contraseña">
-                <div class="invalid-feedback">
+                <input type="password" name='password' class="form-control" id="inputPassword" placeholder="Contraseña">
+                <!--<div class="invalid-feedback">
                     Contraseña incorrecta
-                </div>
+                </div> -->
             </div>
             
             <div class="col-auto fuente">

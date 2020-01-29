@@ -2,10 +2,16 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
 
+const {validationResult} = require('express-validator');
+
 const pathUsers = path.join(__dirname, '../data/users.json'); 
 const pathPublic = path.join(__dirname, '../../public/');
 
 const pathAvatars = '/images/avatar';
+
+
+
+
 //**** Helpers ****//
 
 
@@ -38,6 +44,18 @@ function agregarUsuario (datoUsuario) {
     
 };
 
+function getUserByEmail(email) {
+	let allUsers = traerUsuarios();
+	let userByEmail = allUsers.find(oneUser => oneUser.email == email);
+	return userByEmail;
+};
+
+function getUserById(id) {
+	let allUsers = traerUsuarios();
+	let userById = allUsers.find(oneUser => oneUser.id == id);
+	return userById;
+};
+
 
 
 
@@ -48,32 +66,59 @@ const userController = {
 		res.render('users/register');
     },
     storeUser: (req, res) => {
-        // Hash de la clave
-        req.body.password = bcrypt.hashSync(req.body.password, 10);
+        //*** Traigo los errores y valido ***/
 
-        // Eliminar la propiedad re_password la cual no entendi bien
-        delete req.body.re_password;
+        let errors = validationResult(req);
         
-        // Nombre de la foto y el id
-        let newUser = {
+
+        if (errors.isEmpty()) {
+            // Hash de la clave
+            req.body.password = bcrypt.hashSync(req.body.password, 10);
+
+            // Eliminar la propiedad re_password la cual no entendi bien
+            delete req.body.re_password;
+        
+            // Nombre de la foto y el id
+            let user = {
             id: generarId(),
             avatar: req.file.filename,
             ...req.body,
-        };
+            };
         
 
-        console.log(newUser);
+            // Guardar al usario y como la función retorna la data del usuario lo almacenamos en ela variable "user"
+            agregarUsuario(user);
+        
+            // Setear en session el ID del usuario nuevo para auto loguearlo
+            //req.session.userId = user.id;
+        
+            // Setear la cookie para mantener al usuario logueado
+		    //res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
 
-        // Guardar al usario y como la función retorna la data del usuario lo almacenamos en ela variable "user"
-		agregarUsuario(newUser);
+
+            res.json(user);
+            //res.redirect('/users/profile');
+
+        } else {
+            console.log(errors.array());
+            return res.render('users/register', {errors: errors.array()});
+        };
 
 
-        res.json(newUser);
-        //res.redirect('/servicios');
+        
     },    
     login: (req, res) => {
 		res.render('users/login');
-	},
+    },
+    logout: (req, res) => {
+		// Destruir la session
+		req.session.destroy();
+		// Destruir la cookie
+		res.cookie('userCookie', null, { maxAge: 1 });
+        
+        return res.redirect('index');
+		//return res.redirect('/users/profile');
+	}
 	
 };
 

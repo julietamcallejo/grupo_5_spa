@@ -2,8 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 const pathProductos = path.join(__dirname, '../data/productos.json'); 
-//**** Helpers ****//
+const pathUsers = path.join(__dirname, '../data/users.json');
 
+//**** Helpers ****//
 
 function traerProductos () {
     let productFileContent = fs.readFileSync(pathProductos, 'utf-8');
@@ -17,30 +18,42 @@ function traerProductos () {
     return productArray;
 };
 
+function traerUsuarios () {
+    let usersFileContent = fs.readFileSync(pathUsers, 'utf-8');
+    let usersArray;
+
+    if (usersFileContent == '') {
+        usersArray = [];
+    }else{
+        usersArray = JSON.parse(usersFileContent);
+    };
+    return usersArray;
+};
+
+function getUserById(id) {
+	let allUsers = traerUsuarios();
+	let userById = allUsers.find(oneUser => oneUser.id == id);
+	return userById;
+};
+
 var detalleProductos = traerProductos();
 
 const controller = {
 	root: (req, res) => {
-		res.render('index', { detalleProductos: detalleProductos,});
+		//let userLogged = getUserById(req.session.userId);
+		res.render('index', {
+			//userLogged: userLogged, 
+			detalleProductos: detalleProductos
+		});
 	},
 	contact: (req, res) => {
-		res.render('contact')
-	},
-	
-	register: (req, res) => {
-		res.render('register');
-	},
-
-	login: (req, res) => {
-		res.render('login');
+		res.render('contact');
 	},
 	
 	appointment: (req, res) => {
 		res.render('appointment');
 	},
-	productAdd: (req,res) => {
-		res.render('products/productAdd');
-	},
+	
 };
 
 module.exports = controller;
