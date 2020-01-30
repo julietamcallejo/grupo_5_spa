@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
+
+body{
+    background-image: url("../images/fondo.jpg");
+    background-size: cover;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: 'Lato', sans-serif;
+}
+
+.fondo{
+    max-width: 600px;
+    background-color: #ffffffab;
+    font-family: 'Lato', sans-serif;
+}
+
+.pad{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.fuente{
+    color: #808080;
+}
+
+img {
+    border-radius: 50%;
+}

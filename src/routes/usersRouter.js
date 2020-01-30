@@ -41,9 +41,9 @@ function traerUsuarios () {
 
 var detalleUsuarios = traerUsuarios();
 
-
 // **** Rutas **** //
 router.get('/register', userController.register);
+
 router.post('/register', upload.single('avatar'), [
 	check('first_name').notEmpty().withMessage('Completar Nombre'),
 	check('last_name').notEmpty().withMessage('Completar Apellido'),
@@ -61,9 +61,9 @@ router.post('/register', upload.single('avatar'), [
 ], userController.storeUser);
 
 router.get('/login', userController.login);
+
+router.get('/profile', userController.profile);
+
 router.get('/logout', userController.logout);
-
-
-
 
 module.exports = router;

@@ -9,11 +9,7 @@ const pathPublic = path.join(__dirname, '../../public/');
 
 const pathAvatars = '/images/avatar';
 
-
-
-
 //**** Helpers ****//
-
 
 function traerUsuarios () {
     let usersFileContent = fs.readFileSync(pathUsers, 'utf-8');
@@ -56,20 +52,17 @@ function getUserById(id) {
 	return userById;
 };
 
-
-
-
 var detalleUsuarios = traerUsuarios();
 
 const userController = {
 	register: (req, res) => {
 		res.render('users/register');
     },
+
     storeUser: (req, res) => {
         //*** Traigo los errores y valido ***/
 
         let errors = validationResult(req);
-        
 
         if (errors.isEmpty()) {
             // Hash de la clave
@@ -84,7 +77,6 @@ const userController = {
             avatar: req.file.filename,
             ...req.body,
             };
-        
 
             // Guardar al usario y como la función retorna la data del usuario lo almacenamos en ela variable "user"
             agregarUsuario(user);
@@ -98,18 +90,20 @@ const userController = {
 
             res.json(user);
             //res.redirect('/users/profile');
-
         } else {
             console.log(errors.array());
             return res.render('users/register', {errors: errors.array()});
         };
+    },
 
-
-        
-    },    
     login: (req, res) => {
 		res.render('users/login');
     },
+
+    profile: (req, res) => {
+        res.render('users/profile');
+    },
+
     logout: (req, res) => {
 		// Destruir la session
 		req.session.destroy();
@@ -119,7 +113,6 @@ const userController = {
         return res.redirect('index');
 		//return res.redirect('/users/profile');
 	}
-	
 };
 
 module.exports = userController;

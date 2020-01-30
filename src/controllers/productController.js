@@ -7,7 +7,6 @@ const pathPublic = path.join(__dirname, '../../public/');
 const FotosProductos = '/images/tatamientos/';
 //**** Helpers ****//
 
-
 function traerProductos () {
     let productFileContent = fs.readFileSync(pathProductos, 'utf-8');
     let productArray;
@@ -91,9 +90,6 @@ const productController = {
                 foto: (FotosProductos + req.file.filename),
                 ...req.body,
             };
-            
-            
-
         } else {
             req.body = {
                 id: idProduct,
@@ -110,12 +106,9 @@ const productController = {
     */
         let productoEditado = req.body;
 
-        
-
         arrayProductos[posiciónAEditar] = productoEditado;
 
         guardarProductos(arrayProductos);
-
         
         return res.redirect('/products/productList');
         

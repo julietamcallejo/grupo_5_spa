@@ -8,7 +8,6 @@ const path = require('path');
 
 const productController = require('../controllers/productController');
 
-
 let diskStorage = multer.diskStorage({
 	destination: function (req, file, cb) {
 		cb(null, path.join(__dirname, '../../public/images/tatamientos'));
@@ -54,7 +53,5 @@ router.post('/productAdd', upload.single('foto'), productController.productSave)
     })
 ], mainController.productAdd);
 */
-
-
 
 module.exports = router;
