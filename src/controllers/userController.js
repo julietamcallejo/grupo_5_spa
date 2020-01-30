@@ -60,6 +60,17 @@ const userController = {
     },
 
     storeUser: (req, res) => {
+        
+        /* Funcion para utilizar en la vista, como parametro va a tener el campo del formulario y el array de errores. Sile campo del error existe retorna el msg.*/
+        const hasErrorGetMessage = (field, errors) => {
+			for (let oneError of errors) {
+				if (oneError.param == field) {
+					return oneError.msg;
+				}
+			}
+			return false;
+        }
+        
         //*** Traigo los errores y valido ***/
 
         let errors = validationResult(req);
@@ -72,9 +83,15 @@ const userController = {
             delete req.body.re_password;
         
             // Nombre de la foto y el id
+            let avatar;
+            if (typeof req.file === 'undefined') {
+                avatar = 'default-user.png';
+            } else {
+                avatar = req.file.filename;
+            }
             let user = {
             id: generarId(),
-            avatar: req.file.filename,
+            avatar: avatar,
             ...req.body,
             };
 
@@ -82,17 +99,22 @@ const userController = {
             agregarUsuario(user);
         
             // Setear en session el ID del usuario nuevo para auto loguearlo
-            //req.session.userId = user.id;
+            req.session.userId = user.id;
         
             // Setear la cookie para mantener al usuario logueado
-		    //res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
+		    res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
 
 
-            res.json(user);
-            //res.redirect('/users/profile');
+            //res.json(user);
+            res.redirect('/users/profile');
         } else {
-            console.log(errors.array());
-            return res.render('users/register', {errors: errors.array()});
+            //return res.send(errors);
+            return res.render('users/register', {
+                errors: errors.array(),
+                hasErrorGetMessage,
+                oldData: req.body
+            
+            });
         };
     },
 
@@ -101,7 +123,8 @@ const userController = {
     },
 
     profile: (req, res) => {
-        res.render('users/profile');
+        let userLogged = getUserById(req.session.userId);
+        res.render('users/profile', { userLogged });
     },
 
     logout: (req, res) => {
@@ -111,7 +134,7 @@ const userController = {
 		res.cookie('userCookie', null, { maxAge: 1 });
         
         return res.redirect('index');
-		//return res.redirect('/users/profile');
+		
 	}
 };
 

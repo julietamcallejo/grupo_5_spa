@@ -20,40 +20,86 @@
             <h3>Regístrate</h3>
         </div>
         <div class="container-fluid fondo">
+            <!-- Listado de errores
+            <% //if (typeof errors !== 'undefined') { %>
             <ul>
-                <% errors.forEach(error => { %>
-                    <li class='list-group-item list-group-item-danger'><%= error.msg %></li>
-                <% }) %>
+                <% //errors.forEach(error => { %>
+                    <li class='text-danger'><%= //error.msg %></li>
+                <% //}) %>
             </ul>
+            <% //} %>
+            -->
             <div class="col-auto">
-                <input type="text" name='first_name' class="form-control" id="inputText" placeholder="Nombre">
-                <!--<div class="invalid-feedback">
-                    Por favor ingrese un texto válido
-                </div> -->
+                <input type="text" name='first_name' id="inputText" placeholder="Nombre" 
+                class="form-control
+                <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('first_name', errors) ? 'is-invalid' : null %> 
+                <% } %>
+                "
+                value="<%= typeof oldData !== 'undefined' ? oldData.first_name : null %>" >
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('first_name', errors) ? hasErrorGetMessage('first_name', errors) : null %>
+                    <% } %>
+                </div>
             </div>
             <div class="col-auto">
-                <input type="text" name='last_name' class="form-control" id="inputText" placeholder="Apellido">
-                <!--<div class="invalid-feedback">
-                    Por favor ingrese un texto válido
-                </div> -->
+                <input type="text" name='last_name' id="inputText" placeholder="Apellido"
+                class="form-control
+                <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('last_name', errors) ? 'is-invalid' : null %> 
+                <% } %>
+                "
+                value="<%= typeof oldData !== 'undefined' ? oldData.last_name : null %>" >
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('last_name', errors) ? hasErrorGetMessage('last_name', errors) : null %>
+                    <% } %>
+                </div>
+                
             </div>
             <div class=col-auto>
-                <input type="email" name='email' class="form-control" id="inputEmail" placeholder="email">
-                <!--<div class="invalid-feedback">
-                    Por favor ingrese un email válido
-                </div> -->
+                <input type="email" name='email' id="inputEmail" placeholder="email"
+                class="form-control
+                <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('email', errors) ? 'is-invalid' : null %> 
+                <% } %>
+                "
+                value="<%= typeof oldData !== 'undefined' ? oldData.email : null %>" >
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('email', errors) ? hasErrorGetMessage('email', errors) : null %>
+                    <% } %>
+                </div>
             </div>
             <div class=col-auto>
-                <input type="password" name='password' class="form-control" id="inputPassword" placeholder="Contraseña">
-                <!--<div class="invalid-feedback">
-                    Contraseña incorrecta
-                </div> -->
+                <input type="password" name='password' id="inputPassword" placeholder="Contraseña"
+                class="form-control
+                <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('password', errors) ? 'is-invalid' : null %> 
+                <% } %>
+                " >
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('password', errors) ? hasErrorGetMessage('password', errors) : null %>
+                    <% } %>
+                </div>
             </div>
             
             <div class="col-auto fuente">
                 <label for="foto">Imagen de perfil</label><br>
                 
-                    <input type="file" name="avatar">
+                    <input type="file" name="avatar"
+                    class="form-control
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('avatar', errors) ? 'is-invalid' : null %> 
+                    <% } %>
+                    " >
+                    <div class="invalid-feedback">
+                        <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                            <%= hasErrorGetMessage('avatar', errors) ? hasErrorGetMessage('avatar', errors) : null %>
+                        <% } %>
+                    </div>
             </div>
             
             <div class=col-auto mx-5>

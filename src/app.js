@@ -8,7 +8,10 @@ const methodOverride = require('method-override');
 const mainRouter = require('./routes/mainRouter');
 const productRouter = require('./routes/productsRouter');
 const usersRouter = require('./routes/usersRouter');
-const expressValidator = require('express-validator');
+const session = require('express-session');
+const userCookieParser = require('./middlewares/userCookieMiddleware');
+
+//const expressValidator = require('express-validator');
 
 // ************ express() - (don't touch) ************
 const app = express();
@@ -20,6 +23,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(methodOverride('_method'));
+app.use(session({
+  secret: 'register-login',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(userCookieParser);
 
 // ************ Template Engine - (don't touch) ************
 app.set('view engine', 'ejs');

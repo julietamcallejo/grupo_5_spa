@@ -1,28 +1,16 @@
 // ************ Require's ************
 const express = require('express');
 const router = express.Router();
-const { check, validationResult, body } = require('express-validator');
-const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
+//*** Middlewares ***/
+const upload = require('../middlewares/uploadRegisterMiddleware')
+const registerValidator = require('../middlewares/registerValidatorMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
+
 // ************ Controller Require ************
 const userController = require('../controllers/userController');
-
-
-//*** Almacenamiento de imagen ***//
-
-let diskStorage = multer.diskStorage({
-	destination: function (req, file, cb) {
-		cb(null, path.join(__dirname, '../../public/images/avatars'));
-	},
-	filename: function (req, file, cb) {
-		let finalName = Date.now() + path.extname(file.originalname);
-		cb(null, finalName);
-	}
-});
-
-let upload = multer({ storage: diskStorage })
 
 //*** Traer usuarios para validar registro ***/
 const pathUsers = path.join(__dirname, '../data/users.json'); 
@@ -44,25 +32,11 @@ var detalleUsuarios = traerUsuarios();
 // **** Rutas **** //
 router.get('/register', userController.register);
 
-router.post('/register', upload.single('avatar'), [
-	check('first_name').notEmpty().withMessage('Completar Nombre'),
-	check('last_name').notEmpty().withMessage('Completar Apellido'),
-	check('email').isEmail().withMessage('Ingresar un email válido'),
-	check('password').isLength({min: 6}).withMessage('La clave debe tener al menos 6 caracteres'),
-	check('email').custom(function (value){
-		let user = detalleUsuarios.find( usuario => usuario.email == value);
-		if (user != undefined) {
-			return false;
-		}else{
-			return true;
-		}
-
-	}).withMessage('Email ya registrado anteriormente')
-], userController.storeUser);
+router.post('/register', upload.single('avatar'), registerValidator, userController.storeUser);
 
 router.get('/login', userController.login);
 
-router.get('/profile', userController.profile);
+router.get('/profile', authMiddleware, userController.profile);
 
 router.get('/logout', userController.logout);
 

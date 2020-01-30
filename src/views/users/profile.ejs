@@ -19,21 +19,21 @@
     <div class="container fondo">
         <div class="col-12 pad">
             <h3>
-                Nombre
+                <%= userLogged.first_name %>
             </h3>
         </div>
         <div class="rcol-12 pad">
             <h3>
-                Apellido
+                <%= userLogged.last_name %>
             </h3>
         </div>
         <div class="col-12 pad">
             <h3>
-                Email
+                <%= userLogged.email %>
             </h3>
         </div>
         <div class="col-12">
-            <img src="../../../public/images/especialistas/images.jpeg" alt="profile">
+            <img src="/images/avatars/<%= userLogged.avatar %>" alt="profile">
         </div>
     </div>
 </body>
