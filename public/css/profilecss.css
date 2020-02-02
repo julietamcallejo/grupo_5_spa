@@ -28,3 +28,11 @@ body{
 img {
     border-radius: 50%;
 }
+
+.pic{
+    object-fit: contain;
+    align: center;
+    object-fit: fill;
+    max-height: 200px;
+    max-width: 250px;
+}

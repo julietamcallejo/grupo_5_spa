@@ -133,7 +133,7 @@ const userController = {
 		// Destruir la cookie
 		res.cookie('userCookie', null, { maxAge: 1 });
         
-        return res.redirect('index');
+        return res.redirect('/index');
 		
 	}
 };
