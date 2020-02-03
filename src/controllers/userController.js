@@ -11,20 +11,19 @@ const pathAvatars = '/images/avatar';
 
 //**** Helpers ****//
 
-function traerUsuarios() {
+function traerUsuarios () {
     let usersFileContent = fs.readFileSync(pathUsers, 'utf-8');
     let usersArray;
 
     if (usersFileContent == '') {
         usersArray = [];
-    } else {
+    }else{
         usersArray = JSON.parse(usersFileContent);
-    }
-    ;
+    };
     return usersArray;
 };
 
-function generarId() {
+function generarId () {
     let usuarios = traerUsuarios();
     if (usuarios.length == 0) {
         return 1;
@@ -33,7 +32,7 @@ function generarId() {
     return lastUsers.id + 1;
 };
 
-function agregarUsuario(datoUsuario) {
+function agregarUsuario (datoUsuario) {
     let usuarios = traerUsuarios();
 
     usuarios.push(datoUsuario);
@@ -103,7 +102,7 @@ const userController = {
             req.session.userId = user.id;
 
             // Setear la cookie para mantener al usuario logueado
-            res.cookie('userCookie', user.id, {maxAge: 60000 * 60});
+            res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
 
 
             //res.json(user);
@@ -116,8 +115,7 @@ const userController = {
                 oldData: req.body
 
             });
-        }
-        ;
+        };
     },
 
     login: (req, res) => {
@@ -126,14 +124,14 @@ const userController = {
 
     profile: (req, res) => {
         let userLogged = getUserById(req.session.userId);
-        res.render('users/profile', {userLogged});
+        res.render('users/profile', { userLogged });
     },
 
     logout: (req, res) => {
         // Destruir la session
         req.session.destroy();
         // Destruir la cookie
-        res.cookie('userCookie', null, {maxAge: 1});
+        res.cookie('userCookie', null, { maxAge: 1 });
 
         return res.redirect('/index');
 
@@ -151,14 +149,13 @@ const userController = {
             } else {
                 usersArray = JSON.parse(usersFileContent);
             }
-            return usersArray;
-        }
 
-        for (let i = 0; i < usersArray.length; i++) {
-            if (usersArray[i].email == req.body.email) {
-                if (bcrypt.compareSync(req.body.password, usersArray[i].password)) {
-                    let usuarioALoguearse = usersArray[i];
-                    break;
+            for (let i = 0; i < usersArray.length; i++) {
+                if (usersArray[i].email == req.body.email) {
+                    if (bcrypt.compareSync(req.body.password, usersArray[i].password)) {
+                        let usuarioALoguearse = usersArray[i];
+                        break;
+                    }
                 }
             }
         }
@@ -169,14 +166,10 @@ const userController = {
                     msg: "Credenciales inválidas"
                 }]
             });
-
             req.session.usuarioLogueado = usuarioALoguearse;
             res.render('../views/users/profile.ejs');
-
-        } else {
-            return res.render("login", {errors: error.array()});
-        }
+        };
     }
-}
+};
 
 module.exports = userController;
