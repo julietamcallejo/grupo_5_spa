@@ -174,7 +174,7 @@ const userController = {
             res.render('../views/users/profile.ejs');
 
         } else {
-            return res.render("login", {errors: errors.errors});
+            return res.render("login", {errors: error.array()});
         }
     }
 }
