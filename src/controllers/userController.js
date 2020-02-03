@@ -138,9 +138,58 @@ const userController = {
     },
 
     processLogin: (req, res) => {
-        let errors = validationResult(req);
+        /* Funcion para utilizar en la vista, como parametro va a tener el campo del formulario y el array de errores. Sile campo del error existe retorna el msg.*/
+        const hasErrorGetMessage = (field, errors) => {
+            for (let oneError of errors) {
+                if (oneError.param == field) {
+                    return oneError.msg;
+                }
+            }
+            return false;
+        }
 
-        if (errors.isEmpty()) {
+        let errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            return res.render('users/login', {
+                errors: errors.array(),
+                hasErrorGetMessage,
+                oldData: req.body
+            });
+
+        } else {
+            // Buscar usuario por email
+            let user = getUserByEmail(req.body.email);
+
+            // Si encontramos al usuario
+            if (user != undefined) {
+                // Al ya tener al usuario, comparamos las contraseñas
+			    if (bcrypt.compareSync(req.body.password, user.password)) {
+				    // Setear en session el ID del usuario
+                    req.session.userId = user.id;
+                    
+                    // Setear la cookie
+				    if (req.body.remember) {
+					    res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
+                    }
+                
+                    // Redireccionamos al visitante a su perfil
+                    return res.redirect('/users/profile/');
+                } else {
+                    let usuarioInvalido = 'El usuario es inválido, verifique sus datos';
+                    res.render('users/login', {mensaje: usuarioInvalido});
+
+                }
+                
+
+                 
+                } else {
+                        let usuarioInvalido = 'El usuario es inválido, verifique sus datos';
+                        res.render('users/login', { mensaje: usuarioInvalido });
+                    }
+            }
+}
+        
+    /* if (errors.isEmpty()) {
             let usersFileContent = fs.readFileSync(pathUsers, 'utf-8');
             let usersArray;
 
@@ -169,7 +218,9 @@ const userController = {
             req.session.usuarioLogueado = usuarioALoguearse;
             res.render('../views/users/profile.ejs');
         };
-    }
+    } */
+   
 };
+
 
 module.exports = userController;

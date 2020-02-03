@@ -14,22 +14,48 @@
 <body id="login">
 <%- include('../partials/headerNav')%>
 <div class="container">
+    
     <form id="register-form" action='/users/login' method="POST">
         <div class="pad">
             <h3>Ingresar</h3>
         </div>
+        <div class="pad">
+            <h5 class="text-danger">
+                <% if (typeof mensaje !== 'undefined') { %>
+                    <p><%= mensaje %></p>
+                
+                <% } %>
+    
+            </h5>
+        </div>
+        
         <div class="container-fluid fondo">
             <div class = col-auto>
-                <input type="email" name='email' class="form-control is-invalid" id="inputEmail" placeholder="Email">
+                <input type="email" name='email' id="inputEmail" placeholder="Email" class="form-control 
+                <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('email', errors) ? 'is-invalid' : null %> 
+                <% } %>
+                "
+                value="<%= typeof oldData !== 'undefined' ? oldData.email : null %>" >
                 <div class="invalid-feedback">
-                    Por favor ingrese un email válido
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('email', errors) ? hasErrorGetMessage('email', errors) : null %>
+                    <% } %>
                 </div>
+                
             </div>
             <div class = col-auto>
-                <input type="password" name='password' class="form-control is-invalid" id="inputPassword" placeholder="Contraseña">
+                <input type="password" name='password' id="inputPassword" placeholder="Contraseña" class="form-control 
+                <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('password', errors) ? 'is-invalid' : null %> 
+                <% } %>
+                " >
                 <div class="invalid-feedback">
-                    Contraseña incorrecta
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('password', errors) ? hasErrorGetMessage('password', errors) : null %>
+                    <% } %>
                 </div>
+                
             </div>
             <br>
             <div class='checkBox'>

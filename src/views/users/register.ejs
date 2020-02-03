@@ -86,15 +86,11 @@
                 </div>
             </div>
             
-            <div class="col-auto fuente">
-                <label for="foto">Imagen de perfil</label><br>
+            <div class="custom-file">
+                <label class='custom-file-label' for="validatedCustomFile">Imagen de perfil</label><br>
                 
-                    <input type="file" name="avatar"
-                    class="form-control
-                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
-                    <%= hasErrorGetMessage('avatar', errors) ? 'is-invalid' : null %> 
-                    <% } %>
-                    " >
+                    <input type="file" name="avatar" class="custom-file-input" id="validatedCustomFile" required>
+                    
                     <div class="invalid-feedback">
                         <% if (typeof hasErrorGetMessage !== 'undefined') { %>
                             <%= hasErrorGetMessage('avatar', errors) ? hasErrorGetMessage('avatar', errors) : null %>
