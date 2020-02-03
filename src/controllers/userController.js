@@ -6,7 +6,6 @@ const {validationResult} = require('express-validator');
 
 const pathUsers = path.join(__dirname, '../data/users.json');
 const pathPublic = path.join(__dirname, '../../public/');
-
 const pathAvatars = '/images/avatar';
 
 //**** Helpers ****//
@@ -101,8 +100,10 @@ const userController = {
             // Setear en session el ID del usuario nuevo para auto loguearlo
             req.session.userId = user.id;
 
-            // Setear la cookie para mantener al usuario logueado
-            res.cookie('userCookie', user.id, {maxAge: 60000 * 60});
+            // Setear la cookie para mantener al usuario logueado (Checkbox RECORDAME)
+            if (req.body.remember != undefined){
+                res.cookie('userCookie', user.id, {maxAge: 60000 * 60});
+            }
 
 
             //res.json(user);
@@ -121,6 +122,39 @@ const userController = {
 
     login: (req, res) => {
         return res.render('users/login');
+        let errors = validationResult(req);
+
+        if (errors.isEmpty()) {
+            let usersFileContent = fs.readFileSync(pathUsers, 'utf-8');
+            let usersArray;
+
+            if (usersFileContent == '') {
+                usersArray = [];
+            } else {
+                usersArray = JSON.parse(usersFileContent);
+            }
+
+            for (let i = 0; i < usersArray.length; i++) {
+                if (usersArray[i].email == req.body.email) {
+                    if (bcrypt.compareSync(req.body.password, usersArray[i].password)) {
+                        let user.id = usersArray[i];
+                        break;
+                    }
+                }
+            }
+
+            if (user.id == undefined) {
+                return res.render("users/login", {
+                    errors: [{
+                        msg: "Credenciales inválidas"
+                    }]
+                });
+
+                req.session.usuarioLogueado = user.id;
+
+                res.render('/users/profile');
+            }
+        }
     },
 
     profile: (req, res) => {
@@ -138,39 +172,7 @@ const userController = {
 
     },
 
-    processLogin: (req, res) => {
-        let errors = validationResult(req);
-
-        if (errors.isEmpty()) {
-            let usersFileContent = fs.readFileSync(pathUsers, 'utf-8');
-            let usersArray;
-
-            if (usersFileContent == '') {
-                usersArray = [];
-            } else {
-                usersArray = JSON.parse(usersFileContent);
-            }
-
-            for (let i = 0; i < usersArray.length; i++) {
-                if (usersArray[i].email == req.body.email) {
-                    if (bcrypt.compareSync(req.body.password, usersArray[i].password)) {
-                        let usuarioALoguearse = usersArray[i];
-                        break;
-                    }
-                }
-            }
-
-            if (usuarioALoguearse == undefined) {
-                return res.render("login", {
-                    errors: [{
-                        msg: "Credenciales inválidas"
-                    }]
-                });
-                req.session.usuarioLogueado = usuarioALoguearse;
-                res.render('../views/users/profile.ejs');
-            }
-        }
-    }
+    //processLogin: (req, res) => {
 };
 
 module.exports = userController;

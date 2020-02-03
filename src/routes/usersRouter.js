@@ -40,7 +40,7 @@ router.get('/login', guestMiddleware, userController.login);
 
 router.post('/login', [
     check('email').isEmail(),
-    check('password').isLength({min: 8}).withMessage("La contraseña debe tener al menos 8 caracteres")
+    check('password').isLength({min: 6}).withMessage("La contraseña debe tener al menos 6 caracteres")
 ], userController.processLogin);
 
 router.get('/profile', authMiddleware, userController.profile);

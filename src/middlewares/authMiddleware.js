@@ -1,5 +1,5 @@
 function authMiddleware (req, res, next) {
-	if (req.session.userId != undefined) {
+	if (usuarioALoguearse != undefined) {
 		next();
 	} else {
 		res.render('/users/login');
