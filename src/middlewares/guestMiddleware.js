@@ -1,8 +1,9 @@
 function guestMiddleware (req, res, next) {
-	if (req.session.userId != undefined) {
-		return res.redirect('/users/profile');
+	if (req.session.userId == undefined) {
+		next();
+	} else {
+		res.render('/users/profile');
 	}
-	next();
 }
 
 module.exports = guestMiddleware;
