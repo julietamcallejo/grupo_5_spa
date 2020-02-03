@@ -9,6 +9,7 @@ const {check, validationResult, body} = require('express-validator');
 const upload = require('../middlewares/uploadRegisterMiddleware')
 const registerValidator = require('../middlewares/registerValidatorMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
+const guestMiddleware = require('../middlewares/guestMiddleware');
 
 // ************ Controller Require ************
 const userController = require('../controllers/userController');
@@ -31,11 +32,11 @@ function traerUsuarios () {
 var detalleUsuarios = traerUsuarios();
 
 // **** Rutas **** //
-router.get('/register', userController.register);
+router.get('/register', guestMiddleware, userController.register);
 
 router.post('/register', upload.single('avatar'), registerValidator, userController.storeUser);
 
-router.get('/login', userController.login);
+router.get('/login', guestMiddleware, userController.login);
 
 router.post('/login', [
     check('email').isEmail(),
@@ -44,7 +45,9 @@ router.post('/login', [
 
 router.get('/profile', authMiddleware, userController.profile);
 
-router.get('/logout', userController.logout);
+router.get('/logout', authMiddleware, userController.logout);
+
+/* CHEQUEO DE USUARIO LOGUEADO
 
 router.get('/check', function(req, res){
     if(req.session.usuarioLogueado == undefined){
@@ -52,6 +55,6 @@ router.get('/check', function(req, res){
     } else {
         res.send("El usuario logueado es " + req.session.usuarioLogueado.email);
     }
-});
+});*/
 
 module.exports = router;
