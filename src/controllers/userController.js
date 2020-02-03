@@ -102,7 +102,7 @@ const userController = {
             req.session.userId = user.id;
 
             // Setear la cookie para mantener al usuario logueado
-            res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
+            res.cookie('userCookie', user.id, {maxAge: 60000 * 60});
 
 
             //res.json(user);
@@ -115,7 +115,8 @@ const userController = {
                 oldData: req.body
 
             });
-        };
+        }
+        ;
     },
 
     login: (req, res) => {
@@ -124,14 +125,14 @@ const userController = {
 
     profile: (req, res) => {
         let userLogged = getUserById(req.session.userId);
-        res.render('users/profile', { userLogged });
+        res.render('users/profile', {userLogged});
     },
 
     logout: (req, res) => {
         // Destruir la session
         req.session.destroy();
         // Destruir la cookie
-        res.cookie('userCookie', null, { maxAge: 1 });
+        res.cookie('userCookie', null, {maxAge: 1});
 
         return res.redirect('/index');
 
@@ -158,17 +159,17 @@ const userController = {
                     }
                 }
             }
-        }
 
-        if (usuarioALoguearse == undefined) {
-            return res.render("login", {
-                errors: [{
-                    msg: "Credenciales inválidas"
-                }]
-            });
-            req.session.usuarioLogueado = usuarioALoguearse;
-            res.render('../views/users/profile.ejs');
-        };
+            if (usuarioALoguearse == undefined) {
+                return res.render("login", {
+                    errors: [{
+                        msg: "Credenciales inválidas"
+                    }]
+                });
+                req.session.usuarioLogueado = usuarioALoguearse;
+                res.render('../views/users/profile.ejs');
+            }
+        }
     }
 };
 
