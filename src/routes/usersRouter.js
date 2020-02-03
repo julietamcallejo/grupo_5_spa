@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const fs = require('fs');
+const {check, validationResult, body} = require('express-validator');
 
 //*** Middlewares ***/
 const upload = require('../middlewares/uploadRegisterMiddleware')
@@ -35,6 +36,11 @@ router.get('/register', userController.register);
 router.post('/register', upload.single('avatar'), registerValidator, userController.storeUser);
 
 router.get('/login', userController.login);
+
+router.post('/login', [
+    check('email').isEmail(),
+    check('password').isLength({min: 8}).withMessage("La contraseña debe tener al menos 8 caracteres")
+], userController.processLogin);
 
 router.get('/profile', authMiddleware, userController.profile);
 
