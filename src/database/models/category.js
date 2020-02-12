@@ -1,0 +1,26 @@
+module.exports = (sequelize, DataTypes) => {
+    // Nombre que se pasa en el define
+    let alias = 'Categories';
+    // Cols son las columnas y configuraciones de cada una
+    let cols = {
+        id: {
+            type: DataTypes.INTEGER,
+            autoincrement: true,
+            primaryKey: true
+        },
+        name: {
+            type: DataTypes.STRING
+        },
+        service_id: {
+            type: DataTypes.INTEGER,
+        }
+        
+    };
+    //Se pasa config con nombre de la tabla, y que no busque las columnas de createdAt y updatedAt
+    let config = {
+        tableName: 'categories',
+        timestamps: false
+    };
+    const Category = sequelize.define(alias, cols, config);
+    return Category;
+};
