@@ -2,6 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const {validationResult} = require('express-validator');
 
+//db
+const db = require('../database/models');
+const Services = db.services;
+
 const pathProductos = path.join(__dirname, '../data/productos.json'); 
 const pathPublic = path.join(__dirname, '../../public/');
 

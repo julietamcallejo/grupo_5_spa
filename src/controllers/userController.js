@@ -8,6 +8,10 @@ const pathUsers = path.join(__dirname, '../data/users.json');
 const pathPublic = path.join(__dirname, '../../public/');
 const pathAvatars = '/images/avatar';
 
+//db
+const db = require('../database/models');
+const Users = db.users;
+
 //**** Helpers ****//
 
 function traerUsuarios () {

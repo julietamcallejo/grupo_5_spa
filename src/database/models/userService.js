@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     // Nombre que se pasa en el define
-    let alias = 'Users_Services';
+    let alias = 'userService';
     // Cols son las columnas y configuraciones de cada una
     let cols = {
         id: {
@@ -14,28 +14,37 @@ module.exports = (sequelize, DataTypes) => {
         ticket: {
             type: DataTypes.INTEGER,
         },
-        sale_price: {
+        salePrice: {
             type: DataTypes.INTEGER,
         },
-        service_id: {
+        serviceId: {
             type: DataTypes.INTEGER,
         },
-        user_id: {
+        userId: {
             type: DataTypes.INTEGER,
         },
-        appointment_date: {
+        appointmentDate: {
             type: DataTypes.DATE
         },
-        purchase_date: {
+        purchaseDate: {
             type: DataTypes.DATE
         }        
         
     };
     //Se pasa config con nombre de la tabla, y que no busque las columnas de createdAt y updatedAt
-    let config = {
-        tableName: 'user_service',
-        timestamps: false
-    };
-    const User_Service = sequelize.define(alias, cols, config);
-    return User_Service;
+    // let config = {
+    //     tableName: 'user_service',
+    //     timestamps: false
+    // };
+    const UserService = sequelize.define(alias, cols, config);
+
+    UserService.belongsTo(models.services, {
+        as: 'service',
+        foreignKey: 'serviceId'
+    });
+    UserService.belongsTo(models.users, {
+        as: 'user',
+        foreignKey: 'userId'
+    });
+    return UserService;
 };

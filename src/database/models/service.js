@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     // Nombre que se pasa en el define
-    let alias = 'Services';
+    let alias = 'services';
     // Cols son las columnas y configuraciones de cada una
     let cols = {
         id: {
@@ -26,27 +26,34 @@ module.exports = (sequelize, DataTypes) => {
         price: {
             type: DataTypes.INTEGER
         },
-        category_id: {
+        categoryId: {
             type: DataTypes.INTEGER
         },
-        professional_id: {
+        userId: {
+            type: DataTypes.INTEGER
+        },
+        professionalId: {
             type: DataTypes.INTEGER
         }
     };
     //Se pasa config con nombre de la tabla, y que no busque las columnas de createdAt y updatedAt
-    let config = {
-        tableName: 'services',
-        timestamps: false
-    };
+    // let config = {
+    //     tableName: 'services',
+    //     timestamps: false
+    // };
     const Service = sequelize.define(alias, cols, config);
     Service.associate = (models) => {
-        Service.belongsTo(models.Categories, {
-            as: 'Category',
-            foreignKey: 'category_id'
+        Service.belongsTo(models.users, {
+            as: 'user',
+            foreignKey: 'userId'
         });
-        Service.belongsTo(models.Professionals, {
-            as: 'Professionals',
-            foreignKey: 'professional_id'
+        Service.belongsTo(models.categories, {
+            as: 'category',
+            foreignKey: 'categoryId'
+        });
+        Service.belongsTo(models.professionals, {
+            as: 'professional',
+            foreignKey: 'professionalId'
         });
 
     }

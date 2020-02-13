@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     // Nombre que se pasa en el define
-    let alias = 'Professionals';
+    let alias = 'professionals';
     // Cols son las columnas y configuraciones de cada una
     let cols = {
         id: {
@@ -8,10 +8,10 @@ module.exports = (sequelize, DataTypes) => {
             autoincrement: true,
             primaryKey: true
         },
-        first_name: {
+        firstName: {
             type: DataTypes.STRING
         },
-        last_name: {
+        lastName: {
             type: DataTypes.STRING
         },
         photo: {
@@ -19,10 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     //Se pasa config con nombre de la tabla, y que no busque las columnas de createdAt y updatedAt
-    let config = {
-        tableName: 'professionals',
-        timestamps: false
-    };
+    // let config = {
+    //     tableName: 'professionals',
+    //     timestamps: false
+    // };
     const Professional = sequelize.define(alias, cols, config);
     return Professional;
 };
