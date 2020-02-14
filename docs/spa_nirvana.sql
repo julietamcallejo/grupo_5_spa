@@ -1,0 +1,14 @@
+CREATE TABLE `userService` (
+`id` INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+`quantity` INT(10) UNSIGNED DEFAULT NULL,
+`appointmentDate` DATE NOT NULL,
+`salePrice` decimal(8,2) NOT NULL,
+`purchaseDate` DATE NOT NULL,
+`ticket` INT(10) UNSIGNED,
+`createdAt` TIMESTAMP NULL DEFAULT NULL,
+`updatedAt` TIMESTAMP NULL DEFAULT NULL,
+`userId` INT(10) UNSIGNED NOT NULL,
+`serviceId` INT(10) UNSIGNED NOT NULL,
+FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
+FOREIGN KEY (`serviceId`) REFERENCES `services` (`id`)
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
