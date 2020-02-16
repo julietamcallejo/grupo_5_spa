@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     //     tableName: 'services',
     //     timestamps: false
     // };
-    const Service = sequelize.define(alias, cols, config);
+    const Service = sequelize.define(alias, cols);
     Service.associate = (models) => {
         Service.belongsTo(models.users, {
             as: 'user',

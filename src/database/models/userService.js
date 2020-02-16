@@ -36,15 +36,15 @@ module.exports = (sequelize, DataTypes) => {
     //     tableName: 'user_service',
     //     timestamps: false
     // };
-    const UserService = sequelize.define(alias, cols, config);
+    const UserService = sequelize.define(alias, cols);
 
-    UserService.belongsTo(models.services, {
-        as: 'service',
-        foreignKey: 'serviceId'
-    });
-    UserService.belongsTo(models.users, {
-        as: 'user',
-        foreignKey: 'userId'
-    });
+    // UserService.belongsTo(models.services, {
+    //     as: 'service',
+    //     foreignKey: 'serviceId'
+    // });
+    // UserService.belongsTo(models.users, {
+    //     as: 'user',
+    //     foreignKey: 'userId'
+    // });
     return UserService;
 };
