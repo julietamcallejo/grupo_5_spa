@@ -47,6 +47,13 @@ var detalleProductos = traerProductos();
 
 const productController = {
     list: (req, res) => {
+        db.sequelize
+            .query('SELCECT * FROM services')
+            .then(services => res.send(services))
+            return;
+            
+    
+        
         res.render('products/productList', {detalleProducto: detalleProductos});
     },
     detailId: (req, res) => {

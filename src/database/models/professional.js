@@ -23,6 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     //     tableName: 'professionals',
     //     timestamps: false
     // };
-    const Professional = sequelize.define(alias, cols, config);
+    const Professional = sequelize.define(alias, cols);
     return Professional;
 };
