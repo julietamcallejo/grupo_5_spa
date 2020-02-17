@@ -9,7 +9,7 @@ let diskStorage = multer.diskStorage({
 		cb(null, fotosPath);
 	},
 	filename: function (req, file, cb) {
-        let productName = req.body.nombre.replace(/ /g, '-').toLowerCase();
+        let productName = req.body.name.replace(/ /g, '-').toLowerCase();
 		let finalName = productName + '-' + Date.now() + path.extname(file.originalname);
 		cb(null, finalName);
 	}

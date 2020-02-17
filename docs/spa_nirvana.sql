@@ -1,3 +1,10 @@
+
+-- MySQL dump 10.13  Distrib 8.0.17, for macos10.14 (x86_64)
+--
+-- Host: 127.0.0.1    Database: spa_nirvana
+-- ------------------------------------------------------
+-- Server version	5.7.26
+
 # ************************************************************
 # Sequel Pro SQL dump
 # Versión 4541
@@ -11,6 +18,7 @@
 # ************************************************************
 
 
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -20,8 +28,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Volcado de tabla categories
-# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `categories`;
 
@@ -157,8 +163,8 @@ CREATE TABLE `users` (
 DROP TABLE IF EXISTS `userService`;
 
 CREATE TABLE `userService` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `quantity` int(10) unsigned DEFAULT NULL,
+  `id` int(255) unsigned NOT NULL,
+  `quantity` int(255) unsigned DEFAULT NULL,
   `appointmentDate` date NOT NULL,
   `salePrice` decimal(8,2) NOT NULL,
   `purchaseDate` date NOT NULL,
@@ -175,6 +181,44 @@ CREATE TABLE `userService` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
+--
+-- Dumping data for table `userService`
+--
+
+LOCK TABLES `userService` WRITE;
+/*!40000 ALTER TABLE `userService` DISABLE KEYS */;
+/*!40000 ALTER TABLE `userService` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `firstName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `lastName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `avatar` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'no-image.png',
+  `admin` tinyint(4) DEFAULT '0',
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Reuven','Parkinson','rparkinson0@gravatar.com','ka3wWTgmCigi',NULL,0,NULL,NULL),(2,'Etta','Markwick','emarkwick1@stumbleupon.com','gb2bt99rUg',NULL,0,NULL,NULL),(3,'Bertrando','Konmann','bkonmann2@issuu.com','xcG1Jkw5JXPb',NULL,0,NULL,NULL),(4,'Gabriela','Fairbourn','gfairbourn3@admin.ch','BXncyMda',NULL,0,NULL,NULL),(5,'Ardith','Pleat','apleat4@theatlantic.com','qFuxRir',NULL,0,NULL,NULL),(6,'Sada','Attryde','sattryde5@hhs.gov','Efu4tE6ect',NULL,0,NULL,NULL),(7,'Chastity','Lissemore','clissemore6@edublogs.org','UcLJrl',NULL,0,NULL,NULL),(8,'Clyve','Saltsberger','csaltsberger7@ezinearticles.com','TXe89n',NULL,0,NULL,NULL),(9,'Aurilia','Cardon','acardon8@intel.com','Q1MRZ7wxK2d',NULL,0,NULL,NULL),(10,'Abner','Redihough','aredihough9@tripod.com','fijYmn',NULL,0,NULL,NULL),(11,'Horacio','Suarez','horacio@test.com','$2b$10$i5zN40EY6nnUKarJ4AIbkOc7VcbIbQP6BlfBH43dcFrG3cGejHJIq','1580051913546.jpg',0,NULL,NULL),(12,'H','S','test2@dh.com','$2b$10$UVAnsWOPEUTgroWWXdBp4.VvUo4LmHfHXC5qjkUDdr0C7DDQMeine','1580315215095.png',0,NULL,NULL),(13,'H1','S2','test3@dh.com','$2b$10$UVjvafGjVto/oJWs1q/al.Owe.YstSN9k9ATLwwG4eDhJYGIf0CBy','1580315771873.png',0,NULL,NULL),(14,'Horacio','Suarez','horaciosuarez@dh.com','$2b$10$TkF.H/7U/HeDJYCwJ8JMLu.AvBu87.zxwxS6cHpqsu1GGyAlz3wQi','horacio-1580408109655.jpg',0,NULL,NULL),(15,'Caterina','Znidarsic','cvznidarsic@gmail.com','$2b$10$sqFTi8eOJzDyDjU6PBNCx.22XaxPccoDd4/7YrUsrdxxrknCXKRC6','caterina-1580671317774.jpeg',0,NULL,NULL),(16,'Maria','La del barrio','nada@algo.com','$2b$10$0hglKyFvsCang.aJnpLMaO/docJ2YqA9IsQJitKf9otwEM/7epCcW','maria-1580671574074.jpeg',0,NULL,NULL),(17,'Ana','Lisa','ana@lisa.com','$2b$10$wwNYYZFsgdxPzOVBP5qp8uw4KUWSjroELNs4s5/kvOCT/Vt1XnhVy','NULL-user.png',0,NULL,NULL);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
@@ -183,3 +227,8 @@ CREATE TABLE `userService` (
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-02-16 14:25:17
+

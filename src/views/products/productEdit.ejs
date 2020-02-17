@@ -3,7 +3,7 @@
 <head>
 	<meta charset='UTF-8'>
 	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Editar Producto <%= producto.id %></title>
+    <title>Editar Producto <%= service.id %></title>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/fontawesome-all.css">
@@ -13,26 +13,45 @@
 <body>
 <%- include('../partials/headerNav') %>
 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-    <h1>Editar Servicio</h1>
+    <h1>Editar <%= service.name %></h1>
 </div>
-    <form action='/products/productEdit/<%= producto.id %>?_method=PUT' method='POST' enctype= 'multipart/form-data'>
+    <form action='/products/productEdit/<%= service.id %>?_method=PUT' method='POST' enctype= 'multipart/form-data'>
         <div class="container ancho">
             <div class="row">
                 <div class="col-12">
-                    <label for='nombre'>Nombre Servicio:</label>
-                    <input type='text' name='nombre' value=<%= producto.nombre %> class="form-control is-invalid" placeholder="Título"><br>
+                    <label for='name'>Nombre Servicio:</label>
+                    <input type='text' name='name' value=<%= service.name %> class="form-control is-invalid" placeholder="Título"><br>
                     <div class="invalid-feedback">
                         Por favor ingrese un texto válido
                     </div>
                     <br>
                     <br>
                 </div>
-                <!--<div class="col-12">
-                    <img src=<%= producto.foto %> width='20%' heigth='20%'>
-                </div>-->
+                
                 <div class="col-12">
                     <label for='category'>Categoría:</label>
-                    <input type=“text” name='category' value=<%=producto.category%> class="form-control is-invalid" placeholder="Categoría">
+                    <select name='categoryId' class="form-control">
+                        <option value=<%= service.categoryId %>><%=service.category.name%></option>
+                        
+                        <% categories.forEach(category => { %>
+                            <option value=<%= category.id %>><%= category.name %></option>
+
+
+
+
+
+                        <% }) %>
+                         
+
+                    </select>
+                    
+                    <br>
+                    <br>
+                </div>
+                <div class="col-12" id="textsize">
+                    <label for='description'>Descripción:</label>
+                    <textarea type="text" class="form-control is-invalid" placeholder="Descripción" id=“” name='description'
+                              cols=“30 rows=“10><%=service.description %></textarea>
                     <div class="invalid-feedback">
                         Por favor ingrese un texto válido
                     </div>
@@ -40,35 +59,26 @@
                     <br>
                 </div>
                 <div class="col-12" id="textsize">
-                    <label for='descripción'>Descripción:</label>
-                    <textarea type="text" class="form-control is-invalid" placeholder="Descripción" id=“” name='descripción'
-                              cols=“30 rows=“10><%=producto.descripción %></textarea>
+                    <label for='summary'>Resumen:</label>
+                    <textarea type="text" class="form-control is-invalid" placeholder="Resumen del service" id=“”
+                              name='summary' cols=“30 rows=“10><%= service.summary %></textarea>
                     <div class="invalid-feedback">
                         Por favor ingrese un texto válido
                     </div>
                     <br>
-                    <br>
-                </div>
-                <div class="col-12" id="textsize">
-                    <label for='resumen'>Resumen:</label>
-                    <textarea type="text" class="form-control is-invalid" placeholder="Resumen del producto" id=“”
-                              name='resumen' cols=“30 rows=“10><%= producto.resumen %></textarea>
-                    <div class="invalid-feedback">
-                        Por favor ingrese un texto válido
-                    </div>
-                    <br>
+                
                 </div>
                 <div class="col-6">
                     <label for='duration'>Duración:</label>
-                    <input type="number" min="0" name='duration' class="form-control is-invalid" placeholder="Duración" value=<%= producto.duration %>>
+                    <input type="number" min="0" name='duration' class="form-control is-invalid" placeholder="Duración" value=<%= service.duration %>>
                     <div class="invalid-feedback">
                         Por favor ingrese un valor válido
                     </div>
                     <br>
                 </div>
                 <div class="col-6">
-                    <label for='precio'>Precio:</label>
-                    <input type="number" class="form-control is-invalid" placeholder="Precio" name='precio' value=<%= producto.precio %>>
+                    <label for='price'>Precio:</label>
+                    <input type="number" class="form-control is-invalid" placeholder="Precio" name='price' value=<%= service.price %>>
                     <div class="invalid-feedback">
                         Por favor ingrese un valor válido
                     </div>
@@ -76,12 +86,12 @@
                     <br>
                 </div>
                 <div class="col-12">
-                    <img src=<%= producto.foto %> width='30%' heigth='30%'>
+                    <img src=<%= service.photo %> width='30%' heigth='30%'>
                 </div>
                 <div class="col-12">
-                    <label for='foto'>Reemplazar Foto:</label>
+                    <label for='photo'>Reemplazar Foto:</label>
                     <br>
-                        <input type="file" name='foto'>
+                        <input type="file" name='photo'>
                     <br><br><br>
                 </div>
                 <div class="col-12">

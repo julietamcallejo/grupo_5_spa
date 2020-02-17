@@ -3,16 +3,16 @@ const path = require('path');
 
 
 module.exports = [
-	check('nombre', 'Debe darle un Nombre al Servicio').notEmpty(),
-    check('descripción', 'Su servicio debe tener una descripción').notEmpty(),
-    check('resumen', 'Agregue un resúmen').notEmpty(),
-    check('duracion')
+	check('name', 'Debe darle un Nombre al Servicio').notEmpty(),
+    check('description', 'Su servicio debe tener una descripción').notEmpty(),
+    check('rsummary', 'Agregue un resúmen').notEmpty(),
+    check('duration')
     .notEmpty().withMessage('Agregue una duración en minutos').bail()
     .isInt({ min: 10}).withMessage('Ingrese una duración mayor a 10 minutos'),
-    check('precio')
+    check('price')
     .notEmpty().withMessage('Agregue un precio').bail()
     .isInt({ min: 100}).withMessage('Ingrese un precio válido'),
-    check('foto')
+    check('photo')
     .custom((value, { req }) => {
         let acceptedExtensions = ['.jpg', '.jpeg', '.png'];
         if (typeof req.file == 'undefined') {

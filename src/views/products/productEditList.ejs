@@ -14,26 +14,26 @@
 	<%- include('../partials/headerNav')%>
 <div class="container">
 	<div class="col-auto">
-		<h1>Servicios</h1>
+		<h1>Mis servicios</h1>
 	</div>
-	<% for (let i=0; i < detalleProducto.length; i++){  %>
-		<% let actualProduct = detalleProducto[i] %>
+	<% for (let i=0; i < services.length; i++){  %>
+		<% let actualService = services[i] %>
         <div class="row padd">
 			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 picDetail1">
-				<a class="picDetail2" href="/products/productDetail/<%= i %>">
-					<img class="picDetail2" src=<%= actualProduct.foto %>>
+				<a class="picDetail2" href="/products/productDetail/<%= actualService.id %>">
+					<img class="picDetail2" src=<%= actualService.photo %>>
 				</a>
 			</div>
 			<div class="col-12 col-sm-6 col-md-6 col-lg-9 col-xl-9 fondo">
 				<a  href="/products/productDetail/<%= i %>">
-					<h3 class="textoProd"> <%= actualProduct.nombre %> </h3>
-					<p class="textoProd"> <%= actualProduct.descripción %> </p>
-					<h5 class="textoProd">Precio: $<%= actualProduct.precio %> </h5>
+					<h3 class="textoProd"> <%= actualService.name %> </h3>
+					<p class="textoProd"> <%= actualService.description %> </p>
+					<h5 class="textoProd">Precio: $<%= actualService.price %> </h5>
                 </a>
                 <div class='productEdit'>
-					<a href="/products/productEdit/<%= actualProduct.id %>">
+					<a href="/products/productEdit/<%= actualService.id %>">
 						<button class="btn btn-info boton">Editar</button></a>
-					<form method="POST" action="/products/productDelete/<%= actualProduct.id %>?_method=DELETE">
+					<form method="POST" action="/products/productDelete/<%= actualService.id %>?_method=DELETE">
 						<button class="btn btn-info boton" type="submit">Borrar</button>
 					</form>
                 </div>
