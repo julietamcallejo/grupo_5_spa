@@ -1,6 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
+//db
+const db = require('../database/models/');
+const Services = db.services;
+const Categories = db.categories;
+
+//Paths
 const pathProductos = path.join(__dirname, '../data/productos.json'); 
 const pathUsers = path.join(__dirname, '../data/users.json');
 
@@ -40,11 +46,22 @@ var detalleProductos = traerProductos();
 
 const controller = {
 	root: (req, res) => {
-		//let userLogged = getUserById(req.session.userId);
-		res.render('index', {
-			//userLogged: userLogged, 
-			detalleProductos: detalleProductos
-		});
+        //let userLogged = getUserById(req.session.userId);
+        Services
+        .findAll({
+            where: {
+                categoryId: 1
+            },
+            limit: 3
+        })
+        .then(services => {
+            res.render('index', {
+                //userLogged: userLogged, 
+                services
+            });
+
+        })
+		
 	},
 	contact: (req, res) => {
 		res.render('contact');

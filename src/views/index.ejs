@@ -35,75 +35,26 @@
         <!--Listado de productos seleccionados-->
         <div class= 'articleContainer container-fluid'>
             <div class='row'>
-            <article class='productoHome col-lg-4 col-md-6 col-12'>
-                <a href="/products/productDetail/6">
-                    <div class='imgProductHome'>
-                        <img src=<%= detalleProductos[6].foto %>>
-                    </div>
-                    <div class='productDescriptionHome'>
-                    <h3><%= detalleProductos[6].nombre %></h3>
-                    <p><%= detalleProductos[6].resumen %></p>
-                    </div>
-                </a>
-            </article>
-            <article class='productoHome col-lg-4 col-md-6 col-12'>
-                <a href="/products/productDetail/1">
-                    <div class='imgProductHome'>
-                        <img src=<%= detalleProductos[1].foto %>>
-                    </div>
-                    <div class='productDescriptionHome'>
-                    <h3><%= detalleProductos[1].nombre %></h3>
-                    <p><%= detalleProductos[1].resumen %></p>
-                    </div>
-                </a>
-            </article>
-            <article class='productoHome col-lg-4 col-md-6 col-12'>
-                <a href="/products/productDetail/2">
-                    <div class='imgProductHome'>
-                        <img src=<%= detalleProductos[2].foto %>>
-                    </div>
-                    <div class='productDescriptionHome'>
-                    <h3><%= detalleProductos[2].nombre %></h3>
-                    <p><%= detalleProductos[2].resumen %></p>
-                    </div>
-                </a>
-            </article>
+                <% services.forEach(service => { %>
+                    <article class='productoHome col-lg-4 col-md-6 col-12'>
+                        <a href="/products/productDetail/<%= service.id %>">
+                            <div class='imgProductHome'>
+                                <img src=<%= service.photo %>>
+                            </div>
+                            <div class='productDescriptionHome'>
+                            <h3><%= service.name %></h3>
+                            <p><%= service.summary %></p>
+                            </div>
+                        </a>
+                    </article>
+
+
+
+                    <% }) %>
+
+            
         </div>
-        <div class='row'>
-            <article class='productoHome col-lg-4 col-md-6 col-12'>
-                <a href="/products/productDetail/3">
-                    <div class='imgProductHome'>
-                        <img src=<%= detalleProductos[3].foto %>>
-                    </div>
-                    <div class='productDescriptionHome'>
-                    <h3><%= detalleProductos[3].nombre %></h3>
-                    <p><%= detalleProductos[3].resumen %></p>
-                    </div>
-                </a>
-            </article>
-            <article class='productoHome col-lg-4 col-md-6 col-12'>
-                <a href="/products/productDetail/4">
-                    <div class='imgProductHome'>
-                        <img src=<%= detalleProductos[4].foto %>>
-                    </div>
-                    <div class='productDescriptionHome'>
-                    <h3><%= detalleProductos[4].nombre %></h3>
-                    <p><%= detalleProductos[4].resumen %></p>
-                    </div>
-                </a>
-            </article>
-            <article class='productoHome col-lg-4 col-md-6 col-12'>
-                <a href="/products/productDetail/5">
-                    <div class='imgProductHome'>
-                        <img src=<%= detalleProductos[5].foto %>>
-                    </div>
-                    <div class='productDescriptionHome'>
-                    <h3><%= detalleProductos[5].nombre %></h3>
-                    <p><%= detalleProductos[5].resumen %></p>
-                    </div>
-                </a>
-            </article>
-        </div>
+        
         </div>
     </body>
     

@@ -7,45 +7,11 @@ const db = require('../database/models/');
 const Services = db.services;
 const Categories = db.categories;
 
-const pathProductos = path.join(__dirname, '../data/productos.json'); 
-const pathPublic = path.join(__dirname, '../../public/');
-
+//path 
+const pathPublic = path.join(__dirname, '../../public');
 const FotosProductos = '/images/tatamientos/';
-//**** Helpers ****//
 
-function traerProductos () {
-    let productFileContent = fs.readFileSync(pathProductos, 'utf-8');
-    let productArray;
-    if (productFileContent == '') {
-        productArray = [];
-    }else{
-        productArray = JSON.parse(productFileContent);
-    };
-    return productArray;
-};
-
-function generarId () {
-    let productos = traerProductos();
-    if (productos.lenght == 0) {
-        return 1;
-    }
-    let lastProduct = productos.pop();
-    return lastProduct.id + 1;
-};
-
-function agregarProducto (datoProducto) {
-    let productos = traerProductos();
-    productos.push(datoProducto);
-    fs.writeFileSync(pathProductos, JSON.stringify(productos, null, ''));
-};
-
-function guardarProductos (productos) {
-   
-    fs.writeFileSync(pathProductos, JSON.stringify(productos, null, ''));
-};
-
-var detalleProductos = traerProductos();
-
+//Controller
 const productController = {
     list: (req, res) => {
         Services
@@ -97,28 +63,26 @@ const productController = {
         let errors = validationResult(req);
 
         if (errors.isEmpty()) {
+            //armado del body con la foto
             req.body = {
                 photo: (FotosProductos + req.file.filename),
                 ...req.body,
                 };
             Services
             .create(req.body)
-            .then( service => {
-                return res.redirect('/products/productDetail/' + service.id);
-            })
+            .then( () => {
+                Services
+                .findAll({
+                    order: [['id', 'DESC']],
+                    limit: 1
+                })
+                .then(service => {
+                    return res.redirect('/products/productDetail/' + service[0].id);
 
-        
-        
-        // req.body = {
-        //     id: generarId(),
-        //     foto: (FotosProductos + req.file.filename),
-        //     ...req.body,
-        // }
-        // let productoNuevo = req.body;
-        // agregarProducto(productoNuevo);
-        
-        // //res.json(productoNuevo)
-        // res.redirect('/products/productList');
+                })
+    
+            });
+
         } else {
         //return res.send(errors);
         return res.render('product/productAdd', {
@@ -158,7 +122,26 @@ const productController = {
         
     },
     updateProduct: (req, res) => {
-        
+        //Armar el body antes de pasar y cuidado con la foto
+        if (req.file) {
+            req.body = {
+                photo: (FotosProductos + req.file.filename),
+                ...req.body,
+            };
+        } else {
+            Services
+            .findByPk(req.params.idProduct)
+            .then(service => {
+                req.body = {
+                    photo: service.photo,
+                    ...req.body,
+            };
+
+            });
+            
+    };
+
+
         Services
         .update(req.body, {
             where: {id: req.params.idProduct}
@@ -176,19 +159,13 @@ const productController = {
         Services
         .findByPk(id)
         .then( service => {
+            let pathFotoABorrar = pathPublic + service.photo;
+            fs.unlinkSync(pathFotoABorrar);
             service.destroy();
             return res.redirect('/products/productList');
-        })
-        // let arrayProductos = detalleProductos.filter( producto => {return producto.id != id});
-        // guardarProductos(arrayProductos);
+        });
         
-        // //Borrado de la imagen
-        // let fotoABorrar = detalleProductos.find( producto => { return producto.id == id}).foto;
-        // let pathFotoABorrar = pathPublic + fotoABorrar;
-        // fs.unlinkSync(pathFotoABorrar);
-
-        // return res.redirect('/products/productList');
-        // //res.send(pathFotoABorrar);
+        
     }
 };
 

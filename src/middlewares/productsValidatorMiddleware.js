@@ -5,7 +5,7 @@ const path = require('path');
 module.exports = [
 	check('name', 'Debe darle un Nombre al Servicio').notEmpty(),
     check('description', 'Su servicio debe tener una descripción').notEmpty(),
-    check('rsummary', 'Agregue un resúmen').notEmpty(),
+    check('summary', 'Agregue un resúmen').notEmpty(),
     check('duration')
     .notEmpty().withMessage('Agregue una duración en minutos').bail()
     .isInt({ min: 10}).withMessage('Ingrese una duración mayor a 10 minutos'),
