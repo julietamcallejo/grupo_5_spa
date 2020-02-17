@@ -9,7 +9,7 @@ let diskStorage = multer.diskStorage({
 		cb(null, avatarPathFolder);
 	},
 	filename: function (req, file, cb) {
-        let userFirstName = req.body.first_name.replace(/ /g, '-').toLowerCase();
+        let userFirstName = req.body.firstName.replace(/ /g, '-').toLowerCase();
 		let finalName = userFirstName + '-' + Date.now() + path.extname(file.originalname);
 		cb(null, finalName);
 	}

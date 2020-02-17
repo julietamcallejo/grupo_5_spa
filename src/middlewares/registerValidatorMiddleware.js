@@ -19,8 +19,8 @@ function traerUsuarios () {
 var detalleUsuarios = traerUsuarios();
 
 module.exports = [
-	check('first_name', 'Este campo debe estar completo').notEmpty(),
-	check('last_name', 'Este campo debe estar completo').notEmpty(),
+	check('firstName', 'Este campo debe estar completo').notEmpty(),
+	check('lastName', 'Este campo debe estar completo').notEmpty(),
     check('email')
     .notEmpty().withMessage('Debe ingresar un email').bail()
     .isEmail().withMessage('Ingresar un email con formato válido').bail()

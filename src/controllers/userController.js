@@ -14,10 +14,9 @@ const Users = db.users;
 
 //**** Helpers ****//
 
-function traerUsuarios () {
+/*function traerUsuarios () {
     let usersFileContent = fs.readFileSync(pathUsers, 'utf-8');
     let usersArray;
-
     if (usersFileContent == '') {
         usersArray = [];
     }else{
@@ -33,17 +32,15 @@ function generarId () {
     }
     let lastUsers = usuarios.pop();
     return lastUsers.id + 1;
-};
+};*/
 
-function agregarUsuario (datoUsuario) {
+/*function agregarUsuario (datoUsuario) {
     let usuarios = traerUsuarios();
-
     usuarios.push(datoUsuario);
     fs.writeFileSync(pathUsers, JSON.stringify(usuarios, null, ''));
+};*/
 
-};
-
-function getUserByEmail(email) {
+/*function getUserByEmail(email) {
     let allUsers = traerUsuarios();
     let userByEmail = allUsers.find(oneUser => oneUser.email == email);
     return userByEmail;
@@ -53,17 +50,20 @@ function getUserById(id) {
     let allUsers = traerUsuarios();
     let userById = allUsers.find(oneUser => oneUser.id == id);
     return userById;
-};
+};*/
 
-var detalleUsuarios = traerUsuarios();
+/*var detalleUsuarios = traerUsuarios();*/
 
 const userController = {
     register: (req, res) => {
-        res.render('users/register');
+        Users
+            .findAll()
+            .then(users => {
+                return res.render('users/register', { users })
+            })
+            .catch(error => res.send(error))
     },
-
     storeUser: (req, res) => {
-
         /* Funcion para utilizar en la vista, como parametro va a tener el campo del formulario y el array de errores. Sile campo del error existe retorna el msg.*/
         const hasErrorGetMessage = (field, errors) => {
             for (let oneError of errors) {
@@ -75,7 +75,6 @@ const userController = {
         }
 
         //*** Traigo los errores y valido ***/
-
         let errors = validationResult(req);
 
         if (errors.isEmpty()) {
@@ -92,14 +91,15 @@ const userController = {
             } else {
                 avatar = req.file.filename;
             }
-            let user = {
-                id: generarId(),
-                avatar: avatar,
-                ...req.body,
-            };
+
+            //let user = {
+            //    id: generarId(),
+            //    avatar: avatar,
+            //    ...req.body,
+            //};
 
             // Guardar al usario y como la función retorna la data del usuario lo almacenamos en ela variable "user"
-            agregarUsuario(user);
+            //agregarUsuario(user);
 
             // Setear en session el ID del usuario nuevo para auto loguearlo
             req.session.userId = user.id;
@@ -108,8 +108,6 @@ const userController = {
             if (req.body.remember != undefined){
                 res.cookie('userCookie', user.id, {maxAge: 60000 * 60});
             }
-
-
             //res.json(user);
             res.redirect('/users/profile');
         } else {
@@ -118,19 +116,27 @@ const userController = {
                 errors: errors.array(),
                 hasErrorGetMessage,
                 oldData: req.body
-
             });
         }
         ;
     },
-
     login: (req, res) => {
-        return res.render('users/login');
+        Users
+            .findAll()
+            .then(users => {
+                return res.render('users/login', { users })
+            })
+            .catch(error => res.send(error))
     },
 
     profile: (req, res) => {
-        let userLogged = getUserById(req.session.userId);
-        res.render('users/profile', { userLogged });
+        /*let userLogged = getUserById(req.session.userId);*/
+        Users
+            .findByPk(req.session.userId)
+            .then(userLogged => {
+                res.render('users/profile', { userLogged });
+            })
+            .catch(error => res.send(error))
     },
 
     logout: (req, res) => {
@@ -140,11 +146,10 @@ const userController = {
         res.cookie('userCookie', null, { maxAge: 1 });
 
         return res.redirect('/index');
-
     },
 
     processLogin: (req, res) => {
-        /* Funcion para utilizar en la vista, como parametro va a tener el campo del formulario y el array de errores. Sile campo del error existe retorna el msg.*/
+        /* Funcion para utilizar en la vista, como parametro va a tener el campo del formulario y el array de errores. Si el campo del error existe retorna el msg.*/
         const hasErrorGetMessage = (field, errors) => {
             for (let oneError of errors) {
                 if (oneError.param == field) {
@@ -164,10 +169,10 @@ const userController = {
 
         } else {
             // Buscar usuario por email
-            let user = getUserByEmail(req.body.email);
+            /*let user = getUserByEmail(req.body.email);*/
 
             // Si encontramos al usuario
-            if (user != undefined) {
+            if (user.email != undefined) {
                 // Al ya tener al usuario, comparamos las contraseñas
 			    if (bcrypt.compareSync(req.body.password, user.password)) {
 				    // Setear en session el ID del usuario
@@ -183,36 +188,13 @@ const userController = {
                 } else {
                     let usuarioInvalido = 'El usuario es inválido, verifique sus datos';
                     res.render('users/login', {mensaje: usuarioInvalido});
-
-                }
-                
-
-                 
-                } else {
-                        let usuarioInvalido = 'El usuario es inválido, verifique sus datos';
-                        res.render('users/login', { mensaje: usuarioInvalido });
                     }
+            } else {
+                let usuarioInvalido = 'El usuario es inválido, verifique sus datos';
+                res.render('users/login', {mensaje: usuarioInvalido});
             }
-},
-        
-    
-   
-    profile: (req, res) => {
-        let userLogged = getUserById(req.session.userId);
-        res.render('users/profile', {userLogged});
+        }
     },
-
-    logout: (req, res) => {
-        // Destruir la session
-        req.session.destroy();
-        // Destruir la cookie
-        res.cookie('userCookie', null, {maxAge: 1});
-
-        return res.redirect('/index');
-
-    }
-
-    
 };
 
 

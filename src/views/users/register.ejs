@@ -30,7 +30,7 @@
             <% //} %>
             -->
             <div class="col-auto">
-                <input type="text" name='first_name' id="inputText" placeholder="Nombre" 
+                <input type="text" name='firstName' id="inputText" placeholder="Nombre"
                 class="form-control
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %>
                     <%= hasErrorGetMessage('first_name', errors) ? 'is-invalid' : null %> 
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="col-auto">
-                <input type="text" name='last_name' id="inputText" placeholder="Apellido"
+                <input type="text" name='lastName' id="inputText" placeholder="Apellido"
                 class="form-control
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %>
                     <%= hasErrorGetMessage('last_name', errors) ? 'is-invalid' : null %> 
