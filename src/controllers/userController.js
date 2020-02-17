@@ -57,7 +57,10 @@ function getUserById(id) {
 const userController = {
     register: (req, res) => {
         Users
-            .findAll()
+            .findAll({
+                order: [['id', 'DESC']],
+                limit: 1
+            })
             .then(users => {
                 return res.render('users/register', { users })
             })
@@ -98,7 +101,7 @@ const userController = {
             //    ...req.body,
             //};
 
-            // Guardar al usario y como la función retorna la data del usuario lo almacenamos en ela variable "user"
+            // Guardar al usario y como la función retorna la data del usuario lo almacenamos en la variable "user"
             //agregarUsuario(user);
 
             // Setear en session el ID del usuario nuevo para auto loguearlo
