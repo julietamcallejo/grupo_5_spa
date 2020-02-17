@@ -1,9 +1,15 @@
 const { check } = require('express-validator');
 const path = require('path');
 const fs = require('fs');
-const pathUsers = path.join(__dirname, '../data/users.json'); 
+const pathUsers = path.join(__dirname, '../data/users.json');
+
+//db
+const db = require('../database/models');
+const Users = db.users;
 
 //**** Helpers ****//
+
+
 
 function traerUsuarios () {
     let usersFileContent = fs.readFileSync(pathUsers, 'utf-8');
@@ -23,16 +29,25 @@ module.exports = [
 	check('lastName', 'Este campo debe estar completo').notEmpty(),
     check('email')
     .notEmpty().withMessage('Debe ingresar un email').bail()
-    .isEmail().withMessage('Ingresar un email con formato válido').bail()
-    .custom(function (value){
-		let user = detalleUsuarios.find( usuario => usuario.email == value);
-		if (user != undefined) {
-			return false;
-		}else{
-			return true;
-		}
+    .isEmail().withMessage('Ingresar un email con formato válido').bail(),
+    /*.custom(function (value){
+        Users
+            .findOne({
+                where: {
+                    email: value
+                }
+            })
+            .then(user => {
+                if (user != null) {
+                    return false;
+                }else{
+                    return true;
+                }
 
-	}).withMessage('Email ya registrado anteriormente'),
+            })
+
+
+	}).withMessage('Email ya registrado anteriormente'),*/
     check('password')
     .notEmpty().withMessage('Debe ingresar una contraseña').bail()
     .isLength({min: 6}).withMessage('La contraseña debe tener al menos 6 caracteres'),

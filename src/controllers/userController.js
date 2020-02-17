@@ -56,15 +56,7 @@ function getUserById(id) {
 
 const userController = {
     register: (req, res) => {
-        Users
-            .findAll({
-                order: [['id', 'DESC']],
-                limit: 1
-            })
-            .then(users => {
-                return res.render('users/register', { users })
-            })
-            .catch(error => res.send(error))
+        return res.render('users/register')
     },
     storeUser: (req, res) => {
         /* Funcion para utilizar en la vista, como parametro va a tener el campo del formulario y el array de errores. Sile campo del error existe retorna el msg.*/
@@ -95,24 +87,44 @@ const userController = {
                 avatar = req.file.filename;
             }
 
-            //let user = {
-            //    id: generarId(),
-            //    avatar: avatar,
-            //    ...req.body,
-            //};
+            let user = {
+                avatar: avatar,
+                ...req.body,
+            };
 
-            // Guardar al usario y como la función retorna la data del usuario lo almacenamos en la variable "user"
-            //agregarUsuario(user);
+            /*// Guardar al usario y como la función retorna la data del usuario lo almacenamos en la variable "user"
+            agregarUsuario(user);
 
             // Setear en session el ID del usuario nuevo para auto loguearlo
-            req.session.userId = user.id;
+            req.session.userId = user.id;*/
+            Users
+                .create(user)
+                .then(newUser => {
+                    Users
+                        .findOne({
+                            where: {
+                                email: newUser.email
+                            }
+                        })
+                        .then(user => {
+                            req.session.userId = user.id;
+                            if (req.body.remember != undefined) {
+                                res.cookie('userCookie', user.id, {maxAge: 60000 * 60});
+                            };
+
+                            //return res.send(newUser);
+                            return res.redirect('/users/profile');
+
+                        })
+
+                })
 
             // Setear la cookie para mantener al usuario logueado (Checkbox RECORDAME)
-            if (req.body.remember != undefined){
-                res.cookie('userCookie', user.id, {maxAge: 60000 * 60});
-            }
+            //if (req.body.remember != undefined){
+              //  res.cookie('userCookie', user.id, {maxAge: 60000 * 60});
+            //}
             //res.json(user);
-            res.redirect('/users/profile');
+            //res.redirect('/users/profile');
         } else {
             //return res.send(errors);
             return res.render('users/register', {
@@ -124,12 +136,7 @@ const userController = {
         ;
     },
     login: (req, res) => {
-        Users
-            .findAll()
-            .then(users => {
-                return res.render('users/login', { users })
-            })
-            .catch(error => res.send(error))
+        return res.render('users/login')
     },
 
     profile: (req, res) => {
