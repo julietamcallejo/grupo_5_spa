@@ -33,13 +33,13 @@
                 <input type="text" name='firstName' id="inputText" placeholder="Nombre"
                 class="form-control
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %>
-                    <%= hasErrorGetMessage('first_name', errors) ? 'is-invalid' : null %> 
+                    <%= hasErrorGetMessage('firstNname', errors) ? 'is-invalid' : null %> 
                 <% } %>
                 "
                 value="<%= typeof oldData !== 'undefined' ? oldData.first_name : null %>" >
                 <div class="invalid-feedback">
                     <% if (typeof hasErrorGetMessage !== 'undefined') { %>
-                        <%= hasErrorGetMessage('first_name', errors) ? hasErrorGetMessage('first_name', errors) : null %>
+                        <%= hasErrorGetMessage('firstName', errors) ? hasErrorGetMessage('firstName', errors) : null %>
                     <% } %>
                 </div>
             </div>
@@ -47,13 +47,13 @@
                 <input type="text" name='lastName' id="inputText" placeholder="Apellido"
                 class="form-control
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %>
-                    <%= hasErrorGetMessage('last_name', errors) ? 'is-invalid' : null %> 
+                    <%= hasErrorGetMessage('lastName', errors) ? 'is-invalid' : null %> 
                 <% } %>
                 "
                 value="<%= typeof oldData !== 'undefined' ? oldData.last_name : null %>" >
                 <div class="invalid-feedback">
                     <% if (typeof hasErrorGetMessage !== 'undefined') { %>
-                        <%= hasErrorGetMessage('last_name', errors) ? hasErrorGetMessage('last_name', errors) : null %>
+                        <%= hasErrorGetMessage('lastName', errors) ? hasErrorGetMessage('lastName', errors) : null %>
                     <% } %>
                 </div>
                 
