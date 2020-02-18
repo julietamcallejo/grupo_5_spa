@@ -29,8 +29,8 @@ module.exports = [
 	check('lastName', 'Este campo debe estar completo').notEmpty(),
     check('email')
     .notEmpty().withMessage('Debe ingresar un email').bail()
-    .isEmail().withMessage('Ingresar un email con formato válido').bail(),
-    /*.custom(function (value){
+    .isEmail().withMessage('Ingresar un email con formato válido').bail()
+    .custom(function (value){
         Users
             .findOne({
                 where: {
@@ -43,11 +43,8 @@ module.exports = [
                 }else{
                     return true;
                 }
-
             })
-
-
-	}).withMessage('Email ya registrado anteriormente'),*/
+	}).withMessage('Email ya registrado anteriormente'),
     check('password')
     .notEmpty().withMessage('Debe ingresar una contraseña').bail()
     .isLength({min: 6}).withMessage('La contraseña debe tener al menos 6 caracteres'),

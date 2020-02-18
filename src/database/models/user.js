@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
         admin: {
-            type: DataTypes.BOOLEAN
+            type: DataTypes.INTEGER
         }
     };
     //Se pasa config con nombre de la tabla, y que no busque las columnas de createdAt y updatedAt

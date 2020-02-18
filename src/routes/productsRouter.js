@@ -13,8 +13,8 @@ const authMiddleware = require('../middlewares/authMiddleware');
 const productController = require('../controllers/productController');
 
 
-/* GET - home page. */
 
+// **** Rutas **** //
 router.get('/productList', productController.list);
 router.get('/productEditList', productController.editList);
 router.get('/productEdit/:idProduct', productController.editProduct);

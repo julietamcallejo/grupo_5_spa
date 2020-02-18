@@ -181,8 +181,35 @@ const userController = {
             // Buscar usuario por email
             /*let user = getUserByEmail(req.body.email);*/
 
-            // Si encontramos al usuario
-            if (user.email != undefined) {
+            Users
+                .findOne({
+                    where: {email: req.body.email}
+                })
+                // Validación info de usuario
+                .then(user => {
+                    if(user != null){
+                       if (bcrypt.compareSync(req.body.password, user.password)) {
+                           // Setear en session el ID del usuario
+                           req.session.userId = user.id;
+
+                           // Setear la cookie
+                           if (req.body.remember) {
+                               res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
+                           }
+
+                           // Redireccionamos al visitante a su perfil
+                           return res.redirect('/users/profile/');
+                       } else {
+                           let usuarioInvalido = 'El usuario es inválido, verifique sus datos';
+                           res.render('users/login', {mensaje: usuarioInvalido});
+                       }
+                    } else {
+                        let usuarioInvalido = 'El usuario es inválido, verifique sus datos';
+                        res.render('users/login', {mensaje: usuarioInvalido});
+                    }
+                })
+            //Si lo encontramos
+            /*if (user.email != undefined) {
                 // Al ya tener al usuario, comparamos las contraseñas
 			    if (bcrypt.compareSync(req.body.password, user.password)) {
 				    // Setear en session el ID del usuario
@@ -202,7 +229,7 @@ const userController = {
             } else {
                 let usuarioInvalido = 'El usuario es inválido, verifique sus datos';
                 res.render('users/login', {mensaje: usuarioInvalido});
-            }
+            }*/
         }
     },
 };
