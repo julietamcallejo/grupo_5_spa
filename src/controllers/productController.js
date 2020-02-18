@@ -6,6 +6,7 @@ const {validationResult} = require('express-validator');
 const db = require('../database/models/');
 const Services = db.services;
 const Categories = db.categories;
+const Users = db.users;
 
 //path 
 const pathPublic = path.join(__dirname, '../../public');
@@ -63,23 +64,20 @@ const productController = {
         let errors = validationResult(req);
 
         if (errors.isEmpty()) {
+            let userSession = req.session.userId
+
             //armado del body con la foto
             req.body = {
                 photo: (FotosProductos + req.file.filename),
+                userId: userSession,
                 ...req.body,
                 };
             Services
             .create(req.body)
-            .then( () => {
-                Services
-                .findAll({
-                    order: [['id', 'DESC']],
-                    limit: 1
-                })
-                .then(service => {
-                    return res.redirect('/products/productDetail/' + service[0].id);
+            .then(serviceCreated => {
+                return res.redirect('/products/productDetail/' + serviceCreated.id);
 
-                })
+                
     
             });
 
@@ -122,6 +120,11 @@ const productController = {
         
     },
     updateProduct: (req, res) => {
+        let userSession = req.session.userId;
+        req.body = {
+            userId: userSession,
+            ...req.body,
+            };
         //Armar el body antes de pasar y cuidado con la foto
         if (req.file) {
             req.body = {

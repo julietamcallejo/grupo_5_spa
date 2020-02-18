@@ -1,58 +1,13 @@
-const fs = require('fs');
-const path = require('path');
 const bcrypt = require('bcrypt');
 
 const {validationResult} = require('express-validator');
 
-const pathUsers = path.join(__dirname, '../data/users.json');
-const pathPublic = path.join(__dirname, '../../public/');
-const pathAvatars = '/images/avatar';
 
 //db
 const db = require('../database/models');
 const Users = db.users;
 
-//**** Helpers ****//
 
-/*function traerUsuarios () {
-    let usersFileContent = fs.readFileSync(pathUsers, 'utf-8');
-    let usersArray;
-    if (usersFileContent == '') {
-        usersArray = [];
-    }else{
-        usersArray = JSON.parse(usersFileContent);
-    };
-    return usersArray;
-};
-
-function generarId () {
-    let usuarios = traerUsuarios();
-    if (usuarios.length == 0) {
-        return 1;
-    }
-    let lastUsers = usuarios.pop();
-    return lastUsers.id + 1;
-};*/
-
-/*function agregarUsuario (datoUsuario) {
-    let usuarios = traerUsuarios();
-    usuarios.push(datoUsuario);
-    fs.writeFileSync(pathUsers, JSON.stringify(usuarios, null, ''));
-};*/
-
-/*function getUserByEmail(email) {
-    let allUsers = traerUsuarios();
-    let userByEmail = allUsers.find(oneUser => oneUser.email == email);
-    return userByEmail;
-};
-
-function getUserById(id) {
-    let allUsers = traerUsuarios();
-    let userById = allUsers.find(oneUser => oneUser.id == id);
-    return userById;
-};*/
-
-/*var detalleUsuarios = traerUsuarios();*/
 
 const userController = {
     register: (req, res) => {
@@ -99,32 +54,21 @@ const userController = {
             req.session.userId = user.id;*/
             Users
                 .create(user)
-                .then(newUser => {
-                    Users
-                        .findOne({
-                            where: {
-                                email: newUser.email
-                            }
-                        })
-                        .then(user => {
-                            req.session.userId = user.id;
-                            if (req.body.remember != undefined) {
-                                res.cookie('userCookie', user.id, {maxAge: 60000 * 60});
-                            };
+                .then(user => {
+                    req.session.userId = user.id;
 
-                            //return res.send(newUser);
-                            return res.redirect('/users/profile');
+                    // Setear la cookie para mantener al usuario logueado (Checkbox RECORDAME)
+                    if (req.body.remember != undefined) {
+                        res.cookie('userCookie', user.id, {maxAge: 60000 * 60});
+                    };
 
-                        })
+                    //return res.send(newUser);
+                    return res.redirect('/users/profile');
 
-                })
+                });
 
-            // Setear la cookie para mantener al usuario logueado (Checkbox RECORDAME)
-            //if (req.body.remember != undefined){
-              //  res.cookie('userCookie', user.id, {maxAge: 60000 * 60});
-            //}
-            //res.json(user);
-            //res.redirect('/users/profile');
+            
+            
         } else {
             //return res.send(errors);
             return res.render('users/register', {

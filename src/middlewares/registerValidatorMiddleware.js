@@ -1,28 +1,12 @@
 const { check } = require('express-validator');
 const path = require('path');
-const fs = require('fs');
-const pathUsers = path.join(__dirname, '../data/users.json');
+
 
 //db
 const db = require('../database/models');
 const Users = db.users;
 
-//**** Helpers ****//
 
-
-
-function traerUsuarios () {
-    let usersFileContent = fs.readFileSync(pathUsers, 'utf-8');
-    let usersArray;
-
-    if (usersFileContent == '') {
-        usersArray = [];
-    }else{
-        usersArray = JSON.parse(usersFileContent);
-    };
-    return usersArray;
-};
-var detalleUsuarios = traerUsuarios();
 
 module.exports = [
 	check('firstName', 'Este campo debe estar completo').notEmpty(),
@@ -31,7 +15,7 @@ module.exports = [
     .notEmpty().withMessage('Debe ingresar un email').bail()
     .isEmail().withMessage('Ingresar un email con formato válido').bail()
     .custom(function (value){
-        Users
+        let emailValidation = Users
             .findOne({
                 where: {
                     email: value
@@ -43,7 +27,9 @@ module.exports = [
                 }else{
                     return true;
                 }
-            })
+                
+            });
+            return emailValidation;
 	}).withMessage('Email ya registrado anteriormente'),
     check('password')
     .notEmpty().withMessage('Debe ingresar una contraseña').bail()
