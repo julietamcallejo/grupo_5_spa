@@ -1,13 +1,13 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Versión 4541
+# Version 4541
 #
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
 # Host: 127.0.0.1 (MySQL 5.7.26)
-# Base de datos: spa_nirvana
-# Tiempo de Generación: 2020-02-17 01:48:45 +0000
+# Database: spa_nirvana
+# Generation Time: 2020-02-20 00:55:09 +0000
 # ************************************************************
 
 
@@ -20,8 +20,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Volcado de tabla categories
+# Dump of table categories
 # ------------------------------------------------------------
+
+CREATE DATABASE  IF NOT EXISTS `spa_nirvana` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci */;
+USE `spa_nirvana`;
 
 DROP TABLE IF EXISTS `categories`;
 
@@ -50,7 +53,7 @@ VALUES
 UNLOCK TABLES;
 
 
-# Volcado de tabla professionals
+# Dump of table professionals
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `professionals`;
@@ -78,7 +81,7 @@ VALUES
 UNLOCK TABLES;
 
 
-# Volcado de tabla services
+# Dump of table services
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `services`;
@@ -103,7 +106,7 @@ CREATE TABLE `services` (
   CONSTRAINT `services_ibfk_1` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`),
   CONSTRAINT `services_ibfk_2` FOREIGN KEY (`professionalId`) REFERENCES `professionals` (`id`),
   CONSTRAINT `services_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 LOCK TABLES `services` WRITE;
 /*!40000 ALTER TABLE `services` DISABLE KEYS */;
@@ -124,13 +127,20 @@ VALUES
 	(42,'Maderoterapia','Es un tratamiento que se basa en un masaje realizado a través del uso de instrumentos de madera de diferentes formas, tamaños y diseños. Estos instrumentos se adaptan a distintas partes del cuerpo consiguiendo la estimulación corporal.Mediante este método natural se puede ayudar a reducir los niveles de estrés, activar la renovación celular, reafirmar, tonificar el cuerpo, tratar la celulitis reduciendo los depósitos de grasa, modelar el contorno corporal y combatir diferentes dolores como el de espalda o cuello.','Es un tratamiento que se basa en un masaje realizado a través del uso de instrumentos de madera de diferentes formas, tamaños y diseños.',1200.00,60,'/images/tatamientos/14-maderoterapia.jpg',NULL,NULL,3,3,NULL),
 	(43,'Manicure classic','Manicure + Color + Humectación + Fortalecedor','Manicure + Color + Humectación + Fortalecedor',500.00,40,'/images/tatamientos/15-manicure-classic.jpeg',NULL,NULL,5,1,NULL),
 	(44,'Manicure premium','Manicure + Color + Humectación + Fortalecedor + Baño de Parafina','Manicure + Color + Humectación + Fortalecedor + Baño de Parafina',700.00,40,'/images/tatamientos/16-manicure-premium.png',NULL,NULL,5,2,NULL),
-	(45,'Spa pies','Pedicure + Hidromasaje + Color','Pedicure + Hidromasaje + Color',700.00,40,'/images/tatamientos/17-spa-pies.jpeg',NULL,NULL,6,3,NULL);
+	(45,'Spa pies','Pedicure + Hidromasaje + Color','Pedicure + Hidromasaje + Color',700.00,40,'/images/tatamientos/17-spa-pies.jpeg',NULL,NULL,6,3,NULL),
+	(47,'Centros Energéticos','                Un especialista trabajara sobre los centros energéticos del cuerpo, para linear los chacras y generar un sensacion de bienestar y plenitud total.','                Un especialista trabajara sobre los centros energéticos del cuerpo, para linear los chacras y generar un sensacion de bienestar y plenitud total.',1500.00,45,'/images/tatamientos/centros-energéticos-1581956813908.jpg','2020-02-17 13:26:53','2020-02-17 13:26:53',7,NULL,NULL),
+	(48,'Centros Energéticos 2','                Un especialista trabajara sobre los centros energéticos del cuerpo, para linear los chacras y generar un sensacion de bienestar y plenitud total.','                Un especialista trabajara sobre los centros energéticos del cuerpo, para linear los chacras y generar un sensacion de bienestar y plenitud total.',1500.00,45,'/images/tatamientos/centros-energéticos-2-1581957059402.jpg','2020-02-17 13:30:59','2020-02-17 13:30:59',6,NULL,NULL),
+	(49,'Centros Energéticos 3','                Un especialista trabajara sobre los centros energéticos del cuerpo, para linear los chacras y generar un sensacion de bienestar y plenitud total.','                Un especialista trabajara sobre los centros energéticos del cuerpo, para linear los chacras y generar un sensacion de bienestar y plenitud total.',1500.00,45,'/images/tatamientos/centros-energéticos-3-1581957868905.jpg','2020-02-17 13:44:28','2020-02-17 13:44:28',6,NULL,NULL),
+	(50,'Centros Energéticos 4','                Un especialista trabajara sobre los centros energéticos del cuerpo, para linear los chacras y generar un sensacion de bienestar y plenitud total.','                Un especialista trabajara sobre los centros energéticos del cuerpo, para linear los chacras y generar un sensacion de bienestar y plenitud total.',1500.00,45,'/images/tatamientos/centros-energéticos-4-1581957969856.jpg','2020-02-17 13:46:09','2020-02-17 13:46:09',6,NULL,NULL),
+	(51,'Servicio de Prueba 123','                Lorem ipsum asdasda','                Resumne',134.00,44,'/images/tatamientos/servicio-de-prueba-123-1581986756158.jpg','2020-02-17 21:45:56','2020-02-17 21:45:56',2,NULL,NULL),
+	(52,'Servicio de Prueba 123','                Lorem ipsum asdasda','                Resumne',134.00,44,'/images/tatamientos/servicio-de-prueba-123-1581986883484.jpg','2020-02-17 21:48:03','2020-02-17 21:48:03',2,NULL,NULL),
+	(53,'Servicio de Prueba 1234','                Lorem ipsum asdasda','                Resumne',134.00,44,'/images/tatamientos/servicio-de-prueba-1234-1581987101938.jpg','2020-02-17 21:51:41','2020-02-17 21:51:41',3,NULL,NULL);
 
 /*!40000 ALTER TABLE `services` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
-# Volcado de tabla users
+# Dump of table users
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `users`;
@@ -147,7 +157,7 @@ CREATE TABLE `users` (
   `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
@@ -170,23 +180,24 @@ VALUES
 	(14,'Horacio','Suarez','horaciosuarez@dh.com','$2b$10$TkF.H/7U/HeDJYCwJ8JMLu.AvBu87.zxwxS6cHpqsu1GGyAlz3wQi','horacio-1580408109655.jpg',0,NULL,NULL),
 	(15,'Caterina','Znidarsic','cvznidarsic@gmail.com','$2b$10$sqFTi8eOJzDyDjU6PBNCx.22XaxPccoDd4/7YrUsrdxxrknCXKRC6','caterina-1580671317774.jpeg',0,NULL,NULL),
 	(16,'Maria','La del barrio','nada@algo.com','$2b$10$0hglKyFvsCang.aJnpLMaO/docJ2YqA9IsQJitKf9otwEM/7epCcW','maria-1580671574074.jpeg',0,NULL,NULL),
-	(17,'Ana','Lisa','ana@lisa.com','$2b$10$wwNYYZFsgdxPzOVBP5qp8uw4KUWSjroELNs4s5/kvOCT/Vt1XnhVy','default-user.png',0,NULL,NULL);
+	(17,'Ana','Lisa','ana@lisa.com','$2b$10$wwNYYZFsgdxPzOVBP5qp8uw4KUWSjroELNs4s5/kvOCT/Vt1XnhVy','default-user.png',0,NULL,NULL),
+	(18,'Horacio','Suarez','horacio.vfx@gmail.com','$2b$10$qHUDnsYD2Fo8PffCGaUqRe4gTw7yKQp1VPHJV2zSHDWKz2OC.n08.','horacio-1582050857601.jpg',0,'2020-02-18 15:34:17','2020-02-18 15:34:17');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
-# Volcado de tabla userService
+# Dump of table userService
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `userService`;
 
 CREATE TABLE `userService` (
-  `id` int(255) unsigned NOT NULL,
-  `quantity` int(255) unsigned DEFAULT NULL,
-  `appointmentDate` date NOT NULL,
-  `salePrice` decimal(8,2) NOT NULL,
-  `purchaseDate` date NOT NULL,
+  `id` int(255) unsigned NOT NULL AUTO_INCREMENT,
+  `quantity` int(255) unsigned NOT NULL,
+  `appointmentDate` date DEFAULT NULL,
+  `salePrice` int(255) NOT NULL,
+  `purchaseDate` date DEFAULT NULL,
   `ticket` int(10) unsigned DEFAULT NULL,
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
@@ -197,8 +208,23 @@ CREATE TABLE `userService` (
   KEY `serviceId` (`serviceId`),
   CONSTRAINT `userservice_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
   CONSTRAINT `userservice_ibfk_2` FOREIGN KEY (`serviceId`) REFERENCES `services` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `userService` WRITE;
+/*!40000 ALTER TABLE `userService` DISABLE KEYS */;
+
+INSERT INTO `userService` (`id`, `quantity`, `appointmentDate`, `salePrice`, `purchaseDate`, `ticket`, `createdAt`, `updatedAt`, `userId`, `serviceId`)
+VALUES
+	(1,2,NULL,3000,NULL,NULL,'2020-02-19 17:25:08','2020-02-19 17:25:08',18,31),
+	(2,3,NULL,2000,NULL,NULL,'2020-02-19 17:42:10','2020-02-19 17:42:10',18,32),
+	(3,1,NULL,1600,NULL,NULL,'2020-02-19 17:42:21','2020-02-19 17:42:21',18,34),
+	(4,2,NULL,3000,NULL,NULL,'2020-02-19 20:45:10','2020-02-19 20:45:10',18,31),
+	(5,1,NULL,2000,NULL,NULL,'2020-02-19 20:47:27','2020-02-19 20:47:27',18,32),
+	(6,1,NULL,2000,NULL,NULL,'2020-02-19 21:24:28','2020-02-19 21:24:28',18,32),
+	(7,1,NULL,2000,NULL,NULL,'2020-02-19 21:28:16','2020-02-19 21:28:16',18,33);
+
+/*!40000 ALTER TABLE `userService` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 
