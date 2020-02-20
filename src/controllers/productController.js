@@ -7,6 +7,7 @@ const db = require('../database/models/');
 const Services = db.services;
 const Categories = db.categories;
 const Users = db.users;
+const UsersServices = db.userService;
 
 //path 
 const pathPublic = path.join(__dirname, '../../public');
@@ -36,8 +37,49 @@ const productController = {
         .catch(error => res.send(error))
         
     },
+    addToCart: (req, res) => {
+        let serviceId = req.params.idProduct
+        
+        //Busco el servicio
+        Services
+        .findByPk(serviceId)
+        .then(service => {
+            //Armo la operacion a registrar
+            let addItem = {
+                userId: req.session.userId,
+                serviceId: service.id,
+                quantity: req.body.quantity,
+                salePrice: service.price,
+            };
+            
+            
+            UsersServices
+            .create(addItem)
+            .then( item => {
+                //return res.send(item);
+                return res.redirect('products/productCart');
+            })
+            .catch(error => {
+                return res.send(error);
+            })
+        })
+        
+    },
     productCart: (req, res) => {
-		res.render('products/productCart');
+        UsersServices
+        .findAll({
+            where: {
+                userId: req.session.userId
+            },
+            include: ['service', 'user']
+        })
+        .then(userCart => {
+            //return res.send(userCart);
+            return res.render('products/productCart', { userCart });
+            
+            
+        })
+		//
     },
     productAdd: (req, res) => {
         Categories

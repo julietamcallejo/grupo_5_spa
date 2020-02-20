@@ -27,7 +27,14 @@
                     <h4 class="textoProd">Precio: $<%=service.price%></h4>
                 </div>
                 <div class="textoProd1" class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <button type="submit" class="btn btn-primary">Agregar</button>
+                    <form action='/products/addToCart/<%= service.id %>' method="POST">
+                    <div class="col-6">
+                            <label for="quantity">Cantidad:</label>
+                            <input type="number" min="1" id="" name="quantity" class="form-control" value="1" >
+                        </div>
+                    <button type="submit" class="col-6 btn btn-primary">Agregar</button>
+                    
+                    </form>
                 </div>
             </div>
         </div>

@@ -32,19 +32,21 @@ module.exports = (sequelize, DataTypes) => {
         
     };
     //Se pasa config con nombre de la tabla, y que no busque las columnas de createdAt y updatedAt
-    // let config = {
-    //     tableName: 'user_service',
-    //     timestamps: false
-    // };
-    const UserService = sequelize.define(alias, cols);
+    let config = {
+        tableName: 'userService',
+        timestamps: true
+    };
+    const UserService = sequelize.define(alias, cols, config);
+    UserService.associate = (models) => {
 
-    // UserService.belongsTo(models.services, {
-    //     as: 'service',
-    //     foreignKey: 'serviceId'
-    // });
-    // UserService.belongsTo(models.users, {
-    //     as: 'user',
-    //     foreignKey: 'userId'
-    // });
+    UserService.belongsTo(models.services, {
+        as: 'service',
+        foreignKey: 'serviceId'
+    });
+    UserService.belongsTo(models.users, {
+        as: 'user',
+        foreignKey: 'userId'
+    });
+};
     return UserService;
 };
