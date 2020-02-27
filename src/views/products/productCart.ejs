@@ -20,9 +20,14 @@
 		<% let total = 0; %>
 		<% userCart.forEach( oneItem => { %>
 			
-		<div class="row">
+		
+			<div class="row">
 			<div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 carrito">
-				<img class="icono" src="/images/cancel.svg" width="30px">
+
+				<form method="POST" action="/products/productUpdateCart/<%= oneItem.id %>?_method=DELETE" name='item<%= oneItem.id %>'>
+					<img class="icono" src="/images/cancel.svg" width="30px" onclick="document.forms['item<%= oneItem.id %>'].submit();">
+				</form>
+
 			</div>
 			<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 				<a href="/products/productDetail/<%= oneItem.serviceId %>">

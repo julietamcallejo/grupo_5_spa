@@ -22,7 +22,8 @@ router.get('/productEdit/:idProduct', authMiddleware, productController.editProd
 router.put('/productEdit/:idProduct', upload.single('photo'), productController.updateProduct);
 router.delete('/productDelete/:idProduct', productController.deleteProduct);
 router.get('/productDetail/:idProduct', productController.detailId);
-router.post('/addToCart/:idProduct', authMiddleware, productController.addToCart)
+router.post('/addToCart/:idProduct', authMiddleware, productController.addToCart);
+router.delete('/productUpdateCart/:idProduct', productController.updateCart);
 router.get('/productCart', authMiddleware, productController.productCart);
 router.get('/productAdd', authMiddleware, productController.productAdd);
 router.post('/productAdd', upload.single('photo'), productsValidator, productController.productSave);

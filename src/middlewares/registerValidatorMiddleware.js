@@ -17,11 +17,10 @@ module.exports = [
     .custom(function (value){
         let emailValidation = Users
             .findOne({
-                where: {
-                    email: value
-                }
+                where: {email: value}
             })
             .then(user => {
+                
                 if (user != null) {
                     return false;
                 }else{
@@ -29,7 +28,8 @@ module.exports = [
                 }
                 
             });
-            return emailValidation;
+            
+        return emailValidation;
 	}).withMessage('Email ya registrado anteriormente'),
     check('password')
     .notEmpty().withMessage('Debe ingresar una contraseña').bail()

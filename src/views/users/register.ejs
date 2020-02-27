@@ -30,13 +30,13 @@
             <% //} %>
             -->
             <div class="col-auto">
-                <input type="text" name='firstName' id="inputText" placeholder="Nombre"
+                <input type="text" name='firstName' id="inputText" placeholder="Nombre" data-name='Nombre'
                 class="form-control
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %>
                     <%= hasErrorGetMessage('firstNname', errors) ? 'is-invalid' : null %> 
                 <% } %>
                 "
-                value="<%= typeof oldData !== 'undefined' ? oldData.first_name : null %>" >
+                value="<%= typeof oldData !== 'undefined' ? oldData.firstName : null %>" >
                 <div class="invalid-feedback">
                     <% if (typeof hasErrorGetMessage !== 'undefined') { %>
                         <%= hasErrorGetMessage('firstName', errors) ? hasErrorGetMessage('firstName', errors) : null %>
@@ -44,13 +44,13 @@
                 </div>
             </div>
             <div class="col-auto">
-                <input type="text" name='lastName' id="inputText" placeholder="Apellido"
+                <input type="text" name='lastName' id="inputText" placeholder="Apellido" data-name='Apellido' 
                 class="form-control
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %>
                     <%= hasErrorGetMessage('lastName', errors) ? 'is-invalid' : null %> 
                 <% } %>
                 "
-                value="<%= typeof oldData !== 'undefined' ? oldData.last_name : null %>" >
+                value="<%= typeof oldData !== 'undefined' ? oldData.lastName : null %>" >
                 <div class="invalid-feedback">
                     <% if (typeof hasErrorGetMessage !== 'undefined') { %>
                         <%= hasErrorGetMessage('lastName', errors) ? hasErrorGetMessage('lastName', errors) : null %>
@@ -59,7 +59,7 @@
                 
             </div>
             <div class=col-auto>
-                <input type="email" name='email' id="inputEmail" placeholder="email"
+                <input type="email" name='email' id="inputEmail" placeholder="email" data-name='Email'
                 class="form-control
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %>
                     <%= hasErrorGetMessage('email', errors) ? 'is-invalid' : null %> 
@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class=col-auto>
-                <input type="password" name='password' id="inputPassword" placeholder="Contraseña"
+                <input type="password" name='password' id="inputPassword" placeholder="Contraseña" data-name='Contraseña' 
                 class="form-control
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %>
                     <%= hasErrorGetMessage('password', errors) ? 'is-invalid' : null %> 
@@ -89,7 +89,7 @@
             <div class="custom-file">
                 <label class='custom-file-label' for="validatedCustomFile">Imagen de perfil</label><br>
                 
-                    <input type="file" name="avatar" class="custom-file-input" id="validatedCustomFile" required>
+                    <input type="file" name="avatar" class="custom-file-input" id="" data-name='Avatar'>
                     
                     <div class="invalid-feedback">
                         <% if (typeof hasErrorGetMessage !== 'undefined') { %>
@@ -114,5 +114,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+<!--
+<script src="/js/validator.min.js"></script>
+<script src="/js/registerFrontValidation.js"></script>
+-->
 </body>
 </html>

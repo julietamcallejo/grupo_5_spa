@@ -57,7 +57,7 @@ const productController = {
             .create(addItem)
             .then( item => {
                 //return res.send(item);
-                return res.redirect('products/productCart');
+                return res.redirect('/products/productCart');
             })
             .catch(error => {
                 return res.send(error);
@@ -80,6 +80,15 @@ const productController = {
             
         })
 		//
+    },
+    updateCart: (req, res) => {
+        UsersServices
+        .findByPk(req.params.idProduct)
+        .then(item => {
+            item.destroy();
+            return res.redirect('/products/productCart');
+        });
+        
     },
     productAdd: (req, res) => {
         Categories

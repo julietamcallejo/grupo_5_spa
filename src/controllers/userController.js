@@ -70,7 +70,7 @@ const userController = {
             
             
         } else {
-            //return res.send(errors);
+            return res.send(errors);
             return res.render('users/register', {
                 errors: errors.array(),
                 hasErrorGetMessage,
