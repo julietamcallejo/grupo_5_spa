@@ -8,7 +8,6 @@ const db = require('../database/models');
 const Users = db.users;
 
 
-
 const userController = {
     register: (req, res) => {
         return res.render('users/register')
@@ -70,7 +69,7 @@ const userController = {
             
             
         } else {
-            return res.send(errors);
+            // return res.send(errors);
             return res.render('users/register', {
                 errors: errors.array(),
                 hasErrorGetMessage,

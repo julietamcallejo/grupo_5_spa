@@ -1,12 +1,9 @@
 const { check } = require('express-validator');
 const path = require('path');
 
-
 //db
 const db = require('../database/models');
 const Users = db.users;
-
-
 
 module.exports = [
 	check('firstName', 'Este campo debe estar completo').notEmpty(),
@@ -15,22 +12,12 @@ module.exports = [
     .notEmpty().withMessage('Debe ingresar un email').bail()
     .isEmail().withMessage('Ingresar un email con formato válido').bail()
     .custom(function (value){
-        let emailValidation = Users
-            .findOne({
-                where: {email: value}
-            })
-            .then(user => {
-                
-                if (user != null) {
-                    return false;
-                }else{
-                    return true;
-                }
-                
-            });
-            
-        return emailValidation;
-	}).withMessage('Email ya registrado anteriormente'),
+        return Users.findOne({ where: {email: value} }).then(user => {
+            if (user) {
+                return Promise.reject('Email ya registrado anteriormente');
+            }
+        });
+	}),
     check('password')
     .notEmpty().withMessage('Debe ingresar una contraseña').bail()
     .isLength({min: 6}).withMessage('La contraseña debe tener al menos 6 caracteres'),
