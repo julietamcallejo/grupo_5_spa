@@ -1,9 +1,7 @@
 // ************ Require's ************
 const express = require('express');
 const router = express.Router();
-const path = require('path');
-const fs = require('fs');
-const {check} = require('express-validator');
+
 
 //*** Middlewares ***/
 const upload = require('../middlewares/uploadRegisterMiddleware')
@@ -14,23 +12,6 @@ const guestMiddleware = require('../middlewares/guestMiddleware');
 
 // ************ Controller Require ************
 const userController = require('../controllers/userController');
-
-//*** Traer usuarios para validar registro ***/
-const pathUsers = path.join(__dirname, '../data/users.json'); 
-
-function traerUsuarios () {
-    let usersFileContent = fs.readFileSync(pathUsers, 'utf-8');
-    let usersArray;
-
-    if (usersFileContent == '') {
-        usersArray = [];
-    }else{
-        usersArray = JSON.parse(usersFileContent);
-    };
-    return usersArray;
-};
-
-var detalleUsuarios = traerUsuarios();
 
 // **** Rutas **** //
 router.get('/register', guestMiddleware, userController.register);

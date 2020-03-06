@@ -9,6 +9,7 @@ const methodOverride = require('method-override');
 const mainRouter = require('./routes/mainRouter');
 const productRouter = require('./routes/productsRouter');
 const usersRouter = require('./routes/usersRouter');
+const usersApiRouter = require('./routes/api/usersApiRouter');
 const session = require('express-session');
 const userCookieParser = require('./middlewares/userCookieMiddleware');
 
@@ -40,6 +41,7 @@ app.set('views', './src/views'); // Seteo de la ubicación de la carpeta "views"
 app.use('/', mainRouter);
 app.use('/products', productRouter);
 app.use('/users', usersRouter);
+app.use('/api/users', usersApiRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************
