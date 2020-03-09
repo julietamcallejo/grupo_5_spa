@@ -83,6 +83,14 @@
     
     
 }
+#searchBarHome2 {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: auto;
+    
+    
+}
 
 #searchBarHome form {
     display: flex;

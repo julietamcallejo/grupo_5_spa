@@ -17,6 +17,7 @@ const productController = require('../controllers/productController');
 
 // **** Rutas **** //
 router.get('/productList', productController.list);
+router.get('/productSearch', productController.search);
 router.get('/productEditList', authMiddleware, productController.editList);
 router.get('/productEdit/:idProduct', authMiddleware, productController.editProduct);
 router.put('/productEdit/:idProduct', upload.single('photo'), productController.updateProduct);

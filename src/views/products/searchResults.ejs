@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Servicios</title>
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/fontawesome-all.css">
+	<link rel="stylesheet" href="/css/spa.css">
+	<link rel="stylesheet" href="/css/productListcss.css">
+</head>
+<body>
+	<%- include('../partials/headerNav')%>
+<div class="container">
+	<div class="col-auto">
+        
+        <h3>Servicios encontrados con el nombre: "<%= searchQuery %>"</h3>
+        
+        <div id='searchBarHome' style="max-width: 70%;">
+            <form action="/products/productSearch" method="GET">
+                <input type="text" name='search'>
+                <button id='searchIcon' type="submit">
+                    <i class="fa fa-search"></i>
+                    </button>
+            </form>
+            </div>
+            <br>
+        
+    </div>
+    
+	<% if (results.length === 0) { %>
+		<h5>No hay servicios con esa descripción</h5>
+	<% }else{ %>
+	<% for (let i=0; i < results.length; i++){  %>
+		<% let actualResult = results[i] %>
+		<div class="row padd back">
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 picDetail1">
+				<a class="picDetail2" href="/products/productDetail/<%= actualResult.id %>">
+					<img class="picDetail2" src=<%= actualResult.photo %>>
+				</a>
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-9 col-xl-9 fondo">
+				<a  href="/products/productDetail/<%= actualResult.id %>">
+					<h3 class="textoProd"> <%= actualResult.name %> </h3>
+					<p class="textoProd"> <%= actualResult.description %> </p>
+					<h5 class="textoProd">Precio: $<%= actualResult.price %> </h5>
+				</a>
+			</div>
+		</div>
+	<% } %>
+	<% } %>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

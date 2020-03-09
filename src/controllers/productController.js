@@ -8,6 +8,7 @@ const Services = db.services;
 const Categories = db.categories;
 const Users = db.users;
 const UsersServices = db.userService;
+const Op = db.Sequelize.Op;
 
 //path 
 const pathPublic = path.join(__dirname, '../../public');
@@ -24,6 +25,25 @@ const productController = {
             .catch(error => res.send(error))
             
             
+    },
+    search: (req, res) => {
+        let searchQuery = req.query.search;
+        Services
+            .findAll({
+                where: {
+                    name: {[Op.like]: `%${searchQuery}%`}
+                }
+            })
+            .then(results => {
+                res.render('products/searchResults', {
+                    results,
+                    searchQuery
+                });
+            })
+            .catch(errors => {
+                res.send(errors);
+            })
+
     },
     detailId: (req, res) => {
         let id = req.params.idProduct;
@@ -54,10 +74,10 @@ const productController = {
             
             
             UsersServices
-            .create(addItem)
-            .then( item => {
-                //return res.send(item);
-                return res.redirect('/products/productCart');
+                .create(addItem)
+                .then( item => {
+                    //return res.send(item);
+                    return res.redirect('/products/productCart');
             })
             .catch(error => {
                 return res.send(error);
