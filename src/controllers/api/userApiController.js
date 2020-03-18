@@ -10,7 +10,10 @@ const userController = {
                 attributes: ["email"]
             })
             .then( users => {
-                return res.json(users);
+                return res.status(200).json({
+                    total_results: users.length,
+                    data: users
+                });
             })
             .catch(error => res.json(error));
 
@@ -19,23 +22,20 @@ const userController = {
     find: (req, res) => {
         Users
             .findOne({
-                where: {email: req.params.email}
+                where: {email: req.params.email},
+                attributes: ['id', 'email']
             })
             .then(user => {
-                
                 if(user) {
-                    user = {
-                        id: user.id,
-                        email: user.email,
-                        check: true
-                    }
-					return res.json(user);
+					return res.status(302).json({
+                        userFound: true,
+                        msg: "email registrado",
+                        data: user
+                    });
 				}
 				return res.status(404).json({
-					status: res.statusCode,
-                    method: req.method,
-                    check: false,
-                    msg: 'El email no se encuentra registrado'
+                    userFound: false,
+                    msg: "email no registrado"
 				});
 			}).catch(error => res.json(error));
                 

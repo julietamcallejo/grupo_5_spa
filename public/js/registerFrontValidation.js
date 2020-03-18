@@ -60,8 +60,8 @@ formElements.forEach(function (input) {
                 .then(response => response.json())
                 .then(data => {
                     
-                    if(data.check === true){
-                        console.log("Encontro un email");
+                    if(data.userFound === true){
+                        
                         this.classList.add('is-invalid');
 			            this.classList.remove('is-valid');
 			            this.nextElementSibling.innerHTML = 'El email ya se encuentra registrado';
