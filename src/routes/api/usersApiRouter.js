@@ -11,8 +11,9 @@ const guestMiddleware = require('../../middlewares/guestMiddleware');
 const userApiController = require('../../controllers/api/userApiController');
 
 // **** Rutas **** //
-router.get('/', guestMiddleware, userApiController.list);
-router.get('/:email', guestMiddleware, userApiController.find);
+router.get('/', userApiController.list);
+router.get('/:id', userApiController.detail);
+router.get('/:email', userApiController.find);
 
 
 
