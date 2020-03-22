@@ -21,10 +21,29 @@ const userController = {
                             url: `http://localhost:3000/api/users/${oneUser.id}?apikey=${apiKey}`,
                             }
                     });
+                    let page = Number(req.query.page);
+                    let nextUrl = `http://localhost:3000/api/users/?apikey=${apiKey}&page=2`;
+                    let prevUrl = null;
+                    if(!page){
+                        userList = userList.slice(0,10);
+                        
+                    } else {
+                        userList = userList.slice((page*10-10), (page*10));
+                        prevUrl = `http://localhost:3000/api/users/?apikey=${apiKey}&page=${page}`;
+                        page += 1;
+                        if( page <= (users.length / 10)+1) {
+                            nextUrl = `http://localhost:3000/api/users/?apikey=${apiKey}&page=${page}`;
+                        } else {
+                            nextUrl = null;
+                        }
+                        
+                    }
 
                     return res.status(200).json({
                         key: "Authorized",
                         total_results: users.length,
+                        next: nextUrl,
+                        prev: prevUrl,
                         users: userList
                     });
                 })
