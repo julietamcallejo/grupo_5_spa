@@ -14,10 +14,19 @@ module.exports = (sequelize, DataTypes) => {
         
     };
     //Se pasa config con nombre de la tabla, y que no busque las columnas de createdAt y updatedAt
-    // let config = {
-    //     tableName: 'categories',
-    //     timestamps: false
-    // };
-    const Category = sequelize.define(alias, cols);
+    let config = {
+        tableName: 'categories',
+        timestamps: false
+    };
+    const Category = sequelize.define(alias, cols, config);
+
+    Category.associate = (models) => {
+        Category.hasMany(models.services, {
+            as: 'services',
+            foreignKey: 'categoryId'
+        });
+        
+
+    }
     return Category;
 };

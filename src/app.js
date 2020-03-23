@@ -10,6 +10,7 @@ const mainRouter = require('./routes/mainRouter');
 const productRouter = require('./routes/productsRouter');
 const usersRouter = require('./routes/usersRouter');
 const usersApiRouter = require('./routes/api/usersApiRouter');
+const productsApiRouter = require('./routes/api/productsApiRouter');
 const imagesRouter = require('./routes/imagesRouter');
 const session = require('express-session');
 const userCookieParser = require('./middlewares/userCookieMiddleware');
@@ -43,6 +44,7 @@ app.use('/', mainRouter);
 app.use('/products', productRouter);
 app.use('/users', usersRouter);
 app.use('/api/users', usersApiRouter);
+app.use('/api/products', productsApiRouter);
 app.use('/images', imagesRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
