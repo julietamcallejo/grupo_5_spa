@@ -16,7 +16,21 @@ const userController = {
                         attributes: ["id", "name"]
                     }]
                 })
-                .then( services => {
+                .then( async services => {
+                    let categories = await Categories.findAll({
+                        include: [{ 
+                            association: 'services',
+                            attributes: ["id", "name"]
+                        }]
+                    });
+                    let countByCategory = categories.map( oneCategory => {
+                        return oneCategory = {
+                            id: oneCategory.id,
+                            name: oneCategory.name,
+                            total_products: oneCategory.services.length
+                        }
+                    })
+                        
                     let serviceList = services.map( oneService => {
                         return oneService = {
                             id: oneService.id,
@@ -47,8 +61,10 @@ const userController = {
                     return res.status(200).json({
                         
                         total_results: services.length,
+                        total_categories: categories.length,
                         next: nextUrl,
                         prev: prevUrl,
+                        count_by_category: countByCategory,
                         products: serviceList
                     });
                 })
