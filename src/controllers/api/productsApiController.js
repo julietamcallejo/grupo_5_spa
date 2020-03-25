@@ -23,7 +23,9 @@ const userController = {
                             attributes: ["id", "name"]
                         }]
                     });
+                    let countByCategory2 = {};
                     let countByCategory = categories.map( oneCategory => {
+                        countByCategory2[oneCategory.name] = oneCategory.services.length;
                         return oneCategory = {
                             id: oneCategory.id,
                             name: oneCategory.name,
@@ -64,7 +66,7 @@ const userController = {
                         total_categories: categories.length,
                         next: nextUrl,
                         prev: prevUrl,
-                        count_by_category: countByCategory,
+                        count_by_category: countByCategory2,
                         products: serviceList
                     });
                 })
