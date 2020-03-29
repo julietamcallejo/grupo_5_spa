@@ -6,6 +6,8 @@ class ProductList extends Component {
 		this.state = {
 			services: [],
 			pages: [],
+			nextUrl:'',
+			prevUrl:'',
 			loading: true
 		}
 	}
@@ -21,14 +23,67 @@ class ProductList extends Component {
 				this.setState({
 					services: data.products,
 					pages: totalPages,
+					nextUrl: data.next,
+					prevUrl: data.prev,
 					loading: false
 				})
 			})
 			.catch(errors => console.log(errors))
 
 	}
+	nextPage (){
+		this.setState({
+			loading: true
+		})
+		let { nextUrl } = this.state;
+		fetch(nextUrl)
+			.then(response => response.json())
+			.then( data => {
+				this.setState({
+					services: data.products,
+					nextUrl: data.next,
+					prevUrl: data.prev,
+					loading: false
+				})
+			})
+		
+	}
+	prevPage (){
+		this.setState({
+			loading: true
+		})
+		let { prevUrl } = this.state;
+		fetch(prevUrl)
+			.then(response => response.json())
+			.then( data => {
+				this.setState({
+					services: data.products,
+					nextUrl: data.next,
+					prevUrl: data.prev,
+					loading: false
+				})
+			})
+	}
+	onePage (page){
+		this.setState({
+			loading: true
+		})
+		let pageUrl = `http://localhost:3000/api/products/?page=${page}`
+		
+		fetch(pageUrl)
+			.then(response => response.json())
+			.then( data => {
+				this.setState({
+					services: data.products,
+					nextUrl: data.next,
+					prevUrl: data.prev,
+					loading: false
+				})
+			})
+	}
+	
 	render () {
-		let { services, pages, loading } = this.state;
+		let { services, pages, loading, nextUrl, prevUrl } = this.state;
 		return (
 			<React.Fragment>
 			
@@ -86,19 +141,36 @@ class ProductList extends Component {
 									<div className="d-flex justify-content-center">
 										<nav aria-label="Pagination Results">
 											<ul className="pagination justify-content-center">
-												<li className="page-item disabled">
-												<a className="page-link" href="/" tabIndex="-1" aria-disabled="true">Anterior</a>
-												</li>
+												{
+													prevUrl == null
+													?
+													<li className="page-item disable">
+														<button className="btn page-link" disabled>Anterior</button>
+													</li>
+													:
+													<li className="page-item">
+														<button className="page-link" onClick={ () => this.prevPage() }>Anterior</button>
+													</li>
+												}
 											{
 												pages.map((onePage, idx) => {
-													return <li key={idx} className="page-item"><a className="page-link" href="/">{onePage}</a></li>
+													return <li key={idx} className="page-item">
+															<button className="page-link" onClick={ () => this.onePage(onePage) }>{onePage}</button></li>
 												})
 
 											}
-											
-												<li className="page-item">
-												<a className="page-link" href="/">Siguiente</a>
+											{
+												nextUrl == null
+												?
+												<li className="page-item disable">
+													<button className="btn page-link" disabled>Siguiente</button>
 												</li>
+												:
+												<li className="page-item">
+													<button className="page-link" onClick={ () => this.nextPage() }>Siguiente</button>
+												</li>
+
+											}
 											</ul>
 										</nav>
 

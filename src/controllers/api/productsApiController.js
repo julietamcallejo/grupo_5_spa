@@ -46,15 +46,15 @@ const userController = {
                     let page = Number(req.query.page);
                     let nextUrl = `http://localhost:3000/api/products/?page=2`;
                     let prevUrl = null;
-                    if(!page){
+                    if(!page || page == 1 ){
                         serviceList = serviceList.slice(0,10);
                         
                     } else {
                         serviceList = serviceList.slice((page*10-10), (page*10));
-                        prevUrl = `http://localhost:3000/api/products/?page=${page}`;
-                        page += 1;
-                        if( page <= totalPages ) {
-                            nextUrl = `http://localhost:3000/api/products/?page=${page}`;
+                        prevUrl = `http://localhost:3000/api/products/?page=${(page - 1)}`;
+                        
+                        if( page < totalPages ) {
+                            nextUrl = `http://localhost:3000/api/products/?page=${page + 1}`;
                         } else {
                             nextUrl = null;
                         }
