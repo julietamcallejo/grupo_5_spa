@@ -10,7 +10,7 @@ const userController = {
             
             Services
                 .findAll({
-                    attributes: ["id", "name", "summary"],
+                    attributes: ["id", "name", "summary", "price"],
                     include: [{ 
                         association: 'category',
                         attributes: ["id", "name"]
@@ -32,12 +32,13 @@ const userController = {
                             total_products: oneCategory.services.length
                         }
                     })
-                        
+                    let totalPages = Math.ceil(services.length/10);    
                     let serviceList = services.map( oneService => {
                         return oneService = {
                             id: oneService.id,
                             name: oneService.name,
                             summary: oneService.summary,
+                            price: oneService.price,
                             category: oneService.category,
                             url: `http://localhost:3000/api/products/${oneService.id}`,
                             }
@@ -52,7 +53,7 @@ const userController = {
                         serviceList = serviceList.slice((page*10-10), (page*10));
                         prevUrl = `http://localhost:3000/api/products/?page=${page}`;
                         page += 1;
-                        if( page <= (services.length / 10)+1) {
+                        if( page <= totalPages ) {
                             nextUrl = `http://localhost:3000/api/products/?page=${page}`;
                         } else {
                             nextUrl = null;
@@ -66,6 +67,7 @@ const userController = {
                         total_categories: categories.length,
                         next: nextUrl,
                         prev: prevUrl,
+                        total_pages: totalPages,
                         count_by_category: countByCategory2,
                         products: serviceList
                     });
@@ -102,6 +104,34 @@ const userController = {
       
                 
     },
+    last: (req, res) => {
+        
+        Services
+            .findAll({
+                attributes: ["id", "name", "summary", "photo"],
+                include: [{ 
+                    association: 'category',
+                    attributes: ["name"]
+                }],
+                order: [['id', 'DESC']],
+                limit: 1
+            })
+            .then(service => {
+                service = {
+                    id: service[0].id,
+                    name: service[0].name,
+                    summary: service[0].summary,
+                    photo: `http://localhost:3000${service[0].photo}`,
+                    url: `http://localhost:3000/products/productDetail/${service[0].id}`
+                };
+                
+                
+                return res.status(200).json(service);
+                
+            }).catch(error => console.log(error));
+  
+            
+},
     categories: (req, res) => {
     
         Categories

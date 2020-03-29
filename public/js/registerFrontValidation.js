@@ -80,7 +80,7 @@ formElements.forEach(function (input) {
     if (input.name === 'password') {
         input.addEventListener('blur', function () {
             let passwordValue = this.value.trim();
-            let passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*?])(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+            let passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*?/])(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
             if (!validator.isEmpty(passwordValue) && !validator.isLength(passwordValue, {min: 6, max: undefined})){
                 this.classList.add('is-invalid');
 			    this.classList.remove('is-valid');

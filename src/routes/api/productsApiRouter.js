@@ -8,6 +8,7 @@ const productsApiController = require('../../controllers/api/productsApiControll
 
 // **** Rutas **** //
 router.get('/', productsApiController.list);
+router.get('/last', productsApiController.last);
 router.get('/categories', productsApiController.categories);
 router.get('/:id', productsApiController.detail);
 

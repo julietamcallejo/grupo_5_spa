@@ -1,87 +1,123 @@
-import React from 'react';
+import React, { Component } from 'react';
 //Componentes
-import Sidebar from './components/Sidebar';
-import Navbar from './components/Navbar';
+
 import Metric from './components/Metric';
-import Service from './components/Service';
+import LastService from './components/LastService';
 import Categories from './components/Categories';
 import ProductList from './components/ProductList';
 import Footer from './components/Footer';
-import data from './data/data';
 
-
-
-function App() {
-  return (
-    <div id="wrapper">
-    {/* Componente SideBar */}
-		<Sidebar/>
-		
-
-		
-		<div id="content-wrapper" className="d-flex flex-column">
-
-			
-			<div id="content">
-        {/* Componente Navbar */}
-				<Navbar/>
-				
-
-				
-				<div className="container-fluid">
-
-					
-					<div className="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 className="h3 mb-0 text-gray-800">App Dashboard</h1>
-					</div>
-
-					
-					<div className="row">
-            {/* Componente Metric iterado con data */}
-            { data.map((unDato, i) => {
-              return (
-                <Metric 
-                key={i}
-                title={unDato.title} 
-                value={unDato.value}
-                icon={unDato.icon}
-                border={unDato.border} 
-                />
-
-              )
-            })}
-          </div>
-
-					
-					<div className="row">
-						{/* Componente Servicio */}
-            <Service
-            title="Último Servicio ingresado"
-            photo="assets/images/product_dummy.svg"
-            name="Nombre del Servicio"
-            summary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, consequatur explicabo officia inventore libero veritatis iure voluptate reiciendis a magnam, vitae, aperiam voluptatum non corporis quae dolorem culpa exercitationem ratione?"
-            />    						
-						{/* Componente Categorias */}
-            <Categories/>
-					</div>
-          <ProductList/>
-				</div>
-        
-				
-			</div>
-
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      totalUsers: '-',
+      totalProducts: '-',
+      totalCategories: '-',
       
-			
+    }
+    }
+    componentDidMount () {
+      
 
-			
-			<Footer/>
-			
+      fetch('http://localhost:3000/api/users?apikey=12345678')
+            .then(response => response.json())
+            .then( users => {
+              fetch('http://localhost:3000/api/products')
+                .then(response => response.json())
+                .then( services => {
+                  this.setState({
+                      totalUsers: users.total_results,
+                      totalProducts: services.total_results,
+                      totalCategories: services.total_categories,
+                      
+                  })
 
-		</div>
-		</div>
+                })
+              
+            })
+            .catch(errors => console.log(errors));
+      
 
-	
-  );
-}
+    }
+    render (){
+      let { totalUsers, totalProducts, totalCategories } = this.state;
+      return (
+        <div id="wrapper">
+        {/* Componente SideBar */}
+        {/* <Sidebar/> */ }
+        
+    
+        
+        <div id="content-wrapper" className="d-flex flex-column">
+    
+          
+          <div id="content">
+            {/* Componente Navbar */}
+            {/* <Navbar/> */}
+            
+    
+            
+            <div className="container-fluid">
+    
+              
+              <div className="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
+                
+                <h1 className="h2 mb-0 text-gray-800">Spa Dashboard</h1>
+              </div>
+    
+              {/* Modulos de Metricas independientes */}
+              <div className="row">
+              <Metric
+                    title="Cantidad de Usuarios"
+                    value= {totalUsers}
+                    border="border-left-warning"
+                    icon="fa-user-check"/>
+              <Metric
+                    title="Total de Servicios"
+                    value={totalProducts}
+                    border="border-left-primary"
+                    icon="fa-clipboard-list"/>
+              <Metric
+                    title="Total de Categorías"
+                    value={totalCategories}
+                    border="border-left-success"
+                    icon="fa-list-ul"/>
+    
+              </div>
+              
+    
+              
+              <div className="row">
+                {/* Componente Servicio */}
+                <LastService/>    						
+                {/* Componente Categorias */}
+                <Categories/>
+              </div>
+              <ProductList/>
+            </div>
+            
+            
+          </div>
+    
+          
+          
+    
+          
+          <Footer/>
+          
+    
+        </div>
+        </div>
+    
+      
+      );
+
+    }
+  }
+
+
+
+
 
 export default App;

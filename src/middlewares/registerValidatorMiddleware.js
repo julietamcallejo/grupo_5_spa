@@ -26,7 +26,7 @@ module.exports = [
     .notEmpty().withMessage('Este campo es obligatorio').bail()
     .isLength({min: 6}).withMessage('La contraseña debe tener al menos 6 caracteres, una mayúscula, una minúscula, un núnero y un caracter especial').bail()
     .custom( function (value){
-        let passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*?])(?=.*[a-z])(?=.*[A-Z]).{6,}$/
+        let passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*?/])(?=.*[a-z])(?=.*[A-Z]).{6,}$/
         if (!value.match(passwordRegex)){
             throw new Error('La contraseña debe tener al menos 6 caracteres, una mayúscula, una minúscula, un núnero y un caracter especial');
         }
