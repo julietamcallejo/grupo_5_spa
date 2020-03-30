@@ -1,8 +1,6 @@
 @import url('normalize.css');
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
 
-
-
 /* barra de navegación */
 .Navbar {
     display: flex;
@@ -18,12 +16,9 @@
     align-items: center;
     color: #9069A7;
 }
-
 .Navbar_Logo img {
     width: 170px;
-
 }
-
 .Navbar_Items {
     display: flex;
     justify-content: space-around;
@@ -40,9 +35,7 @@
 .Navbar_Toggle {
     color: #9069A7;
     display: none;
-    
 }
-
 .Navbar_Items a {
     text-decoration: none;
 }
@@ -61,7 +54,6 @@
     text-align: center;
     padding: 30px;
 }
-
 .logoClaim p {
     font-family: 'Lato', sans-serif;
     color: #9069A7;
@@ -69,53 +61,39 @@
     font-size: 24px;
     margin: 10px;
 }
-
 .logoClaim img {
     height: 70px;
-
 }
-
 #searchBarHome {
     background-color: white;
     border-radius: 15px;
     overflow: hidden;
     margin: auto;
-    
-    
 }
 #searchBarHome2 {
     background-color: white;
     border-radius: 15px;
     overflow: hidden;
     margin: auto;
-    
-    
 }
-
 #searchBarHome form {
     display: flex;
     justify-content: space-between;
     padding: 5px;
 }
-
 #searchBarHome input {
     border: hidden;
     width: 100%;
     font-family: 'Lato', sans-serif;
     color: #9069A7;
     font-weight: 300;
-    
 }
-
 #searchBarHome button {
     background-color: transparent;
     border: hidden;
     color: #9069A7;
-    
 }
-
 #mensajeDestacado {
-    
     background-color: white;
     padding: 20px;
 }
@@ -126,16 +104,13 @@
     font-size: 18px;
     font-weight: lighter;
     text-align: center;
-    
 }
 
 /* Productos Destacados Home */
 
-
 .productoHome a {
     text-decoration: none;
 }
-
 .imgProductHome img {
     max-width: 100%;
 }
@@ -144,23 +119,19 @@
     background-color: #E9D4E4;
     margin-bottom: 5px;
     height: 100px;
-    
 }
 .productDescriptionHome h3, p {
     margin: 0;
     padding: 5px;
-    
 }
 .productDescriptionHome h3{
     font-weight: lighter;
     color: #9069A7;
     text-transform: uppercase;
-    
 }
 .productDescriptionHome p{
     color: white;
     text-shadow: black;
-    
 }
 
 /* Links de edicion de productos */
@@ -168,20 +139,14 @@
 .productEdit {
     display: flex;
 }
-
-
 @media (max-width: 800px) {
-
-        
     .Navbar a {
         display: inline;
     }
     .Navbar_Items {
-    
         display: none;
         text-align: center;
     }
-
     .Navbar_ToggleShow {
         display: block;
         position: absolute;
@@ -189,26 +154,62 @@
         bottom: 0;
         transform: translateY(100%);
         background:white;
-        
     }
-    
     .Navbar_Link a {
         text-align: right;
     }
-    
     .Navbar_Toggle {
         display: initial;
         justify-self: flex-end;
         align-self: center;
         cursor: pointer;
-        
-
     }
+}
 
-    
-
-
-
-
-
+/* Footer */
+.page-footer{
+    font-family: 'Lato', sans-serif;
+    background-color: white;
+    margin-top: 15px;
+    height: 55px;
+}
+.footer-info{
+    font-weight: 300;
+    color: #9069A7;
+    font-family: 'Lato', sans-serif;
+    text-align: right;
+    line-height: 55px;
+    padding-top: 0px;
+}
+.footer-copyright{
+    background-color: #8ecac0;
+    text-align: center;
+    padding: 15px;
+    color: white;
+    font-weight: 300;
+    font-family: 'Lato', sans-serif;
+    height: 55px;
+}
+.space{
+    padding: 15px;
+}
+.social-media{
+    display: flex;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 0px;
+    height: 55px;
+}
+@media (max-width: 800px){
+    .social-media{
+        display: flex;
+        -ms-flex-pack: center;
+        justify-content: center;
+        align-items: center;
+        height: 55px;
+    }
+    .footer-info{
+        text-align: center;
+    }
 }
