@@ -167,6 +167,9 @@
 }
 
 /* Footer */
+.alto{
+    min-height: calc(100vh - 162px);
+}
 .page-footer{
     font-family: 'Lato', sans-serif;
     background-color: white;
@@ -184,13 +187,12 @@
 .footer-copyright{
     background-color: #8ecac0;
     text-align: center;
-    padding: 15px;
     color: white;
     font-weight: 300;
     font-family: 'Lato', sans-serif;
-    height: 55px;
+    height: 28px;
 }
-.space{
+.spaces{
     padding: 15px;
 }
 .social-media{
@@ -201,7 +203,7 @@
     padding-top: 0px;
     height: 55px;
 }
-@media (max-width: 800px){
+@media (max-width: 764px){
     .social-media{
         display: flex;
         -ms-flex-pack: center;
@@ -211,5 +213,10 @@
     }
     .footer-info{
         text-align: center;
+        line-height: normal;
+    }
+    .page-footer{
+        height: 110px;
+        padding-bottom: 10px;
     }
 }

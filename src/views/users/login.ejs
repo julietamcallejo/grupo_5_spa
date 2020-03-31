@@ -11,10 +11,9 @@
     <link rel="stylesheet" href="/css/registercss.css">
 </head>
 
-<body id="login">
+<body>
 <%- include('../partials/headerNav')%>
-<div class="container">
-    
+<div class="container alto">
     <form id="register-form" action='/users/login' method="POST">
         <div class="pad">
             <h3>Ingresar</h3>
@@ -23,12 +22,9 @@
             <h5 class="text-danger">
                 <% if (typeof mensaje !== 'undefined') { %>
                     <p><%= mensaje %></p>
-                
                 <% } %>
-    
             </h5>
         </div>
-        
         <div class="container-fluid fondo">
             <div class = col-auto>
                 <input type="email" name='email' id="inputEmail" placeholder="Email" class="form-control 
@@ -42,7 +38,6 @@
                         <%= hasErrorGetMessage('email', errors) ? hasErrorGetMessage('email', errors) : null %>
                     <% } %>
                 </div>
-                
             </div>
             <div class = col-auto>
                 <input type="password" name='password' id="inputPassword" placeholder="Contraseña" class="form-control 
@@ -55,13 +50,11 @@
                         <%= hasErrorGetMessage('password', errors) ? hasErrorGetMessage('password', errors) : null %>
                     <% } %>
                 </div>
-                
             </div>
             <br>
             <div class='checkBox'>
                 <input type="checkbox" name='remember'> Recordarme
             </div>
-            
             <div class = col-auto mx-5>
                 <button type="submit" value="login" class="btn btn-primary">Entrar</button>
             </div>
