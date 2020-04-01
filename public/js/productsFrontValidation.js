@@ -8,7 +8,7 @@ formElements.pop();
 //Objeto de errores
 let inputsErrors = {};
 
-for (let input of formElements) {
+formElements.forEach(function (input) {
     input.addEventListener('blur', function () {
         let inputValue = this.value;
         //validador
@@ -16,6 +16,7 @@ for (let input of formElements) {
             this.classList.add('is-invalid');
             this.classList.remove('is-valid');
             this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> es obligatorio`;
+            console.log(this)
             // Agregamos al objeto de errores, un error para ese campo
             inputsErrors[this.name] = true;
         } /*else if (!validator.isLength(inputValue, { min: 3, max: undefined })) {
@@ -34,7 +35,7 @@ for (let input of formElements) {
         }
 
     });
-};
+});
 
 /*
 window.addEventListener("load", function(){

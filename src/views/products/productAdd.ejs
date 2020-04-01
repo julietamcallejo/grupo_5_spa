@@ -23,51 +23,57 @@
             <div class='row'>
                 <div class='col-12'>
                     <label for='name'>Nombre del Servicio:</label>
-                    <input type='text' id='name' name='name' data-name='name' class='form-control'>
+                    <input type='text' id='name' name='name' data-name='nombre' class='form-control'>
+                    <p class="invalid-feedback"></p>
                     <br>
                 </div>
                 <div class='col-12'>
                     <label for='category'>Categoría:</label>
-                    <select id='categoryId' name='categoryId' data-name='categoryId' class='form-control'>
+                    <select id='categoryId' name='categoryId' data-name='categoría' class='form-control'>
                         <option value=''>Elige una opción</option>
                         <% categories.forEach(category => { %>
                         <option value=<%= category.id %>><%= category.name %></option>
                         <% }) %>
                     </select>
+                    <p class="invalid-feedback"></p>
                     <br>
                     <br>
                 </div>
                 <div class='col-12' id='textsize'>
                     <label for='description'>Descripción:</label>
-                    <textarea type='text' id='description' name='description' data-name='description' cols='30'
+                    <textarea type='text' id='description' name='description' data-name='descripción' cols='30'
                         rows='10' class='form-control'
-                        value=<%= typeof oldData != 'undefined' ? oldData.descripción : null %>>
-                    </textarea>
+                        value=<%= typeof oldData != 'undefined' ? oldData.descripción : null %>></textarea>
+                    <p class="invalid-feedback"></p>
                 </div>
                 <div class='col-12' id='textsize'>
                     <label for='summary'>Resumen:</label>
-                    <textarea type='text' id='summary' name='summary' data-name='summary' cols='30' rows='10'
-                        class='form-control' value=<%= typeof oldData != 'undefined' ? oldData.summary : null %>>
-                </textarea>
+                    <textarea type='text' id='summary' name='summary' data-name='resumen' cols='30' 
+                        rows='10' class='form-control' 
+                        value=<%= typeof oldData != 'undefined' ? oldData.summary : null %>></textarea>
+                    <p class="invalid-feedback"></p>
                     <br>
                 </div>
 
                 <div class='col-6'>
                     <label for='duration'>Duración:</label>
-                    <input type='number' min='40' id='duration' name='duration' data-name='duration'
+                    <input type='number' min='40' id='duration' name='duration' data-name='duración'
                         class='form-control' value=<%= typeof oldData != 'undefined' ? oldData.duration : null %>>
+                        <p class="invalid-feedback"></p>
                     <br>
                 </div>
                 <div class='col-6'>
                     <label for='price'>Precio:</label>
-                    <input type='number' id='price' name='price' data-name='price' class='form-control'
+                    <input type='number' id='price' name='price' data-name='precio' class='form-control'
                         value=<%= typeof oldData != 'undefined' ? oldData.price : null %>>
+                        <p class="invalid-feedback"></p>
                     <br>
                 </div>
                 <div class='custom-file'>
-                    <input type='file' name='photo' data-name='photo' class='custom-file-input' id='validatedCustomFile'
+                    <input type='file' name='photo' data-name='foto' class='custom-file-input' id='validatedCustomFile'
                         required>
                     <label class='custom-file-label' for='validatedCustomFile'>Seleccionar foto del servicio</label>
+                    <p class="invalid-feedback"></p>
                 </div>
                 <div class='col-6'>
                     <button class='btn btn-info boton' type='submit'>Guardar</button>
