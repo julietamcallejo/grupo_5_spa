@@ -154,6 +154,7 @@
         bottom: 0;
         transform: translateY(100%);
         background:white;
+        z-index: 100;
     }
     .Navbar_Link a {
         text-align: right;
