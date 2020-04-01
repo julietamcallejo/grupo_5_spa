@@ -12,30 +12,27 @@
 </head>
 <body>
     <%- include('../partials/headerNav')%>
-<div class="container alto">
+<div class="container">
     <div class="row">
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 picDetail">
-                <img src=<%= service.photo %> width="100%">
+            <img class="picDetail2" src=<%= service.photo %> width="100%">
         </div>
-        <div class="col-12 col-sm-6 colmd-6 col-lg-6 col-xl-6">
+        <div class="col-12 col-sm-6 colmd-6 col-lg-6 col-xl-6 fondo">
             <h2 class="textoProd"> <%=service.name%> </h2>
             <p class="textoProd"> <%=service.description%></p>
             <p class="textoProd">Duración: <%=service.duration%> minutos</p>
             <p class="textoProd">Categoría: <%=service.category.name%></p>
-            <div class="row">
-                <div class="col-8 col-sm-8 col-md-8 col-lg-6 col-xl-6">
-                    <h4 class="textoProd">Precio: $<%=service.price%></h4>
-                </div>
-                <div class="textoProd1" class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <form action='/products/addToCart/<%= service.id %>' method="POST">
-                    <div class="col-6">
+            <br>
+            <h4 class="textoProd picDetail">Precio: $<%=service.price%></h4>
+            <form class="col-12 textoProd" action='/products/addToCart/<%= service.id %>' method="POST">
+                <div class="row">
+                    <div class="col-4">
                             <label for="quantity">Cantidad:</label>
                             <input type="number" min="1" id="" name="quantity" class="form-control" value="1" >
-                        </div>
-                    <button type="submit" class="col-6 btn btn-primary">Agregar</button>
-                    
-                    </form>
+                    </div>
+                    <button type="submit" class="col-8 btn btn-primary">Agregar</button>
                 </div>
+                </form>
             </div>
         </div>
             <!-- <div class="row">
@@ -55,25 +52,25 @@
     <div class="card-deck">
         <div class="card">
             <a href="/products/productDetail/35">
-            <img class="card-img-top" src="/images/tatamientos/11-anti-age.jpeg">
+            <img class="card-img-top" src="/images/tatamientos/07-cuello-hombros-y-cabeza.jpeg">
             <div class="card-body">
-                <h5 class="text">Anti-age</h5>
+                <h5 class="text">Cuello, hombros y cabeza</h5>
             </div>
             </a>
         </div>
         <div class="card">
             <a href="/products/productDetail/36">
-            <img class="card-img-top" src="/images/tatamientos/14-maderoterapia.jpg">
+            <img class="card-img-top" src="/images/tatamientos/08-reflexologia.jpeg">
             <div class="card-body">
-                <h5 class="text">Maderoterapia</h5>
+                <h5 class="text">Reflexología</h5>
             </div>
             </a>
         </div>
         <div class="card">
             <a href="/products/productDetail/37">
-            <img class="card-img-top" src="/images/tatamientos/05-piedras-calientes.jpeg">
+            <img class="card-img-top" src="/images/tatamientos/09-anti-acne.jpeg">
             <div class="card-body">
-                <h5 class="text">Piedras Calientes</h5>
+                <h5 class="text">Anti Acné</h5>
             </div>
             </a>
         </div>

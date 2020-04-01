@@ -7,10 +7,41 @@ body{
     background-attachment: fixed;
 }
 
+.btn{
+    max-height: 50px;
+    max-width: 200px;
+    align-self: end;
+}
+
+.fondo{
+    background: #ffffffc9;
+    margin-top: 15px;
+    padding: 15px;
+}
+
 .picDetail{
     padding-left: 5px;
     padding-right: 5px;
     font-family: 'Lato', sans-serif;
+    vertical-align: center;
+}
+
+.card-img-top{
+    height: 230px;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.card-body{
+    max-height: 120px;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.card{
+    background-color: #E9D4E4;
 }
 
 .textoProd{
