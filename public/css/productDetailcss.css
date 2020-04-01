@@ -26,6 +26,13 @@ body{
     vertical-align: center;
 }
 
+.picDetail2{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
 .card-img-top{
     height: 230px;
     width: 100%;
