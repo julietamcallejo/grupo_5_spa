@@ -19,21 +19,21 @@ h1{
 .picDetail1{
     align: center;
     font-family: 'Lato', sans-serif;
-    max-height: 250px;
-    max-width: 300px;
+    height: 200px;
+    max-width: 250px;
 }
 
 .picDetail2{
-    align: center;
-    object-fit: fill;
-    max-height: 200px;
-    max-width: 250px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 .fondo{
     background: white;
     margin: 0px;
-    padding: 0px;
+    padding-left: 10px;
 }
 
 .textoProd{
@@ -52,4 +52,11 @@ h1{
     border-color: #9069A7;
     margin-bottom: 30px;
     margin-left: 3px;
+}
+
+@media (max-width: 572px){
+    .picDetail1{
+        max-width: 570px;
+        min-height: 200px;
+    }
 }

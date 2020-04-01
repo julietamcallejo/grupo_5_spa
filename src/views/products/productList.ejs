@@ -21,21 +21,21 @@
 	<% }else{ %>
 	<% for (let i=0; i < services.length; i++){  %>
 		<% let actualService = services[i] %>
-		<div class="row padd back">
-			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 picDetail1">
-				<a class="picDetail2" href="/products/productDetail/<%= actualService.id %>">
-					<img class="picDetail2" src=<%= actualService.photo %>>
-				</a>
+			<div class="row padd back">
+				<div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 picDetail1">
+					<a class="picDetail1" href="/products/productDetail/<%= actualService.id %>">
+						<img class="picDetail2" src=<%= actualService.photo %>>
+					</a>
+				</div>
+				<div class="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9 fondo">
+					<a  href="/products/productDetail/<%= actualService.id %>">
+						<h3 class="textoProd"> <%= actualService.name %> </h3>
+						<p class="textoProd"> <%= actualService.summary %> </p>
+						<h5 class="textoProd">Precio: $<%= actualService.price %> </h5>
+					</a>
+				</div>
 			</div>
-			<div class="col-12 col-sm-6 col-md-6 col-lg-9 col-xl-9 fondo">
-				<a  href="/products/productDetail/<%= actualService.id %>">
-					<h3 class="textoProd"> <%= actualService.name %> </h3>
-					<p class="textoProd"> <%= actualService.summary %> </p>
-					<h5 class="textoProd">Precio: $<%= actualService.price %> </h5>
-				</a>
-			</div>
-		</div>
-	<% } %>
+		<% } %>
 	<% } %>
 
 </div>
