@@ -181,6 +181,7 @@ const productController = {
                 include: ['category']
             })
             .then(service => {
+                
                 return res.render('products/productEdit', { service, categories })
             })
         })

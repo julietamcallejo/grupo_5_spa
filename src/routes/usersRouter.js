@@ -24,6 +24,10 @@ router.post('/login', loginValidator , userController.processLogin);
 
 router.get('/profile', authMiddleware, userController.profile);
 
+router.get('/profileEdit/:userId', authMiddleware, userController.profileEdit);
+
+router.put('/profileEdit/:userId', upload.single('avatar'), userController.profileUpdate);
+
 router.get('/logout', authMiddleware, userController.logout);
 
 /* CHEQUEO DE USUARIO LOGUEADO

@@ -52,7 +52,7 @@ class App extends Component {
         <div id="content-wrapper" className="d-flex flex-column">
     
           
-          <div id="content">
+          <div id="content" className="fondo">
             {/* Componente Navbar */}
             {/* <Navbar/> */}
             
@@ -62,8 +62,8 @@ class App extends Component {
     
               
               <div className="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
-                
-                <h1 className="h2 mb-0 text-gray-800">Spa Dashboard</h1>
+                <img src="/assets/images/IsoLogo Color.png" className="logospa" alt="logospa"/>
+                {/*<h1 className="h4 mb-0 text-gray-800">Spa Dashboard</h1>*/}
               </div>
     
               {/* Modulos de Metricas independientes */}

@@ -11,54 +11,23 @@
 
     </div>
         <nav class='Navbar_Items'>
-            <!--
-
-            <div class='Navbar_Link'>
-                <a href='/products/productList'>Servicios</a>
-    
-                </div>
-                <div class='Navbar_Link'>
-                    <a href='/products/productAdd'>Agregar</a>
-        
-                    </div>
-                <div class='Navbar_Link'>
-                <a href='/products/productEditList'>Administrar</a>
-    
-                </div>
-                
-                <div class='Navbar_Link'>
-                <a href='/users/login'>Ingresar</a>
-    
-                </div>
-                
-                <div class='Navbar_Link'>
-                <a href='/users/register'>Registrarse</a>
-    
-                </div>
-    
-                <div class='Navbar_Link'>
-                    <a href='/contact'>Contacto</a>
-        
-                    </div>
-                <div class='Navbar_Link'>
-                <a href='/products/productCart'><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
-    
-                </div>
-                -->
             
             <% if (isLogged) { %>
             <div class='Navbar_Link'>
-            <a href='/products/productList'>Servicios</a>
-
+            <a href='/products/productEditList'>Servicios</a>
+            
+            
             </div>
             <div class='Navbar_Link'>
                 <a href='/products/productAdd'>Agregar</a>
     
-                </div>
-            <div class='Navbar_Link'>
-            <a href='/products/productEditList'>Administrar</a>
-
             </div>
+            <div class='Navbar_Link'>
+                <a href='/contact'>Contacto</a>
+    
+            </div>
+
+            
             <div class='Navbar_Link'>
                 <a href='/users/profile'>Perfil</a>
     
@@ -67,12 +36,7 @@
             <a href='/users/logout'>Salir</a>
 
             </div>
-            
-
-            <div class='Navbar_Link'>
-                <a href='/contact'>Contacto</a>
-    
-                </div>
+        
             <div class='Navbar_Link'>
             <a href='/products/productCart'><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
 
@@ -97,10 +61,7 @@
                     <a href='/contact'>Contacto</a>
         
                     </div>
-                <div class='Navbar_Link'>
-                <a href='/products/productCart'><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
-    
-                </div>
+                
             <% } %>
             
 

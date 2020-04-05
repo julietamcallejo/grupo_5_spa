@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar mi perfil</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/fontawesome-all.css">
+    <link rel="stylesheet" href="/css/spa.css">
+    <link rel="stylesheet" href="/css/registercss.css">
+</head>
+<body id="register">
+<%- include('../partials/headerNav') %>
+<div class="container alto">
+    
+    <form id="register-form" action='/users/profileEdit/<%= userLogged.id %>?_method=PUT' method="POST" enctype="multipart/form-data">
+        
+        <div class="pad">
+            <h3>Editar Perfil</h3>
+        </div>
+        <div class="container-fluid fondo">
+            
+            <div class="col-auto">
+                <input type="text" name='firstName' id="inputText" placeholder="Nombre" data-name='Nombre'
+                class="form-control" value="<%= userLogged.firstName %>">
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('firstName', errors) ? hasErrorGetMessage('firstName', errors) : null %>
+                    <% } %>
+                </div>
+            </div>
+            <div class="col-auto">
+                <input type="text" name='lastName' id="inputText" placeholder="Apellido" data-name='Apellido' 
+                class="form-control" value="<%= userLogged.lastName %>" >
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('lastName', errors) ? hasErrorGetMessage('lastName', errors) : null %>
+                    <% } %>
+                </div>
+                
+            </div>
+            <div class=col-auto>
+                <input type="text" name='email' id="inputEmail" placeholder="email" data-name='Email'
+                class="form-control" value="<%= userLogged.email %>" >
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('email', errors) ? hasErrorGetMessage('email', errors) : null %>
+                    <% } %>
+                </div>
+            </div>
+            <div class=col-auto>
+                <input type="password" name='password' id="inputPassword" placeholder="Contraseña" data-name='Contraseña' 
+                class="form-control">
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('password', errors) ? hasErrorGetMessage('password', errors) : null %>
+                    <% } %>
+                </div>
+            </div>
+            
+            <div class="custom-file">
+                <label class='custom-file-label' for="validatedCustomFile">Imagen de perfil</label><br>
+                
+                    <input type="file" name="avatar" class="custom-file-input" id="" data-name='Avatar'>
+                    
+                
+            </div>
+            
+            <div class=col-auto mx-5>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<script src="/js/validator.min.js"></script>
+<script src="/js/registerFrontValidation.js"></script>
+<!--Footer-->
+<%- include('../partials/footer')%>
+</body>
+</html>

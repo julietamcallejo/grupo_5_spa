@@ -6,80 +6,88 @@ const Categories = db.categories;
 
 
 const userController = {
+
     list: (req, res) => {
+        let offsetPage = 0;
+                
+        if (req.query.page){
+            if (Number(req.query.page) == 1){
+                offsetPage = 0;
+            }
+            offsetPage = (Number(req.query.page) - 1) * 10;
+        }
             
-            Services
-                .findAll({
-                    attributes: ["id", "name", "summary", "price"],
+        Services
+            .findAndCountAll({
+                attributes: ["id", "name", "summary", "price"],
+                include: [{ 
+                    association: 'category',
+                    attributes: ["id", "name"]
+                }],
+                limit: 10,
+                offset: offsetPage
+            })
+            .then( async services => {
+                let categories = await Categories.findAll({
                     include: [{ 
-                        association: 'category',
+                        association: 'services',
                         attributes: ["id", "name"]
                     }]
-                })
-                .then( async services => {
-                    let categories = await Categories.findAll({
-                        include: [{ 
-                            association: 'services',
-                            attributes: ["id", "name"]
-                        }]
-                    });
-                    let countByCategory2 = {};
-                    let countByCategory = categories.map( oneCategory => {
-                        countByCategory2[oneCategory.name] = oneCategory.services.length;
-                        return oneCategory = {
-                            id: oneCategory.id,
-                            name: oneCategory.name,
-                            total_products: oneCategory.services.length
-                        }
-                    })
-                    let totalPages = Math.ceil(services.length/10);    
-                    let serviceList = services.map( oneService => {
-                        return oneService = {
-                            id: oneService.id,
-                            name: oneService.name,
-                            summary: oneService.summary,
-                            price: oneService.price,
-                            category: oneService.category,
-                            url: `http://localhost:3000/api/products/${oneService.id}`,
-                            }
-                    });
-                    let page = Number(req.query.page);
-                    let nextUrl = `http://localhost:3000/api/products/?page=2`;
-                    let prevUrl = null;
-                    if(!page || page == 1 ){
-                        serviceList = serviceList.slice(0,10);
-                        
-                    } else {
-                        serviceList = serviceList.slice((page*10-10), (page*10));
-                        prevUrl = `http://localhost:3000/api/products/?page=${(page - 1)}`;
-                        
-                        if( page < totalPages ) {
-                            nextUrl = `http://localhost:3000/api/products/?page=${page + 1}`;
-                        } else {
-                            nextUrl = null;
-                        }
-                        
+                });
+                let countByCategory2 = {};
+                let countByCategory = categories.map( oneCategory => {
+                    countByCategory2[oneCategory.name] = oneCategory.services.length;
+                    return oneCategory = {
+                        id: oneCategory.id,
+                        name: oneCategory.name,
+                        total_products: oneCategory.services.length
                     }
-
-                    return res.status(200).json({
-                        
-                        total_results: services.length,
-                        total_categories: categories.length,
-                        next: nextUrl,
-                        prev: prevUrl,
-                        total_pages: totalPages,
-                        count_by_category: countByCategory2,
-                        products: serviceList
-                    });
                 })
-                .catch(error => {
-                    console.log(error);
+                let totalPages = Math.ceil(services.count/10);    
+                let serviceList = services.rows.map( oneService => {
+                    return oneService = {
+                        id: oneService.id,
+                        name: oneService.name,
+                        summary: oneService.summary,
+                        price: oneService.price,
+                        category: oneService.category,
+                        url: `http://localhost:3000/api/products/${oneService.id}`,
+                        }
+                });
+                let page = Number(req.query.page);
+                let nextUrl = `http://localhost:3000/api/products/?page=2`;
+                let prevUrl = null;
+                if(page && page != 1 ){
+                    
+                    prevUrl = `http://localhost:3000/api/products/?page=${(page - 1)}`;
+                    
+                    if( page < totalPages ) {
+                        nextUrl = `http://localhost:3000/api/products/?page=${page + 1}`;
+                    } else {
+                        nextUrl = null;
+                    }
+                    
+                }
 
-                    return res.json(error);
-                    });
-        
+                return res.status(200).json({
+                    
+                    total_results: services.count,
+                    total_categories: categories.length,
+                    next: nextUrl,
+                    prev: prevUrl,
+                    total_pages: totalPages,
+                    count_by_category: countByCategory2,
+                    products: serviceList
+                });
+            })
+            .catch(error => {
+                console.log(error);
 
-    },
+                return res.json(error);
+                });
+    
+
+},
     detail: (req, res) => {
         
             Services

@@ -3,7 +3,7 @@
 <head>
 	<meta charset='UTF-8'>
 	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Editar Producto <%= service.id %></title>
+    <title>Editar Servicio <%= service.name %></title>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/fontawesome-all.css">
@@ -14,14 +14,14 @@
 <%- include('../partials/headerNav') %>
 <div class="alto">
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <h1>Editar <%= service.name %></h1>
+        <h2>Editar servicio "<%= service.name %>"</h2>
     </div>
     <form action='/products/productEdit/<%= service.id %>?_method=PUT' method='POST' enctype= 'multipart/form-data'>
         <div class="container ancho">
             <div class="row">
                 <div class="col-12">
                     <label for='name'>Nombre Servicio:</label>
-                    <input type='text' name='name' value=<%= service.name %> class="form-control" placeholder="Título"><br>
+                    <input type='text' name='name' value="<%= service.name %>" class="form-control" placeholder="Título"><br>
                     <div class="invalid-feedback">
                         Por favor ingrese un texto válido
                     </div>

@@ -91,6 +91,50 @@ const userController = {
             })
             .catch(error => res.send(error))
     },
+    profileEdit: (req, res) => {
+        
+        Users
+            .findByPk(req.params.userId)
+            .then(userLogged => {
+                res.render('users/profileEdit', { userLogged });
+            })
+            .catch(error => res.send(error))
+    },
+    profileUpdate: (req, res) => {
+        
+        if (req.body.password) {
+            req.body.password = bcrypt.hashSync(req.body.password, 10);
+            delete req.body.re_password;
+        }
+        
+
+        // Nombre de la foto y el id
+        let avatar;
+        let user;
+        if (typeof req.file === 'undefined') {
+            user = req.body;
+
+        } else {
+            
+            avatar = req.file.filename;
+            user = {
+                avatar: avatar,
+                ...req.body,
+                };
+        }
+        
+        Users
+            .update(user, {
+                where: {id: req.params.userId}
+                })
+            .then(() => {
+            
+                return res.redirect('/users/profile/');
+        })
+        .catch(error => res.send(error))
+
+
+    },
 
     logout: (req, res) => {
         // Destruir la session
