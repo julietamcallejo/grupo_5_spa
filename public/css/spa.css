@@ -193,6 +193,12 @@
     font-family: 'Lato', sans-serif;
     height: 28px;
 }
+.links{
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    font-family: 'Lato', sans-serif;
+}
 .spaces{
     padding: 15px;
 }
