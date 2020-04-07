@@ -28,6 +28,6 @@ router.delete('/productUpdateCart/:idProduct', productController.updateCart);
 router.get('/productCart', authMiddleware, productController.productCart);
 router.get('/productAdd', authMiddleware, productController.productAdd);
 router.post('/productAdd', upload.single('photo'), productsValidator, productController.productSave);
-
+router.get('/compra', authMiddleware, productController.compra);
 
 module.exports = router;
