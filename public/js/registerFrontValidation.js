@@ -56,7 +56,7 @@ formElements.forEach(function (input) {
         input.addEventListener('change', function () {
             let emailValue = this.value.trim();
 
-            fetch(`http://localhost:3000/api/users/${emailValue}`)
+            fetch(`http://localhost:3000/api/users/check/${emailValue}`)
                 .then(response => response.json())
                 .then(data => {
                     
@@ -72,7 +72,7 @@ formElements.forEach(function (input) {
                     }
                 })
                 .catch(error => console.error("El error es" + error))
-                console.log("################################");
+                
             
         })
     }
@@ -84,7 +84,7 @@ formElements.forEach(function (input) {
             if (!validator.isEmpty(passwordValue) && !validator.isLength(passwordValue, {min: 6, max: undefined})){
                 this.classList.add('is-invalid');
 			    this.classList.remove('is-valid');
-			    this.nextElementSibling.innerHTML = 'La contraseña debe tener al menos 6 caracteres, una mayúscula, una minúscula, un núnero y un caracter especial';
+			    this.nextElementSibling.innerHTML = 'La contraseña debe tener al menos 6 caracteres, una mayúscula, una minúscula, un número y un caracter especial';
 			    inputsErrors[this.name] = true;
 
             } else if (!passwordValue.match(passwordRegex)){

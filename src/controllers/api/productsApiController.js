@@ -70,7 +70,7 @@ const userController = {
                 }
 
                 return res.status(200).json({
-                    
+                    status: 200,
                     total_results: services.count,
                     total_categories: categories.length,
                     next: nextUrl,
@@ -83,7 +83,10 @@ const userController = {
             .catch(error => {
                 console.log(error);
 
-                return res.json(error);
+                return res.status(500).json({
+                    status: 500
+                    
+                });
                 });
     
 

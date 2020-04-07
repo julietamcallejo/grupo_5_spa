@@ -15,6 +15,7 @@ class ProductList extends Component {
 		fetch('http://localhost:3000/api/products/')
 			.then(response => response.json())
 			.then(data => {
+				if (data.status !== 500){
 				let totalPages = [];
 				for (let index = 1; index <= data.total_pages; index++) {
 					totalPages.push(index);
@@ -27,6 +28,8 @@ class ProductList extends Component {
 					prevUrl: data.prev,
 					loading: false
 				})
+			} 
+			
 			})
 			.catch(errors => console.log(errors))
 

@@ -20,7 +20,7 @@ class App extends Component {
     componentDidMount () {
       
 
-      fetch('http://localhost:3000/api/users?apikey=12345678')
+      fetch('http://localhost:3000/api/users')
             .then(response => response.json())
             .then( users => {
               fetch('http://localhost:3000/api/products')
