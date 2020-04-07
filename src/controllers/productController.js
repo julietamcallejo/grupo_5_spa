@@ -239,9 +239,10 @@ const productController = {
             service.destroy();
             return res.redirect('/products/productList');
         });
-        
-        
-    }
+    },
+    compra: (req, res) => {
+        return res.render('products/compra')
+    },
 };
 
 module.exports = productController;
