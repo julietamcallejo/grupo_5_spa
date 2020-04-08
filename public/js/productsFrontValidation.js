@@ -12,7 +12,7 @@ formElements.forEach(function (input) {
     input.addEventListener('blur', function () {
         let inputValue = this.value.trim();
         //validador
-        if (input.name === 'description' || input.name === 'name' || input.name === 'resumen'){
+        if (input.name === 'description' || input.name === 'name' || input.name === 'summary'){
             if (validator.isEmpty(inputValue)) {
                 this.classList.add('is-invalid');
                 this.classList.remove('is-valid');

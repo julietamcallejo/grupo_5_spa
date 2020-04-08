@@ -21,48 +21,49 @@
             <div class="row">
                 <div class="col-12">
                     <label for='name'>Nombre del Servicio:</label>
-                    <input type='text' name='name' data-name='nombre' value="<%= service.name %>" class="form-control" placeholder="Título"><br>
-                    <p class="invalid-feedback"></p>
+                    <input type='text' name='name' data-name='Nombre' value="<%= service.name %>" class="form-control" placeholder="Título">
+                    <div class="invalid-feedback">
+                    </div>
                     <br>
                     <br>
                 </div>
                 <div class="col-12">
                     <label for='category'>Categoría:</label>
-                    <select name='categoryId' data-name='categoría' class="form-control">
+                    <select name='categoryId' data-name='Categoría' class="form-control">
                         <option value=<%= service.categoryId %>><%=service.category.name%></option>
                         <% categories.forEach(category => { %>
                             <option value=<%= category.id %>><%= category.name %></option>
                         <% }) %>
                     </select>
-                    <p class="invalid-feedback"></p>
+                    <div class="invalid-feedback"></div>
                     <br>
                     <br>
                 </div>
                 <div class="col-12" id="textsize">
                     <label for='description'>Descripción:</label>
-                    <textarea type="text" class="form-control" placeholder="Descripción" id='' name='description' data-name='descripción'
+                    <textarea type="text" class="form-control" placeholder="Descripción" id='' name='description' data-name='Descripción'
                               cols=“30 rows=“10><%=service.description %></textarea>
-                    <p class="invalid-feedback"></p>
+                    <div class="invalid-feedback"></div>
                     <br>
                     <br>
                 </div>
                 <div class="col-12" id="textsize">
                     <label for='summary'>Resumen:</label>
                     <textarea type="text" class="form-control" placeholder="Resumen del service" id=“”
-                              name='summary' data-name='resumen' cols=“30 rows=“10><%= service.summary %></textarea>
-                    <p class="invalid-feedback"></p>
+                              name='summary' data-name='Resumen' cols=“30 rows=“10><%= service.summary %></textarea>
+                    <div class="invalid-feedback"></div>
                     <br>
                 </div>
                 <div class="col-6">
                     <label for='duration'>Duración:</label>
-                    <input type="number" min="0" name='duration' data-name='duración' class="form-control" placeholder="Duración" value=<%= service.duration %>>
-                    <p class="invalid-feedback"></p>
+                    <input type="number" min="0" name='duration' data-name='Duración' class="form-control" placeholder="Duración" value=<%= service.duration %>>
+                    <div class="invalid-feedback"></div>
                     <br>
                 </div>
                 <div class="col-6">
                     <label for='price'>Precio:</label>
-                    <input type="number" class="form-control" placeholder="Precio" name='price' data-name='precio' value=<%= service.price %>>
-                    <p class="invalid-feedback"></p>
+                    <input type="number" class="form-control" placeholder="Precio" name='price' data-name='Precio' value=<%= service.price %>>
+                    <div class="invalid-feedback"></div>
                     <br>
                     <br>
                 </div>
