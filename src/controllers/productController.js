@@ -136,6 +136,7 @@ const productController = {
 
         if (errors.isEmpty()) {
             let userSession = req.session.userId
+            console.log(req.body);
 
             //armado del body con la foto
             req.body = {
@@ -153,12 +154,18 @@ const productController = {
             });
 
         } else {
-        //return res.send(errors);
-        return res.render('product/productAdd', {
-            errors: errors.array(),
-            hasErrorGetMessage,
-            oldData: req.body
-        });
+            Categories
+            .findAll()
+            .then(categories => {
+                
+                return res.render('products/productAdd', { 
+                    errors: errors.array(),
+                    hasErrorGetMessage,
+                    oldData: req.body,
+                    categories });
+            })
+        
+        
     };
     },
     editList: (req, res) => {

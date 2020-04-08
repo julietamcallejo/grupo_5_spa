@@ -1,254 +1,132 @@
 <!DOCTYPE html>
-<html lang='en'>
-
+<html lang="en">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Producto</title>
-    <link rel='stylesheet' href='/css/bootstrap.css'>
-    <link href='https://fonts.googleapis.com/css?family=Lato:300&display=swap' rel='stylesheet'>
-    <link rel='stylesheet' href='/css/fontawesome-all.css'>
-    <link rel='stylesheet' href='/css/spa.css'>
-    <link rel='stylesheet' href='/css/productAddcss.css'>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/fontawesome-all.css">
+    <link rel="stylesheet" href="/css/spa.css">
+    <link rel="stylesheet" href="/css/productAddcss.css">
 </head>
+<body>
+<%- include('../partials/headerNav') %>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <h1>Nuevo Servicio</h1>
+</div>
 
-<body id='productAdd'>
-    <%- include('../partials/headerNav') %>
-    <div class='col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'>
-        <h1>Nuevo Servicio</h1>
-    </div>
-
-    <form id='productAddForm' action='/products/productAdd' method='POST' enctype='multipart/form-data'>
-        <div class='container ancho'>
-            <div class='row'>
-                <div class='col-12'>
-                    <label for='name'>Nombre del Servicio:</label>
-                    <input type='text' id='name' name='name' data-name='nombre' class='form-control'>
-                    <p class="invalid-feedback"></p>
-                    <br>
-                </div>
-                <div class='col-12'>
-                    <label for='category'>Categoría:</label>
-                    <select id='categoryId' name='categoryId' data-name='categoría' class='form-control'>
-                        <option value=''>Elige una opción</option>
-                        <% categories.forEach(category => { %>
-                        <option value=<%= category.id %>><%= category.name %></option>
-                        <% }) %>
-                    </select>
-                    <p class="invalid-feedback"></p>
-                    <br>
-                    <br>
-                </div>
-                <div class='col-12' id='textsize'>
-                    <label for='description'>Descripción:</label>
-                    <textarea type='text' id='description' name='description' data-name='descripción' cols='30'
-                        rows='10' class='form-control'
-                        value=<%= typeof oldData != 'undefined' ? oldData.descripción : null %>></textarea>
-                    <p class="invalid-feedback"></p>
-                </div>
-                <div class='col-12' id='textsize'>
-                    <label for='summary'>Resumen:</label>
-                    <textarea type='text' id='summary' name='summary' data-name='resumen' cols='30' 
-                        rows='10' class='form-control' 
-                        value=<%= typeof oldData != 'undefined' ? oldData.summary : null %>></textarea>
-                    <p class="invalid-feedback"></p>
-                    <br>
-                </div>
-
-                <div class='col-6'>
-                    <label for='duration'>Duración:</label>
-                    <input type='number' min='40' id='duration' name='duration' data-name='duración'
-                        class='form-control' value=<%= typeof oldData != 'undefined' ? oldData.duration : null %>>
-                        <p class="invalid-feedback"></p>
-                    <br>
-                </div>
-                <div class='col-6'>
-                    <label for='price'>Precio:</label>
-                    <input type='number' id='price' name='price' data-name='precio' class='form-control'
-                        value=<%= typeof oldData != 'undefined' ? oldData.price : null %>>
-                        <p class="invalid-feedback"></p>
-                    <br>
-                </div>
-                <div class='custom-file'>
-                    <input type='file' name='photo' data-name='foto' class='custom-file-input' id='validatedCustomFile'
-                        required>
-                    <label class='custom-file-label' for='validatedCustomFile'>Seleccionar foto del servicio</label>
+<form action='/products/productAdd' method="POST" enctype="multipart/form-data" id="productAddForm">
+    <div class="container ancho">
+        <div class="row">
+            <div class="col-12">
+                <label for='name'>Nombre del Servicio:</label>
+                <input data-name='Nombre' type="text" id="" name="name" class="form-control
+                <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('name', errors) ? 'is-invalid' : null %> 
+                <% } %>
+                "value="<%= typeof oldData !== 'undefined' ? oldData.nombre : null %>" >
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('name', errors) ? hasErrorGetMessage('name', errors) : null %>
+                    <% } %>
                 </div>
                 <br>
-                <p class="invalid-feedback"></p>
-                <div class='col-6'>
-                    <button class='btn btn-info boton' type='submit'>Guardar</button>
-                </div>
-                <div class='col-6'>
-                    <button class='btn btn-danger boton' type='reset'>Reset</button>
+            </div>
+            <div class="col-12">
+                <label  for='category'>Categoría:</label>
+                <select data-name='Categoría' name='categoryId' class="form-control">
+                    <option value="">Elige una opción</option>
+                    <% categories.forEach(category => { %>
+                        <option value=<%= category.id %>><%= category.name %></option>
+                    <% }) %>
+                </select>
+                <br>
+                <br>
+            </div>
+            <div class="col-12" id="textsize">
+                <label for='description'>Descripción:</label>
+                <textarea data-name='Descripción' type="text" id=“” name='description' cols="30" rows="10" class="form-control
+                <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('description', errors) ? 'is-invalid' : null %> 
+                <% } %>
+                "
+                value="<%= typeof oldData !== 'undefined' ? oldData.descripción : null %>" >
+                </textarea>
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('description', errors) ? hasErrorGetMessage('description', errors) : null %>
+                    <% } %>
                 </div>
             </div>
-            <!-- CARGA DE INFORMACIÓN DE CALENDARIO
-        <div class='row'>
-            <div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6'>
-                <div class='row'>
-                    <div class='col-2'>
-                        <img src='images/user-2.svg' width='30px'>
-                    </div>
-                    <div class='col-10'>
-                        <input type='text' class='form-control is-invalid' placeholder='Nombre'>
-                        <div class='invalid-feedback'>
-                            Por favor ingrese un nombre válido
-                        </div>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-2'>
-                        <img src='images/user-2.svg' width='30px'>
-                    </div>
-                    <div class='col-10'>
-                        <input type='text' class='form-control is-invalid' placeholder='Nombre'>
-                        <div class='invalid-feedback'>
-                            Por favor ingrese un nombre válido
-                        </div>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-2'>
-                        <img src='images/user-2.svg' width='30px'>
-                    </div>
-                    <div class='col-10'>
-                        <input type='text' class='form-control is-invalid' placeholder='Nombre'>
-                        <div class='invalid-feedback'>
-                            Por favor ingrese un nombre válido
-                        </div>
-                    </div>
+            <div class="col-12" id="textsize">
+                <label for='summary'>Resumen:</label>
+                <textarea data-name='Resumen' type="text" id=“” name='summary' cols="30" rows="10"
+                class="form-control <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                <%= hasErrorGetMessage('summary', errors) ? 'is-invalid' : null %> 
+                <% } %>
+                "
+                value="<%= typeof oldData !== 'undefined' ? oldData.summary : null %>" >
+                </textarea>
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('summary', errors) ? hasErrorGetMessage('summary', errors) : null %>
+                    <% } %>
                 </div>
             </div>
-            <div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 defaultCheck1'>
-                <div class='row'>
-                    <div class='col-4 defaultCheck1'>
-                        <h6>Días</h6>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6>Cant. turnos</h6>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6>Primer turno</h6>
-                    </div>
+            
+            <div class="col-6">
+                <label for="duration">Duración:</label>
+                <input data-name='Duración' type="number" min="40" id="" name="duration" class="form-control
+                <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('duration', errors) ? 'is-invalid' : null %> 
+                <% } %>
+                "
+                value="<%= typeof oldData !== 'undefined' ? oldData.duration : null %>" >
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('duration', errors) ? hasErrorGetMessage('duration', errors) : null %>
+                    <% } %>
                 </div>
-                <div class='row'>
-                    <div class='col-4 defaultCheck1'>
-                        <div class='form-check'>
-                            <input class='form-check-input defaultCheck1' type='checkbox'>
-                            <label class='form-check-label' for='defaultCheck1'>
-                                Lun
-                            </label>
-                        </div>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6 id='defaultCheck1'>4  ▾</h6>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6 id='defaultCheck1'>11:00  ▾</h6>
-                    </div>
+                <br>
+            </div>
+            <div class="col-6">
+                <label for="price">Precio:</label>
+                <input data-name='Precio' type="number" id="" name="price" class="form-control
+                <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('price', errors) ? 'is-invalid' : null %> 
+                <% } %>
+                "value="<%= typeof oldData !== 'undefined' ? oldData.price : null %>" >
+                
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('price', errors) ? hasErrorGetMessage('price', errors) : null %>
+                    <% } %>
                 </div>
-                <div class='row'>
-                    <div class='col-4 defaultCheck1'>
-                        <div class='form-check'>
-                            <input class='form-check-input defaultCheck1' type='checkbox'>
-                            <label class='form-check-label' for='defaultCheck1'>
-                                Mar
-                            </label>
-                        </div>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6 id='defaultCheck1'>0  ▾</h6>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6 id='defaultCheck1'>00:00  ▾</h6>
-                    </div>
+                <br>
+            </div>
+            <div class="custom-file">
+                <input data-name='Foto' type="file" name='photo' class="custom-file-input" id="validatedCustomFile" required>
+                <label class="custom-file-label" for="validatedCustomFile">Seleccionar photo del servicio</label>
+                <div class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                        <%= hasErrorGetMessage('photo', errors) ? hasErrorGetMessage('photo', errors) : null %>
+                    <% } %>
                 </div>
-                <div class='row'>
-                    <div class='col-4 defaultCheck1'>
-                        <div class='form-check'>
-                            <input class='form-check-input defaultCheck1' type='checkbox'>
-                            <label class='form-check-label' for='defaultCheck1'>
-                                Mie
-                            </label>
-                        </div>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6 id='defaultCheck1'>5  ▾</h6>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6 id='defaultCheck1'>10:00  ▾</h6>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-4 defaultCheck1'>
-                        <div class='form-check'>
-                            <input class='form-check-input defaultCheck1' type='checkbox'>
-                            <label class='form-check-label' for='defaultCheck1'>
-                                Jue
-                            </label>
-                        </div>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6 id='defaultCheck1'>7  ▾</h6>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6 id='defaultCheck1'>12:00  ▾</h6>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-4 defaultCheck1'>
-                        <div class='form-check'>
-                            <input class='form-check-input defaultCheck1' type='checkbox'>
-                            <label class='form-check-label' for='defaultCheck1'>
-                                Vie
-                            </label>
-                        </div>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6 id='defaultCheck1'>0  ▾</h6>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6 id='defaultCheck1'>00:00  ▾</h6>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-4 defaultCheck1'>
-                        <div class='form-check'>
-                            <input class='form-check-input defaultCheck1' type='checkbox'>
-                            <label class='form-check-label' for='defaultCheck1'>
-                                Sáb
-                            </label>
-                        </div>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6 id='defaultCheck1'>10  ▾</h6>
-                    </div>
-                    <div class='col-4 defaultCheck1'>
-                        <h6 id='defaultCheck1'>10:00  ▾</h6>
-                    </div>
-                </div>
+              </div>
+            <div class="col-6">
+                <button class="btn btn-info boton" type="submit">Guardar</button>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-danger boton" type=“reset”>Reset</button>
             </div>
         </div>
-        -->
-        </div>
-    </form>
-
-    <script src='https://code.jquery.com/jquery-3.4.1.slim.min.js'
-        integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n'
-        crossorigin='anonymous'></script>
-    <script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'
-        integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo'
-        crossorigin='anonymous'></script>
-    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'
-        integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6'
-        crossorigin='anonymous'></script>
-
-    <script src='/js/validator.min.js'></script>
-    <script src='/js/productsFrontValidation.js'></script>
-
-    <!--Footer-->
-    <%- include('../partials/footer')%>
+        
+    </div>
+</form>
+<script src="/js/validator.min.js"></script>
+<script src="/js/productsFrontValidation.js"></script>
+<!--Footer-->
+<%- include('../partials/footer')%>
 </body>
-
 </html>

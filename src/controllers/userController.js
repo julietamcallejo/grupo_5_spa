@@ -181,7 +181,7 @@ const userController = {
 
                            // Setear la cookie
                            if (req.body.remember) {
-                               res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
+                               res.cookie('userCookie', user.id, { maxAge: 60000 * 120 });
                            }
 
                            // Redireccionamos al visitante a su perfil
