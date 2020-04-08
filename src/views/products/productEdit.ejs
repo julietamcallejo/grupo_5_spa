@@ -16,62 +16,53 @@
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <h2>Editar servicio "<%= service.name %>"</h2>
     </div>
-    <form action='/products/productEdit/<%= service.id %>?_method=PUT' method='POST' enctype= 'multipart/form-data'>
+    <form id='productEditForm' action='/products/productEdit/<%= service.id %>?_method=PUT' method='POST' enctype= 'multipart/form-data'>
         <div class="container ancho">
             <div class="row">
                 <div class="col-12">
-                    <label for='name'>Nombre Servicio:</label>
-                    <input type='text' name='name' value="<%= service.name %>" class="form-control" placeholder="Título"><br>
-                    <div class="invalid-feedback">
-                        Por favor ingrese un texto válido
-                    </div>
+                    <label for='name'>Nombre del Servicio:</label>
+                    <input type='text' name='name' data-name='nombre' value="<%= service.name %>" class="form-control" placeholder="Título"><br>
+                    <p class="invalid-feedback"></p>
                     <br>
                     <br>
                 </div>
                 <div class="col-12">
                     <label for='category'>Categoría:</label>
-                    <select name='categoryId' class="form-control">
+                    <select name='categoryId' data-name='categoría' class="form-control">
                         <option value=<%= service.categoryId %>><%=service.category.name%></option>
                         <% categories.forEach(category => { %>
                             <option value=<%= category.id %>><%= category.name %></option>
                         <% }) %>
                     </select>
+                    <p class="invalid-feedback"></p>
                     <br>
                     <br>
                 </div>
                 <div class="col-12" id="textsize">
                     <label for='description'>Descripción:</label>
-                    <textarea type="text" class="form-control" placeholder="Descripción" id=“” name='description'
+                    <textarea type="text" class="form-control" placeholder="Descripción" id='' name='description' data-name='descripción'
                               cols=“30 rows=“10><%=service.description %></textarea>
-                    <div class="invalid-feedback">
-                        Por favor ingrese un texto válido
-                    </div>
+                    <p class="invalid-feedback"></p>
                     <br>
                     <br>
                 </div>
                 <div class="col-12" id="textsize">
                     <label for='summary'>Resumen:</label>
                     <textarea type="text" class="form-control" placeholder="Resumen del service" id=“”
-                              name='summary' cols=“30 rows=“10><%= service.summary %></textarea>
-                    <div class="invalid-feedback">
-                        Por favor ingrese un texto válido
-                    </div>
+                              name='summary' data-name='resumen' cols=“30 rows=“10><%= service.summary %></textarea>
+                    <p class="invalid-feedback"></p>
                     <br>
                 </div>
                 <div class="col-6">
                     <label for='duration'>Duración:</label>
-                    <input type="number" min="0" name='duration' class="form-control" placeholder="Duración" value=<%= service.duration %>>
-                    <div class="invalid-feedback">
-                        Por favor ingrese un valor válido
-                    </div>
+                    <input type="number" min="0" name='duration' data-name='duración' class="form-control" placeholder="Duración" value=<%= service.duration %>>
+                    <p class="invalid-feedback"></p>
                     <br>
                 </div>
                 <div class="col-6">
                     <label for='price'>Precio:</label>
-                    <input type="number" class="form-control" placeholder="Precio" name='price' value=<%= service.price %>>
-                    <div class="invalid-feedback">
-                        Por favor ingrese un valor válido
-                    </div>
+                    <input type="number" class="form-control" placeholder="Precio" name='price' data-name='precio' value=<%= service.price %>>
+                    <p class="invalid-feedback"></p>
                     <br>
                     <br>
                 </div>
@@ -81,7 +72,7 @@
                 <div class="col-12">
                     <label for='photo'>Reemplazar Foto:</label>
                     <br>
-                    <input type="file" name='photo'>
+                    <input type="file" name='photo' data-name='foto'>
                     <br><br><br>
                 </div>
                 <div class="col-12">
@@ -91,6 +82,20 @@
         </div>
     </form>
 </div>
+
+<script src='https://code.jquery.com/jquery-3.4.1.slim.min.js'
+integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n'
+crossorigin='anonymous'></script>
+<script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'
+integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo'
+crossorigin='anonymous'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'
+integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6'
+crossorigin='anonymous'></script>
+
+<script src='/js/validator.min.js'></script>
+<script src='/js/productEditFrontValidation.js'></script>
+
 <!--Footer-->
 <%- include('../partials/footer')%>
 </body>
