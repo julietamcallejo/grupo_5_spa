@@ -3,6 +3,7 @@ let submitButton = document.querySelector('.btn');
 
 let formElements = Array.from(form.elements);
 formElements.pop();
+formElements.pop();
 //splice(-1,-2);
 
 //Objeto de errores
@@ -16,18 +17,15 @@ formElements.forEach(function (input) {
             this.classList.add('is-invalid');
             this.classList.remove('is-valid');
             this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> es obligatorio`;
-            console.log(this)
-            // Agregamos al objeto de errores, un error para ese campo
             inputsErrors[this.name] = true;
-        } /*else if (!validator.isLength(inputValue, { min: 3, max: undefined })) {
+        } else if (!validator.isLength(inputValue, { min: 3, max: undefined })) {
 
             this.classList.add('is-invalid');
             this.classList.remove('is-valid');
-            this.nextElementSibling.innerHTML = `<b>${this.dataset.name}</b> debe contener mas caracteres.`;
-            // Agregamos al objeto de errores, un error para ese campo
+            this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe contener al menos 3 caracteres.`;
             inputsErrors[this.name] = true;
 
-        }*/ else {
+        } else {
             this.classList.remove('is-invalid');
             this.classList.add('is-valid');
             this.nextElementSibling.innerHTML = '';
@@ -35,6 +33,24 @@ formElements.forEach(function (input) {
         }
 
     });
+
+    if (input.name == 'photo') {
+		input.addEventListener('change', function () {
+			let fileExtension = this.value.split('.').pop();
+			let acceptedExtensions = ['jpg', 'jpeg', 'png', 'webm', 'svg'];
+			if(!acceptedExtensions.includes(fileExtension)) {
+				this.classList.add('is-invalid');
+				this.classList.remove('is-valid');
+				this.nextElementSibling.innerHTML = `Formato de imagen no aceptada. Los formatos de imagen aceptados son: ${acceptedExtensions}`;
+				inputsWithErrors[this.name] = true;
+			} else {
+				this.classList.remove('is-invalid');
+				this.classList.add('is-valid');
+				this.nextElementSibling.innerHTML = '';
+				delete inputsWithErrors[this.name];
+			}
+		});
+	}
 });
 
 /*
