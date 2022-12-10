@@ -12,7 +12,7 @@
     "dayjs": "^1.8.23",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
-    "express": "~4.16.1",
+    "express": "~4.17.3",
     "express-session": "^1.17.0",
     "express-validator": "^6.3.1",
     "file-system": "^2.2.2",
